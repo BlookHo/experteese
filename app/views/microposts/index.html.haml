@@ -5,6 +5,7 @@
     %tr
       %th Content
       %th User
+      %th created_at
       %th
       %th
       %th
@@ -14,6 +15,7 @@
       %tr
         %td= micropost.content
         %td= micropost.user_id
+        %td= micropost.created_at
         %td= link_to 'Show', micropost
         %td= link_to 'Edit', edit_micropost_path(micropost)
         %td= link_to 'Destroy', micropost, :method => :delete, :data => { :confirm => 'Are you sure?' }

@@ -23,3 +23,32 @@ Image.create([
 {name: 'V.W. van Gogh, Куст', file: 'ван_гог_куст2.jpg'}
 
 ])
+
+
+
+User.delete_all
+User.reset_pk_sequence
+User.create([
+  
+{name: 'Алексей', email: 'zoneiva@gmail.com'},
+{name: 'Петр', email: 'blookho@gmail.com'},
+{name: 'Анна', email: 'annach61@mail.ru'},
+{name: 'Федор', email: 'fedor@yandex.ru'}
+
+])
+
+
+
+Micropost.delete_all
+Micropost.reset_pk_sequence
+Micropost.create([
+  
+{content: 'Привет! Я хотел бы поработать здесь!', user_id: 1, created_at: '2016-09-03 09:00:51.675013'},
+{content: 'И я бы не отказался!', user_id: 2, created_at: '2016-09-03 09:01:13.409288'},
+{content: 'Посмотри на мой код: https://github.com/BlookHo/bloGNote', user_id: 1, created_at: '2016-09-03 09:01:58.165727'},
+{content: 'Я хотела бы оценить Picasso', user_id: 3, created_at: '2016-09-03 09:02:31.546702'},
+{content: 'И я бы не против. Нужно админам поработать! )', user_id: 2, created_at: '2016-09-03 09:03:03.244806'},
+{content: 'Мой очень длинный пост: ЖЖЖЖЖЖЖЖЖЖЖЖЖЖЖЖЖЖЖЖЖЖЖЖЖЖ', user_id: 1, created_at: '2016-09-03 09:22:49.623447'}
+
+])
+
