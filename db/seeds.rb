@@ -8,18 +8,18 @@
 
 
 Image.delete_all
-# Image.reset_pk_sequence
+Image.reset_pk_sequence
 Image.create([
 
-                 {name: 'Ball_Renour.jpg', path: '//hg7656yy'},
-                 {name: 'Picasso Fabrique.jpg', path: '//dd hdfbhdfyy'},
-                 {name: 'dance_mattis2.jpg', path: '//dfgvdfdfg'},
-                 {name: 'raduga5обрез.jpg', path: '//rrbfbfhg7656yy'},
-                 {name: 'Кандинский_ж.к.г_авапг.jpg', path: '//ka dfgvdfdfg'},
-                 {name: 'Рейно_Ночь_класс.jpg', path: '//rrrc dfgvdfdfg'},
-                 {name: 'Серый - середина - стандарт.jpg', path: '//cc hg7656yy'},
-                 {name: 'Черно-Белый - стандарт.jpg', path: '//cvcv dfgvdfdfg'},
-                 {name: 'Черный лист - стандарт.jpg', path: '//chchvbvb hg7656yy'},
-                 {name: 'ван_гог_куст2.jpg', path: '//vsdas'}
+{name: 'P.-A. Renoir, Бал в Мулен де ла Галетт', file: 'Ball_Renour.jpg'},
+{name: 'P. Picasso, Фабрика', file: 'Picasso Fabrique.jpg'},
+{name: 'H. Matiss, Танец', file: 'dance_mattis2.jpg'},
+{name: 'радуга', file: 'raduga5обрез.jpg'},
+{name: 'Кандинский В.В., Жёлтое-красное-синее', file: 'Кандинский_ж.к.г_авапг.jpg'},
+{name: 'A. Raynaud, Ночь', file: 'Рейно_Ночь_класс.jpg'},
+{name: 'Серый - стандарт', file: 'Серый - середина - стандарт.jpg'},
+{name: 'Черно-Белый - стандарт', file: 'Черно-Белый - стандарт.jpg'},
+{name: 'Черный - стандарт', file: 'Черный лист - стандарт.jpg'},
+{name: 'V.W. van Gogh, Куст', file: 'ван_гог_куст2.jpg'}
 
-             ])
+])

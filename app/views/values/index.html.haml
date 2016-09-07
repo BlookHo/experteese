@@ -1,0 +1,19 @@
+%h1 Listing values
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @values.each do |value|
+      %tr
+        %td= link_to 'Show', value
+        %td= link_to 'Edit', edit_value_path(value)
+        %td= link_to 'Destroy', value, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Value', new_value_path
