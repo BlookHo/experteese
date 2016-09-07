@@ -1,0 +1,81 @@
+.about
+  $base-border-radius: 3px   //!default
+  $action-color: #477DCA //!default
+  $large-screen: em(860) //!default
+  $about-background-top: #7F99BE
+  $about-background-bottom: #20392B
+  $about-color: white
+  $gradient-angle: 10deg
+  $about-image: 'https:raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png'
+
+  //@include background(url($about-image), linear-gradient($gradient-angle, $about-background-bottom, $about-background-top), no-repeat $about-background-top scroll)
+  //height: 90px
+  //background-color: #324766
+  //background-position: top
+  //background-repeat: no-repeat
+  //background-size: cover
+  ////padding-bottom: 3em
+
+  i.fa.fa-video-camera
+    color: $about-color
+    height: 2em
+    p
+      position: relative
+      color: $about-color
+      line-height: 1.3em
+      margin-top: 1.5em
+
+  .about-inner
+    //margin: auto
+
+    .about-copy
+      padding-top: .5em
+      text-align: center
+      h1
+        color: $about-color
+        font-size: 1.4em
+        margin-bottom: 0.2em
+      p
+        color: $about-color
+        line-height: 1.3em
+        margin-bottom: 0
+        //text-align: center
+        //margin: 0 auto 1em auto
+        //@include media($large-screen)
+        font-size: 1.4em
+    //  max-width: 40%
+
+    .about-video
+      //height: 20px
+      line-height: 20px
+      text-align: right
+      //background: #3A78A1
+      color: $about-color
+      //@include media($large-screen)
+      font-size: 1.3em
+      //  max-width: 100%
+      padding-right: .8em
+      margin-top: 0
+      padding-bottom: .2em
+      position: relative
+
+      p
+        position: relative
+        vertical-align: middle
+        left: 80%
+        margin-top: 2em
+
+      i.fa.fa-video-camera
+        color: $about-color
+        height: 2em
+      a
+        color: $about-color
+        img
+          vertical-align: middle
+
+
+
+
+
+
+
