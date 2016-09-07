@@ -1,0 +1,28 @@
+@import "mixins"
+
+// Place all the styles related to the main controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+//$body-image: 'https:raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png'
+//$body-image: '/assets/palace_square_light.jpg'
+//$body-image: '/assets/palace_square_from_roof.jpg'
+
+
+$body-image: 'palace_square_from_roof.jpg'
+
+//$base-border-radius: 3px   //!default
+//$action-color: #477DCA //!default
+//$large-screen: 860em //(860) //!default
+$body-background-top: #96B5E1
+$body-background-bottom: #AACAC7
+//$body-color: white
+$gradient-angle: 40deg
+
+body
+  background: image-url($body-image), linear-gradient($gradient-angle, $body-background-bottom, $body-background-top), no-repeat $body-background-top scroll
+
+p
+  color: #0b97c4
+  font-family: $helvetica
+  font-size: 1.2em
+

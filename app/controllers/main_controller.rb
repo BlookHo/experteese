@@ -1,4 +1,8 @@
 class MainController < ApplicationController
+  require 'json'
+  
+  
+  
   def index
   
     @tasks = "fsdfsdf"

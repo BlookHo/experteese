@@ -1,0 +1,30 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    -#%title Experteese
+    %title
+      = content_for?(:title) ? yield(:title) : "Experteese"
+    %meta{name: "viewport", content: "initial-scale=1, text/html; charset=utf-8,user-scalable=no,maximum-scale=1,width=device-width" }
+    %meta{name: "description", content: "This is an Expert tool. You may leave your expert opinion to selected theme. Выбери тему и оставь свое экспертное мнение по ней."}/
+    %meta{name: "keywords", content: "This is where you put all of the keywords you use in your site"}/
+    = csrf_meta_tags
+
+    / %link{:href => "//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css", :rel => "stylesheet"}
+    / %link{:href => "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css", :rel => "stylesheet"}
+    %link{:href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css", :rel => "stylesheet"}/
+    / <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+
+    %script{:src => "https://code.jquery.com/jquery-1.12.0.min.js"}
+    %script{:src => "https://code.jquery.com/jquery-migrate-1.2.1.min.js"}
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    #overlay{style:'display:none;'}
+    -#= render 'shared/ui/header'
+    -#= render 'shared/ui/flash'
+    .container
+      = yield
+    -#= render 'shared/ui/footer'
+
+    -#= yield :debugger
