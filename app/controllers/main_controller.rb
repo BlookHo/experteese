@@ -12,6 +12,10 @@ class MainController < ApplicationController
     #   format.html
     #   format.json
     # end
-
   end
+
+
+  def help
+  end
+
 end

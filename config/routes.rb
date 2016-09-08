@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
   
   resources :values
@@ -7,14 +8,8 @@ Rails.application.routes.draw do
   resources :users
   
   get 'main/index'
+  get 'main/help'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  
-  
   root 'main#index'
-
-
-
-
 
 end

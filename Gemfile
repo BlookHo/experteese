@@ -46,9 +46,7 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-
   gem 'rspec-rails', '~> 3.5'  # 3.5.2 Installed
-
 end
 
 group :development do
@@ -58,16 +56,9 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-
-  gem 'spring-commands-rspec'
-  # Automagically launches tests for changed files
-  gem 'guard'
-  gem 'guard-rspec', '~> 4.6', require: false
-
 end
 
 group :test do
-  
   # For active record imitation in tests
   gem "factory_girl_rails"  # 4.7.0
   # installed 'factory_girl' # 3.5.0
@@ -75,21 +66,23 @@ group :test do
   # Faker, a port of Data::Faker from Perl,
   # is used to easily generate fake data: names, addresses, phone numbers, etc.
   gem 'faker', '~> 1.5' # 1.6.6
-
+  
+  gem 'spring-commands-rspec'
+  # Automagically launches tests for changed files
+  gem 'guard'
+  gem 'guard-rspec', '~> 4.6', require: false
+  gem 'guard-minitest'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-
 # Icons fonts
-gem 'font-awesome-sass'#, '~> 4.6.2'
+gem 'font-awesome-sass' #, '~> 4.6.2'
 gem 'font-awesome-rails', '~> 4.6', '>= 4.6.3.1'
 
 # Memcached
 ##gem 'dalli', '~> 2.7.4'
-
-
 
 group :production do
   # For Heroku deployment
