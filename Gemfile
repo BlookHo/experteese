@@ -46,7 +46,18 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  gem 'rspec-rails', '~> 3.5'  # 3.5.2 Installed
+ gem 'rspec-rails', '~> 3.5'  # 3.5.2 Installed
+  gem 'rails-controller-testing', '0.1.1'
+  # gem 'minitest-reporters',       '1.1.9'
+  # gem "minitest"
+  # gem 'minitest-spec-rails'
+
+
+ # Automagically launches tests for changed files
+  gem 'guard'
+ gem 'guard-rspec', '~> 4.6', require: false
+  # gem 'guard-minitest', require: false
+  
 end
 
 group :development do
@@ -59,6 +70,7 @@ group :development do
 end
 
 group :test do
+  
   # For active record imitation in tests
   gem "factory_girl_rails"  # 4.7.0
   # installed 'factory_girl' # 3.5.0
@@ -68,10 +80,10 @@ group :test do
   gem 'faker', '~> 1.5' # 1.6.6
   
   gem 'spring-commands-rspec'
-  # Automagically launches tests for changed files
-  gem 'guard'
-  gem 'guard-rspec', '~> 4.6', require: false
-  gem 'guard-minitest'
+  
+  # Auto cleans test db after each test run
+  gem 'database_cleaner'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

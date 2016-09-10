@@ -24,3 +24,7 @@
 
 .idea/*
 #workspace.xml
+
+
+# Ignore Spring files.
+/spring/*.pid
