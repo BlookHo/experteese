@@ -4,7 +4,7 @@ require 'spec_helper'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'capybara/rspec'
-# require 'capybara-screenshot/rspec'
+require 'capybara-screenshot/rspec'
 require 'factory_girl'
 require 'database_cleaner'
 
@@ -35,13 +35,13 @@ RSpec.configure do |config|
 
   config.render_views
   
-  # Capybara.javascript_driver = :webkit
+  Capybara.javascript_driver = :webkit
   # # Capybara.default_wait_time = 2000
   # config.include Angular::DSL
-  #
+  
   # Capybara::Screenshot.webkit_options = { width: 1280, height: 1000 }
   # # Keep only the screenshots generated from the last failing test suite
-  # Capybara::Screenshot.prune_strategy = :keep_last_run
+  Capybara::Screenshot.prune_strategy = :keep_last_run
 
   # config.use_transactional_fixtures = true
 

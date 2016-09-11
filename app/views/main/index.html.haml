@@ -1,37 +1,34 @@
-!!!
-%html
-  %head
-    %title Index | Ruby on Rails Tutorial Sample App
-  %body
-    %h1 Experteese - sample App
-    %p
-      This is the home page for the
-      %a{:href => "http://www.railstutorial.org/"} Ruby on Rails Tutorial
-      sample application.
+- content_for(:title, "Index")
 
-    %i.fa.fa-flag.iconsMain{ style: "color: #C44BB4; font-size: 2em; position: relative; left: 25%;" }
+%h1 Experteese - sample App
+%p
+  This is the home page for the
+  %a{:href => "http://www.railstutorial.org/"} Ruby on Rails Tutorial
+  sample application.
 
-    -#.main_page
-    %i.fa.fa-video-camera{ style: "color: #730E15; font-size: 2em; position: relative; left: 30%;" }
-    -#= image_tag("logo/square/with_title.svg",   {:width => "80", :height =>"80", :class => "opinion_image_preview ttip", title: "Предварительный просмотр"})
+%i.fa.fa-flag.iconsMain{ style: "color: #C44BB4; font-size: 2em; position: relative; left: 25%;" }
 
-    -#= render 'about'
-    -#= render 'images/images'
+-#.main_page
+%i.fa.fa-video-camera{ style: "color: #730E15; font-size: 2em; position: relative; left: 30%;" }
+-#= image_tag("logo/square/with_title.svg",   {:width => "80", :height =>"80", :class => "opinion_image_preview ttip", title: "Предварительный просмотр"})
 
-    -#%i.fa.fa-flag{ style: "color: #730E15; font-size: 2em; position: relative; left: 25%;" }
-    -#= icon('flag', class: 'strong')
-    .center.jumbotron
-      %h1 Welcome to the Sample App
-      %h2
-        This is the home page for the
-        %a{:href => "http://www.railstutorial.org/"} Ruby on Rails Tutorial
-        sample application.
-      = link_to "Sign up now!", '#', class: "btn btn-lg btn-primary"
-    = link_to image_tag("rails.png", alt: "Rails logo"), |
-      'http://rubyonrails.org/'
+-#= render 'about'
+-#= render 'images/images'
+
+-#%i.fa.fa-flag{ style: "color: #730E15; font-size: 2em; position: relative; left: 25%;" }
+-#= icon('flag', class: 'strong')
+.center.jumbotron
+  %h1 Welcome to the Sample App
+  %h2
+    This is the home page for the
+    %a{:href => "http://www.railstutorial.org/"} Ruby on Rails Tutorial
+    sample application.
+  = link_to "Sign up now!", '#', class: "btn btn-lg btn-primary"
+= link_to image_tag("rails.png", alt: "Rails logo"), |
+  'http://rubyonrails.org/'
 
 
 
-    %i.fa.fa-flag.iconsMain{ style: "color: #730E15; font-size: 2em; position: relative; left: 0%;" }
-      %p{style: " display:inline-block; font-size: 1em"}
-        Application is in Progress/Maintenance
+%i.fa.fa-flag.iconsMain{ style: "color: #730E15; font-size: 2em; position: relative; left: 0%;" }
+  %p{style: " display:inline-block; font-size: 1em"}
+    Application is in Progress/Maintenance

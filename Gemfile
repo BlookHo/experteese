@@ -79,8 +79,13 @@ group :test do
   # is used to easily generate fake data: names, addresses, phone numbers, etc.
   gem 'faker', '~> 1.5' # 1.6.6
 
-  gem 'capybara'#, '~> 2.4'
-  
+  gem 'capybara'  #, '~> 2.4'
+  gem 'capybara-ng'
+  # Webkit driver for js feature tests
+  # gem 'capybara-webkit'
+  # Enables screenshots creation during tests
+  gem 'capybara-screenshot'
+
   gem 'spring-commands-rspec'
   
   # Auto cleans test db after each test run

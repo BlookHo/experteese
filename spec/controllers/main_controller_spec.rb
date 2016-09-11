@@ -57,6 +57,8 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
   #   Name.reset_pk_sequence
   # }
 
+  let(:base_title) {"Experteese"}
+  
   describe 'CHECK MainController methods'  do  # , focus: true
     # let(:connected_users) { current_user.get_connected_users }
 
@@ -79,6 +81,8 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
         subject { get :index }
         it "- render_template index" do
           puts "Check #index\n"
+          puts "base_title = #{base_title}\n "
+
           # puts "In render_template :  currentuser_id = #{currentuser_id} \n"
           expect(subject).to render_template :index
         end
@@ -94,14 +98,14 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
         end
         it "returns page.title correct" do
           get :index
-          expect(response.body).to have_selector("title", :text => "Index | Ruby on Rails Tutorial Sample App")
-          # True if there is a title tag with text
+          # puts response.body
+          expect(response.body).to have_selector("title", :text => "Index | Experteese", :visible => false)
         end
 
       end
     end
     
-    
+         
     # describe "GET #create" do
     #   it "returns http success" do
     #     get :create
@@ -114,12 +118,10 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
   
       it "returns http success" do
         puts "Check #help\n"
-        # get :help
         expect(response).to have_http_status(:success)
       end
       it "returns page.title correct" do
-        expect(response.body).to have_selector("title", :text => "Help | Ruby on Rails Tutorial Sample App")
-        # True if there is a title tag with text
+        expect(response.body).to have_selector("title", :text => "Help | #{base_title}", :visible => false)
       end
 
     end
@@ -132,13 +134,11 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
       before(:each) { get :contacts }
 
       it "returns http success" do
-        # get :contacts
         puts "Check #contacts\n"
           expect(response).to have_http_status(:success)
       end
       it "returns page.title correct" do
-        expect(response.body).to have_selector("title", :text => "Contacts | Ruby on Rails Tutorial Sample App")
-        # True if there is a title tag with text
+        expect(response.body).to have_selector("title", :text => "Contacts | #{base_title}", :visible => false)
       end
       it 'has correct H1 tag' do
         h1_text = 'Contacts'
@@ -147,7 +147,7 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
 
     end
 
-
+    
     # describe "GET #destroy" do
     #   it "returns http success" do
     #     get :destroy

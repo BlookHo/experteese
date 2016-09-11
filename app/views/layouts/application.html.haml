@@ -3,8 +3,15 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     -#%title Experteese
-    %title
-      = content_for?(:title) ? yield(:title) : "Experteese"
+    -#%title
+      = "#{yield(:title)} | Experteese"
+      -#= content_for?(:title) ? yield(:title) : "Experteese"
+    %title= content_for?(:title) ? "#{yield(:title)} | Experteese" : "Experteese"
+    -#%title<
+    -#  = yield(:title)
+    -#  | Experteese
+    %h1
+      = yield(:title)
     %meta{name: "viewport", content: "initial-scale=1, text/html; charset=utf-8,user-scalable=no,maximum-scale=1,width=device-width" }
     %meta{name: "description", content: "This is an Expert tool. You may leave your expert opinion to selected theme. Выбери тему и оставь свое экспертное мнение по ней."}/
     %meta{name: "keywords", content: "This is where you put all of the keywords you use in your site"}/
