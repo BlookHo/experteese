@@ -62,6 +62,7 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
   describe 'CHECK MainController methods'  do  # , focus: true
     # let(:connected_users) { current_user.get_connected_users }
 
+    
     # context '- before actions - check connected_users' do
     #   # let(:connected_users) { current_user.get_connected_users }
     #   it "- Return proper connected_users Array result for current_user_id = 1" do
@@ -76,14 +77,27 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
     #   end
     # end
 
+    describe "GET #root" do
+      context '- check the root route: render_template & response status' do
+        subject { get :root }
+        it "renders the :index template" do
+          expect(get: root_url(subdomain: nil)).to route_to(controller: "main", action: "index")
+        end
+        it '- responds with 200' do
+          expect(response.status).to eq(200)
+        end
+        it '- no responds with 401' do
+          expect(response.status).to_not eq(401)
+        end
+      end
+    end
+    
     describe "GET #index" do
       context '- after action <index> - check render_template & response status' do
         subject { get :index }
         it "- render_template index" do
           puts "Check #index\n"
           puts "base_title = #{base_title}\n "
-
-          # puts "In render_template :  currentuser_id = #{currentuser_id} \n"
           expect(subject).to render_template :index
         end
         it '- responds with 200' do
@@ -93,7 +107,6 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
           expect(subject).to have_http_status(:success)
         end
         it '- no responds with 401' do
-          # puts "In no responds with 401:  currentuser_id = #{currentuser_id} \n"
           expect(response.status).to_not eq(401)
         end
         it "returns page.title correct" do
@@ -101,11 +114,9 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
           # puts response.body
           expect(response.body).to have_selector("title", :text => "Index | Experteese", :visible => false)
         end
-
       end
     end
-    
-         
+             
     # describe "GET #create" do
     #   it "returns http success" do
     #     get :create
@@ -115,24 +126,18 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
     
     describe "GET #help" do
       before(:each) { get :help }
-  
-      it "returns http success" do
+        it "returns http success" do
         puts "Check #help\n"
         expect(response).to have_http_status(:success)
       end
       it "returns page.title correct" do
         expect(response.body).to have_selector("title", :text => "Help | #{base_title}", :visible => false)
       end
-
     end
-    # test "should get help" do
-    #   get static_pages_help_url
-    #   assert_response :success
-    # end
+    
     describe "GET #contacts" do
       # subject { get :contacts }
       before(:each) { get :contacts }
-
       it "returns http success" do
         puts "Check #contacts\n"
           expect(response).to have_http_status(:success)
@@ -144,7 +149,6 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
         h1_text = 'Contacts'
         expect(response.body).to have_selector('h1', text: h1_text)
       end
-
     end
 
     

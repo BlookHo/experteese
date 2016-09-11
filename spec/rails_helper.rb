@@ -28,7 +28,11 @@ RSpec.configure do |config|
   ActiveRecord::Base.logger.level = Logger::INFO
   ActionController::Base.logger.level = Logger::ERROR
   Rails.logger.level = Logger::ERROR
-
+  
+  # colors in terminal
+  config.failure_color = :red #:magenta
+  config.tty = true
+  config.color = true
 
   config.infer_spec_type_from_file_location!
   config.include FactoryGirl::Syntax::Methods
