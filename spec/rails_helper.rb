@@ -3,7 +3,7 @@ ENV["RAILS_ENV"] ||= 'test'
 require 'spec_helper'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-# require 'capybara/rspec'
+require 'capybara/rspec'
 # require 'capybara-screenshot/rspec'
 require 'factory_girl'
 require 'database_cleaner'
@@ -33,6 +33,8 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.include FactoryGirl::Syntax::Methods
 
+  config.render_views
+  
   # Capybara.javascript_driver = :webkit
   # # Capybara.default_wait_time = 2000
   # config.include Angular::DSL
@@ -56,9 +58,9 @@ RSpec.configure do |config|
   #   DatabaseCleaner.strategy = :truncation
   # end
   #
-  # config.before(:each) do
-  #   DatabaseCleaner.start
-  # end
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
 
   # config.after :each do
   #   ActiveRecord::Base.subclasses.each(&:delete_all)

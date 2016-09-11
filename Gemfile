@@ -78,6 +78,8 @@ group :test do
   # Faker, a port of Data::Faker from Perl,
   # is used to easily generate fake data: names, addresses, phone numbers, etc.
   gem 'faker', '~> 1.5' # 1.6.6
+
+  gem 'capybara'#, '~> 2.4'
   
   gem 'spring-commands-rspec'
   

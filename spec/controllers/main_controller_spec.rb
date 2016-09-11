@@ -57,7 +57,7 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
   #   Name.reset_pk_sequence
   # }
 
-  describe 'CHECK CommonLogsController methods'  do  # , focus: true
+  describe 'CHECK MainController methods'  do  # , focus: true
     # let(:connected_users) { current_user.get_connected_users }
 
     # context '- before actions - check connected_users' do
@@ -92,6 +92,12 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
           # puts "In no responds with 401:  currentuser_id = #{currentuser_id} \n"
           expect(response.status).to_not eq(401)
         end
+        it "returns page.title correct" do
+          get :index
+          expect(response.body).to have_selector("title", :text => "Index | Ruby on Rails Tutorial Sample App")
+          # True if there is a title tag with text
+        end
+
       end
     end
     
@@ -104,20 +110,41 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
     # end
     
     describe "GET #help" do
+      before(:each) { get :help }
+  
       it "returns http success" do
-        get :help
+        puts "Check #help\n"
+        # get :help
         expect(response).to have_http_status(:success)
       end
+      it "returns page.title correct" do
+        expect(response.body).to have_selector("title", :text => "Help | Ruby on Rails Tutorial Sample App")
+        # True if there is a title tag with text
+      end
+
     end
     # test "should get help" do
     #   get static_pages_help_url
     #   assert_response :success
     # end
     describe "GET #contacts" do
+      # subject { get :contacts }
+      before(:each) { get :contacts }
+
       it "returns http success" do
-        get :contacts
-        expect(response).to have_http_status(:success)
+        # get :contacts
+        puts "Check #contacts\n"
+          expect(response).to have_http_status(:success)
       end
+      it "returns page.title correct" do
+        expect(response.body).to have_selector("title", :text => "Contacts | Ruby on Rails Tutorial Sample App")
+        # True if there is a title tag with text
+      end
+      it 'has correct H1 tag' do
+        h1_text = 'Contacts'
+        expect(response.body).to have_selector('h1', text: h1_text)
+      end
+
     end
 
 
