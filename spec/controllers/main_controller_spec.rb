@@ -57,7 +57,8 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
   #   Name.reset_pk_sequence
   # }
 
-  let(:base_title) {"Experteese"}
+  
+  let(:base_title) {"Experteese RoR Sample App"}
   
   describe 'CHECK MainController methods'  do  # , focus: true
     # let(:connected_users) { current_user.get_connected_users }
@@ -92,6 +93,7 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
       end
     end
     
+    
     describe "GET #index" do
       context '- after action <index> - check render_template & response status' do
         subject { get :index }
@@ -112,7 +114,7 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
         it "returns page.title correct" do
           get :index
           # puts response.body
-          expect(response.body).to have_selector("title", :text => "Index | Experteese", :visible => false)
+          expect(response.body).to have_selector("title", :text => "Index | Experteese RoR Sample App", :visible => false)
         end
       end
     end
@@ -152,6 +154,22 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
     end
 
     
+    describe "GET #about" do
+      # subject { get :about }
+      before(:each) { get :about }
+      it "returns http success" do
+        puts "Check #about\n"
+        expect(response).to have_http_status(:success)
+      end
+      it "returns page.title correct" do
+        expect(response.body).to have_selector("title", :text => "About | #{base_title}", :visible => false)
+      end
+      it 'has correct H1 tag' do
+        h1_text = 'About'
+        expect(response.body).to have_selector('h1', text: h1_text)
+      end
+    end
+
     # describe "GET #destroy" do
     #   it "returns http success" do
     #     get :destroy

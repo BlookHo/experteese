@@ -6,7 +6,9 @@
     -#%title
       = "#{yield(:title)} | Experteese"
       -#= content_for?(:title) ? yield(:title) : "Experteese"
-    %title= content_for?(:title) ? "#{yield(:title)} | Experteese" : "Experteese"
+    -#%title= content_for?(:title) ? "#{full_title(yield(:title))} | Experteese" : "Experteese"
+    %title= "#{full_title(yield(:title))}"
+
     -#%title<
     -#  = yield(:title)
     -#  | Experteese
@@ -26,13 +28,18 @@
     %script{:src => "https://code.jquery.com/jquery-1.12.0.min.js"}
     %script{:src => "https://code.jquery.com/jquery-migrate-1.2.1.min.js"}
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  %body
 
+    = render 'layouts/shim'
+    -#[if lt IE 9]>
+    -#%script{:src => "//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js"}
+    -#[endif]
+
+  %body
     #overlay{style:'display:none;'}
-    -#= render 'shared/ui/header'
+    = render 'shared/header'
     -#= render 'shared/ui/flash'
     .container
       = yield
-    -#= render 'shared/ui/footer'
+    = render 'shared/footer'
 
     -#= yield :debugger
