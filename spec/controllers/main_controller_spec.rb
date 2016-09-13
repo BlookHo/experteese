@@ -100,9 +100,30 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
         # it { should have_title ("Index | #{base_title}") }
         it { should have_title(full_title('')) }
         it { should_not have_title('| Index') }
+        
       end
+      context 'check links ' do  # заполнить
+        before { visit root_path }
+        it "should have the right links on the layout" do
+          click_link "About"
+            expect(page).to have_title(full_title('About'))
+          click_link "Help"
+            expect(page).to have_title(full_title('Help'))
+          click_link "Home"
+          click_link "Contact"
+            expect(page).to have_title(full_title('Contacts'))
+          click_link "Home"
+          click_link "Sign up now!"
+            expect(page).to have_title(full_title('Sign up'))
+          click_link "sample app"
+            expect(page).to have_title(full_title(''))
+          click_link "Home"
+            expect(page).to have_title(full_title(''))
+        end
 
+      end
     end
+
     
     
     describe "GET #index" do
@@ -263,9 +284,7 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
     #   end
     # end
 
-
-
-
+ 
   end
 
 
