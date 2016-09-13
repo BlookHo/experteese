@@ -39,6 +39,8 @@ RSpec.configure do |config|
 
   config.render_views
   
+  config.include Capybara::DSL
+  
   Capybara.javascript_driver = :webkit
   # # Capybara.default_wait_time = 2000
   # config.include Angular::DSL

@@ -91,6 +91,25 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
           expect(response.status).to_not eq(401)
         end
       end
+      context '- check visit the root path' do
+        before { visit root_path }
+  
+        it "should have the content 'Sample App'" do
+          expect(page).to have_content('Sample App')
+        end
+        it "should have the content 'Index'" do
+          expect(page).to have_content('Index')
+        end
+        it "should have the title 'Index'" do
+          expect(page).to have_title("Index | #{base_title}")
+        end
+        it "should not have a custom page title" do
+          expect(page).not_to have_title('| Index')
+        end
+
+      end
+      
+
     end
     
     
@@ -116,6 +135,15 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
           # puts response.body
           expect(response.body).to have_selector("title", :text => "Index | Experteese RoR Sample App", :visible => false)
         end
+        it "should have the content 'Index'" do
+          visit index_path
+          expect(page).to have_content('Index')
+        end
+        it "should have the title 'Index'" do
+          visit index_path
+          expect(page).to have_title("Index | #{base_title}")
+        end
+
       end
     end
              
@@ -135,10 +163,18 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
       it "returns page.title correct" do
         expect(response.body).to have_selector("title", :text => "Help | #{base_title}", :visible => false)
       end
+      it "should have the content 'Help'" do
+        visit help_path
+        expect(page).to have_content('Help')
+      end
+      it "should have the title 'Help'" do
+        visit help_path
+        expect(page).to have_title("Help | #{base_title}")
+      end
+
     end
     
     describe "GET #contacts" do
-      # subject { get :contacts }
       before(:each) { get :contacts }
       it "returns http success" do
         puts "Check #contacts\n"
@@ -151,9 +187,18 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
         h1_text = 'Contacts'
         expect(response.body).to have_selector('h1', text: h1_text)
       end
+      it "should have the content 'Contacts'" do
+        # visit '/main/contacts'
+        visit contacts_path
+        expect(page).to have_content('Contacts')
+      end
+      it "should have the title 'Contacts'" do
+        visit contacts_path
+        expect(page).to have_title("Contacts | #{base_title}")
+      end
+      
     end
 
-    
     describe "GET #about" do
       # subject { get :about }
       before(:each) { get :about }
@@ -168,6 +213,16 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
         h1_text = 'About'
         expect(response.body).to have_selector('h1', text: h1_text)
       end
+      it "should have the content 'About'" do
+        # visit '/main/contacts'
+        visit about_path
+        expect(page).to have_content('About')
+      end
+      it "should have the title 'About'" do
+        visit about_path
+        expect(page).to have_title("About | #{base_title}")
+      end
+
     end
 
     # describe "GET #destroy" do
