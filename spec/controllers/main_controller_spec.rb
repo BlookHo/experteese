@@ -77,7 +77,9 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
     #     expect(connected_users).to eq([1,2])
     #   end
     # end
-
+  
+    subject { page }
+    
     describe "GET #root" do
       context '- check the root route: render_template & response status' do
         subject { get :root }
@@ -94,21 +96,11 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
       context '- check visit the root path' do
         before { visit root_path }
   
-        it "should have the content 'Sample App'" do
-          expect(page).to have_content('Sample App')
-        end
-        it "should have the content 'Index'" do
-          expect(page).to have_content('Index')
-        end
-        it "should have the title 'Index'" do
-          expect(page).to have_title("Index | #{base_title}")
-        end
-        it "should not have a custom page title" do
-          expect(page).not_to have_title('| Index')
-        end
-
+        it { should have_content ('Sample App') }
+        # it { should have_title ("Index | #{base_title}") }
+        it { should have_title(full_title('')) }
+        it { should_not have_title('| Index') }
       end
-      
 
     end
     
@@ -130,21 +122,34 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
         it '- no responds with 401' do
           expect(response.status).to_not eq(401)
         end
+        
+        
+        
         it "returns page.title correct" do
           get :index
           # puts response.body
           expect(response.body).to have_selector("title", :text => "Index | Experteese RoR Sample App", :visible => false)
         end
-        it "should have the content 'Index'" do
-          visit index_path
-          expect(page).to have_content('Index')
-        end
-        it "should have the title 'Index'" do
-          visit index_path
-          expect(page).to have_title("Index | #{base_title}")
-        end
+        # it "should have the content 'Index'" do
+        #   visit index_path
+        #   expect(page).to have_content('Index')
+        # end
+        # it "should have the title 'Index'" do
+        #   visit index_path
+        #   expect(page).to have_title("Index | #{base_title}")
+        # end
 
       end
+      
+      context '- check visit the index_path' do
+        before { visit index_path }
+  
+        it { should have_content ('Index') }
+        # it { should have_title ("Index | #{base_title}") }
+        it { should have_title(full_title('Index')) }
+        it { should_not have_title('| Index') }
+      end
+
     end
              
     # describe "GET #create" do
@@ -163,14 +168,24 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
       it "returns page.title correct" do
         expect(response.body).to have_selector("title", :text => "Help | #{base_title}", :visible => false)
       end
-      it "should have the content 'Help'" do
-        visit help_path
-        expect(page).to have_content('Help')
+      # it "should have the content 'Help'" do
+      #   visit help_path
+      #   expect(page).to have_content('Help')
+      # end
+      # it "should have the title 'Help'" do
+      #   visit help_path
+      #   expect(page).to have_title("Help | #{base_title}")
+      # end
+
+      context '- check visit the help_path' do
+        before { visit help_path }
+  
+        it { should have_content ('Help') }
+        # it { should have_title ("Index | #{base_title}") }
+        it { should have_title(full_title('Help')) }
+        it { should_not have_title('| Help') }
       end
-      it "should have the title 'Help'" do
-        visit help_path
-        expect(page).to have_title("Help | #{base_title}")
-      end
+
 
     end
     
@@ -187,16 +202,24 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
         h1_text = 'Contacts'
         expect(response.body).to have_selector('h1', text: h1_text)
       end
-      it "should have the content 'Contacts'" do
-        # visit '/main/contacts'
-        visit contacts_path
-        expect(page).to have_content('Contacts')
+      # it "should have the content 'Contacts'" do
+      #   # visit '/main/contacts'
+      #   visit contacts_path
+      #   expect(page).to have_content('Contacts')
+      # end
+      # it "should have the title 'Contacts'" do
+      #   visit contacts_path
+      #   expect(page).to have_title("Contacts | #{base_title}")
+      # end
+      context '- check visit the contacts_path' do
+        before { visit contacts_path }
+  
+        it { should have_content ('Contacts') }
+        # it { should have_title ("Index | #{base_title}") }
+        it { should have_title(full_title('Contacts')) }
+        it { should_not have_title('| Contacts') }
       end
-      it "should have the title 'Contacts'" do
-        visit contacts_path
-        expect(page).to have_title("Contacts | #{base_title}")
-      end
-      
+
     end
 
     describe "GET #about" do
@@ -213,14 +236,22 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
         h1_text = 'About'
         expect(response.body).to have_selector('h1', text: h1_text)
       end
-      it "should have the content 'About'" do
-        # visit '/main/contacts'
-        visit about_path
-        expect(page).to have_content('About')
-      end
-      it "should have the title 'About'" do
-        visit about_path
-        expect(page).to have_title("About | #{base_title}")
+      # it "should have the content 'About'" do
+      #   # visit '/main/contacts'
+      #   visit about_path
+      #   expect(page).to have_content('About')
+      # end
+      # it "should have the title 'About'" do
+      #   visit about_path
+      #   expect(page).to have_title("About | #{base_title}")
+      # end
+      
+      context '- check visit the about_path' do
+        before { visit about_path }
+  
+        it { should have_content ('About') }
+        it { should have_title(full_title('About')) }
+        it { should_not have_title('| About') }
       end
 
     end
@@ -231,6 +262,9 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
     #     expect(response).to have_http_status(:success)
     #   end
     # end
+
+
+
 
   end
 
