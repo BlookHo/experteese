@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   match 'about',    to: 'main#about',     via: 'get'
   match 'help',     to: 'main#help',      via: 'get'
   match 'contacts', to: 'main#contacts',  via: 'get'
+  match 'signup',   to: 'users#new',      via: 'get'
 
 
 
