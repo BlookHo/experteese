@@ -5,6 +5,11 @@
 /* mixins, variables, etc. */
 
 $gray-medium-light: #eaeaea
+$body-image: 'palace_square_from_roof.jpg'
+$body-background-top: #96B5E1
+$body-background-bottom: #AACAC7
+$gradient-angle: 40deg
+
 
 //
 //*= require main
@@ -17,6 +22,7 @@ $gray-medium-light: #eaeaea
 /* universal */
 
 body
+  background: image-url($body-image), linear-gradient($gradient-angle, $body-background-bottom, $body-background-top), no-repeat $body-background-top scroll
   padding-top: 60px
 
 section
@@ -27,9 +33,11 @@ textarea
 
 .center
   text-align: center
+  h1
+    margin-bottom: 10px
 
-.center h1
-  margin-bottom: 10px
+//.center h1
+//  margin-bottom: 10px
 
 /* typography */
 
