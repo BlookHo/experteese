@@ -165,7 +165,7 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
       context '- check visit the index_path' do
         before { visit index_path }
   
-        it { should have_content ('Index') }
+        # it { should have_content ('Index') }
         # it { should have_title ("Index | #{base_title}") }
         it { should have_title(full_title('Index')) }
         it { should_not have_title('| Index') }
