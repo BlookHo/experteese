@@ -20,6 +20,8 @@ gem 'haml-rails'  # 0.9.0 Installed
 
 gem 'bootstrap-sass', '3.3.6' # Installed 3.3.6
 
+gem 'bcrypt'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
