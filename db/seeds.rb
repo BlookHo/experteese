@@ -30,10 +30,10 @@ User.delete_all
 User.reset_pk_sequence
 User.create([
   
-{name: 'Алексей', email: 'zoneiva@gmail.com'},
-{name: 'Петр', email: 'blookho@gmail.com'},
-{name: 'Анна', email: 'annach61@mail.ru'},
-{name: 'Федор', email: 'fedor@yandex.ru'}
+{name: "Алексей", email: "zoneiva@gmail.com", password: "222222", password_confirmation: "222222"},
+{name: "Петр", email: "blookho@gmail.com", password: "222222", password_confirmation: "222222"},
+{name: "Анна", email: "annach61@mail.ru", password: "222222", password_confirmation: "222222"},
+{name: "Федор", email: "fedor@yandex.ru", password: "222222", password_confirmation: "222222"}
 
 ])
 
