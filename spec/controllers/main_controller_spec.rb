@@ -96,7 +96,7 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
       context '- check visit the root path' do
         before { visit root_path }
   
-        it { should have_content ('Sample App') }
+        it { should have_content ('Experteese - sample App') }
         # it { should have_title ("Index | #{base_title}") }
         it { should have_title(full_title('')) }
         it { should_not have_title('| Index') }
@@ -115,7 +115,7 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
           click_link "Home"
           click_link "Sign up now!"
             expect(page).to have_title(full_title('Sign up'))
-          click_link "sample app"
+          click_link "Experteese"
             expect(page).to have_title(full_title(''))
           click_link "Home"
             expect(page).to have_title(full_title(''))
