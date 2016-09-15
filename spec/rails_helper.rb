@@ -52,17 +52,17 @@ RSpec.configure do |config|
   # config.use_transactional_fixtures = true
 
   # @source http://devblog.avdi.org/2012/08/31/configuring-database_cleaner-with-rails-rspec-capybara-and-selenium/
-  # config.before(:suite) do
-  #   DatabaseCleaner.clean_with(:truncation)
-  # end
-  #
-  # config.before(:each) do
-  #   DatabaseCleaner.strategy = :transaction
-  # end
-  #
-  # config.before(:each, js: true) do
-  #   DatabaseCleaner.strategy = :truncation
-  # end
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.before(:each, js: true) do
+    DatabaseCleaner.strategy = :truncation
+  end
   #
   config.before(:each) do
     DatabaseCleaner.start
@@ -73,10 +73,10 @@ RSpec.configure do |config|
   #   ActiveRecord::Base.subclasses.each(&:reset_pk_sequence)
   # end
 
-  # config.after(:each) do
-  #   DatabaseCleaner.clean
-  #   DatabaseCleaner.strategy = :deletion
-  # end
+  config.after(:each) do
+    DatabaseCleaner.clean
+    DatabaseCleaner.strategy = :deletion
+  end
 
   # Filtes needed tests(add :focus to run them, add :disable to disable them)
   config.filter_run :focus
