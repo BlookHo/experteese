@@ -13,4 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+
+
+// Notifications
+//= require libs/jquery.noty.packaged.min.js
+//= require notifications.js
+
 //= require_tree .
