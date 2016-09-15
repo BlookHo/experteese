@@ -33,6 +33,7 @@ User.create([
 {name: "Алексей", email: "zoneiva@gmail.com", password: "222222", password_confirmation: "222222"},
 {name: "Петр", email: "blookho@gmail.com", password: "222222", password_confirmation: "222222"},
 {name: "Анна", email: "annach61@mail.ru", password: "222222", password_confirmation: "222222"},
+{name: "Example User", email: "example@railstutorial.org", password: "222222", password_confirmation: "222222"},
 {name: "Федор", email: "fedor@yandex.ru", password: "222222", password_confirmation: "222222"}
 
 ])
