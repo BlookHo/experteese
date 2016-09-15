@@ -1,8 +1,13 @@
+- provide(:title, @user.name)
 %p#notice= notice
 
-%p
-  %b Name:
-  = @user.name
+.row
+  %aside.span4
+    %section
+      %h1
+        = gravatar_for @user
+        = @user.name
+
 %p
   %b Email:
   = @user.email
