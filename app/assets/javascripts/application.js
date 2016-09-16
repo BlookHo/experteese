@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-
+//= require bootstrap
 
 // Notifications
 //= require libs/jquery.noty.packaged.min.js

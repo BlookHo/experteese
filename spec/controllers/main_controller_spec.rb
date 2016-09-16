@@ -223,15 +223,6 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
         h1_text = 'Contacts'
         expect(response.body).to have_selector('h1', text: h1_text)
       end
-      # it "should have the content 'Contacts'" do
-      #   # visit '/main/contacts'
-      #   visit contacts_path
-      #   expect(page).to have_content('Contacts')
-      # end
-      # it "should have the title 'Contacts'" do
-      #   visit contacts_path
-      #   expect(page).to have_title("Contacts | #{base_title}")
-      # end
       context '- check visit the contacts_path' do
         before { visit contacts_path }
   

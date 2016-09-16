@@ -13,8 +13,16 @@ RSpec.describe User, type: :model do
     it { should respond_to(:password) }
     it { should respond_to(:password_confirmation) }
     it { should respond_to(:authenticate) }
+    it { should respond_to(:remember_token) }
 
     it { should be_valid }
+
+    describe "remember token" do
+      before { @user.save }
+      # its(:remember_token) { should_not be_blank }
+      it { expect(@user.remember_token).not_to be_blank }
+
+    end
 
     describe "with a password that's too short" do
       before { @user.password = @user.password_confirmation = "a" * 5 }
@@ -34,7 +42,7 @@ RSpec.describe User, type: :model do
     
         it { should_not eq user_for_invalid_password }
         it "fgfg" do
-          puts " user_for_invalid_password = #{user_for_invalid_password}"
+          # puts " user_for_invalid_password = #{user_for_invalid_password}"
           expect(user_for_invalid_password).to eq(false)
         end
       end
@@ -47,7 +55,6 @@ RSpec.describe User, type: :model do
     end
        
   end
-
     
   describe "when email is not present" do
     # before { @user.email = " " }
