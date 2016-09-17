@@ -1,0 +1,62 @@
+- provide(:title, "Work")
+
+.container-fluid
+  %h1 Work page
+  %p
+    The
+    %a{:href => "http://www.railstutorial.org/"}
+      %em
+        Ruby on Rails
+        Tutorial
+    is a
+    %a{:href => "http://www.railstutorial.org/book"} book
+
+  - if signed_in?
+    %h1
+      @current_user = #{@current_user.name.inspect}, #{@current_user.email.inspect}
+
+= render 'images'
+
+
+%section.image
+  .left_controls
+    .load_image
+      = render 'images/button_load'
+    %br
+    .select_image
+      = render 'images/button_select'
+    %br
+    .modal_list_results
+      = render 'images/button_list_results'
+
+    %br
+
+  .image_display
+    %h2.up{:title => "Image file name"}
+      #{@selected_image_name.inspect}
+
+    .img-left-side
+      %h3{:title => "list to previous image"}
+        %i.fa.fa-angle-double-left.strong
+
+      %button.button__results.yes{:title => "Save image diag results"}
+        %a{"data-remote" => "true", :format => "js", :href => "#", :title => "Save image diag results"} save
+      %button.button__results.no{:title => "Clear image diag results"}
+        %a{"data-remote" => "true", :format => "js", :href => "#", :title => "Clear image diag results"} clear
+
+    .img-center{:title => "Default image"}
+      %img{:alt => "Default Image", :src => 'assets/pictures/what_is_harmony.jpg', :title => "Default image",:style => "width:100%; height:100%;" }
+      .indic-circ
+      .img-title
+
+    .img-right-side
+      %h3{:title => "list to next image"}
+        %i.fa.fa-angle-double-right
+
+    .image_diag
+
+      .scale
+        .small_img_box
+          %img{:alt => "Default Image", :src => 'assets/pictures/what_is_harmony.jpg', :title => "Default image",:style => "width:100%; height:100%;" }
+      %h2.down
+

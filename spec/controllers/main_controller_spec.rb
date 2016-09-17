@@ -144,8 +144,7 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
           expect(response.status).to_not eq(401)
         end
         
-        
-        
+                
         it "returns page.title correct" do
           get :index
           # puts response.body
@@ -265,6 +264,17 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
         it { should have_title(full_title('About')) }
         it { should_not have_title('| About') }
       end
+
+
+      context '- check visit the work_path' do
+        before { visit work_path }
+  
+        it { should have_content ('Work with Images') }
+        it { should have_title(full_title('Work with Images')) }
+        it { should_not have_title('| Work with Images') }
+      end
+
+
 
     end
 

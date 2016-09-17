@@ -12,6 +12,9 @@
   %b Email:
   = @user.email
 
+= link_to "Proceed to work!", work_path, class: "btn btn-lg btn-primary"
+
+
 = link_to 'Edit', edit_user_path(@user)
 \|
 = link_to 'Back', users_path

@@ -2,6 +2,9 @@
 
 %h1
   Help - URL = http://localhost:3000/main/help
+- if signed_in?
+  %h1
+    @current_user = #{@current_user.name.inspect}, #{@current_user.email.inspect}
 
 %p
   Get help on the Ruby on Rails Tutorial at the

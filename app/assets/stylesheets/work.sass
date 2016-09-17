@@ -1,0 +1,511 @@
+/**
+ * Created by aleks_i on 25.03.16.
+ */
+
+@import "mixins"
+
+
+// Place all the styles related to the images controller here.
+// They will automatically be included in application.css.
+// You can use Sass here: http://sass-lang.com/
+
+i
+  height: 1.5em
+  font-size: 1.5em
+
+i:hover:not(:disabled)
+  cursor: pointer  //cursor: hand
+  border: rgba(255, 233, 138, 0.70)
+  //background-color: #9bb2fc
+  color: #555fbe
+  //rgba(255, 200, 141, 0.40)
+  h2.up
+    color: #555fbe
+
+
+button
+  color: #71C495
+  //text-decoration: none
+  font-family: $helvetica
+  text-shadow: rgba(13, 178, 159, 0.24)
+  font-size: 1.5em
+
+button:hover:not(:disabled)
+  //background-color: #9bb2fc
+  background: #badde4
+//rgba(255, 200, 141, 0.40)
+
+//$image_heigt: 150px
+.button__left
+  border-radius: 35px
+  height: 3em
+  box-shadow: 3px 3px 4px #989BB0
+  background: rgba(209, 211, 141, 0.40)
+  width: 80%
+  position: relative
+  left: 10%
+  border: rgba(255, 255, 255, 0.70)
+  margin-top: 1em
+  text-align: center
+  //text-shadow: rgba(13, 178, 159, 0.24)
+
+  .button__left.modalBtn
+    margin-top: .1em
+
+
+
+.button__choose
+  //border-radius: 15px
+  color: #82A1C4
+  height: 2.2em
+  box-shadow: 3px 3px 4px #ACC9E5
+  background: rgba(222, 165, 242, 0.29)
+  width: 60%
+  //position: relative
+  text-align: center
+  //left: 10%
+  border: rgba(219, 255, 219, 0.70)
+  padding: 0 10px
+  margin-bottom: 1.5em
+  font-size: 1.1em
+
+
+.button__results
+  border-radius: 55px
+  height: 2.5em
+  box-shadow: 3px 3px 4px #989BB0
+  background: rgba(209, 211, 141, 0.4)
+  width: 80%
+  position: relative
+  left: 17%
+  bottom: -51%
+  border: rgba(255, 255, 255, 0.70)
+  //vertical-align: bottom
+  //margin-top: 1em
+  margin-bottom: .5em
+  display: none // block  //none
+  text-align: center
+  cursor: auto
+  text-decoration: none
+  padding: 0 10px
+  a
+    text-shadow: 0 -1px 1px #4aa5cf
+    text-decoration: none
+    color: #4863be
+    position: relative
+    text-align: center
+
+
+.button__results:hover:not(:disabled)
+  background: #badde4
+  a
+    text-decoration: none
+
+
+section.image
+  margin-top: 2.05%
+  $img-small-height: 1.1em
+
+  //@clearfix
+  //+outer-container(100%)
+
+  //margin: 5px 5px 5px 5px
+  .left_controls
+    // @include span-columns(4)
+    border: solid 1px #67aa73
+    display: block
+    background: rgba(10, 238, 10, 0.07)
+    color: $gray-darker
+    height: 47.4em
+
+
+    input.load_image
+      color: $gray-darker
+
+    .select_image
+      display: block
+      height: 10em
+      margin-top: .1em
+
+      .form_select
+        display: block
+        color: #4863be
+        width: 80%
+        height: 5.5em
+        position: relative
+        text-align: center
+        left: 11%
+        font-family: $helvetica
+        font-size: 1.5em
+        margin-top: 2.5em
+
+        input
+          color: #3475BE
+          background: rgba(222, 165, 242, 0)
+          padding: 0
+          font-size: .9em
+          height: 1.5em
+          -webkit-transition: background-color 0.3s ease-in-out
+          -moz-transition: background-color 0.3s ease-in-out
+          -o-transition: background-color 0.3s ease-in-out
+          transition: background-color 0.3s ease-in-out
+          cursor: pointer
+
+
+    .image_input_form
+      height: 18em
+      font-size: 1.5em
+      color: #4863be
+      display: block
+      position: relative
+      width: 80%
+      text-align: center
+      left: 11%
+      margin-top: 1.5em
+
+      input
+        color: #3475BE
+        background-color: #F5F5F5
+        padding: 0
+        font-size: .9em
+        height: 1.5em
+        -webkit-transition: background-color 0.3s ease-in-out
+        -moz-transition: background-color 0.3s ease-in-out
+        -o-transition: background-color 0.3s ease-in-out
+        transition: background-color 0.3s ease-in-out
+        cursor: text
+
+
+      .file_url
+        padding: 0
+        position: relative
+        margin-bottom: 1.15em
+        opacity: 0.4
+
+        input
+          background-color: #F5F5F5
+
+      .file_url:hover
+        opacity: 1
+
+        input[type="text"]:hover
+          border: 1px solid #438F43
+
+      .file_device
+        padding: 0
+        position: relative
+        opacity: 0.4
+
+        input
+          background-color: #F5F5F5
+      .file_device:hover
+        opacity: 1
+
+
+      .button__choose input
+        background-color: rgba(222, 165, 242, 0)
+        cursor: pointer
+
+
+    .select_image_hide
+      display: none
+
+    a
+      //-webkit-appearance: button
+      //-moz-appearance: button
+      //appearance: button
+      text-shadow: 0 -1px 1px #4aa5cf
+      text-decoration: none
+      color: #4863be
+
+
+  .image_display
+    //@include span-columns(8)
+    //@include outer-container(100%)
+    position: relative
+    margin: 0 0 10px 0
+    height: 400px
+    border: solid 1px #803faa
+    background: rgba(239, 122, 6, 0.31)
+    color: gray
+    //@include media($medium-screen)
+    //  font-size: 1.6em
+    //@include media($large-screen)
+    //  font-size: 1.8em
+    //@include border-right-radius(6px)
+    //@include border-left-radius(6px)
+    //@include transition-duration(all, 500ms, ease-in-out)
+    //&hover
+    //  background-color: #9bb2fc
+
+    h2.up
+      font-family: $helvetica
+      font-size: golden-ratio(12px,  1)
+      text-align: center
+      color: #2094a6
+      margin: 18px  // 15px 15px 15px
+      cursor: default
+
+    .img-left-side
+      //@include span-columns(2)
+      position: relative
+      height: 300px
+      float: left
+      &hover
+        background-color: #9bb2fc
+    h3
+      color: #2094a6
+      text-align: center
+      text-shadow: rgba(13, 178, 159, 0.24)
+      font-size: 2.6em
+
+    .img-right-side
+      //@include span-columns(2)
+      position: relative
+      margin-right: 0
+      margin-left: -1.5%
+      height: 340px
+      left: 10px
+
+    .img-center
+      //@include span-columns(8)
+      position: relative
+      float: left
+      height: 300px
+      text-align: center
+      object-fit: fill
+      border-bottom: solid 5px #b7e9de
+      border-right: solid 5px #b7e9de
+      .img-title
+        display: none
+
+    .img-center:hover
+      border: solid 5px #7384aa
+      cursor: pointer  //cursor: hand
+      h2.up
+        color: #555fbe
+      .img-title
+        display: block
+        box-sizing: content-box
+        color: #c3ffff
+        position: absolute
+        top: 2em
+        margin: 0
+        height: 100%
+        width: 100%
+        text-align: center
+        font-size: 2.7em
+        line-height: 3em
+
+
+    .indic-circ
+      // +clearfix
+      display: none
+
+      //left: -8%
+      left: 43%
+      // 43.75%
+
+      top: -9.3%
+      border: 25px solid #ECEBFA   ///////////////////////// 30px solid rgb(48, 250, 41)
+      //border-top-color: #746EBB
+      //margin: 3% auto
+      //float: center
+      //text-align: center
+      //background: -webkit-linear-gradient(top, #ffffff 48%, #ecebfa 49%, #ecebfa 51%, #fff 52%)
+      //background: -moz-linear-gradient(top, #ffffff 48%, #ecebfa 49%, #ecebfa 51%, #fff 52%)
+      //background: linear-gradient(to bottom, #ffffff 48%, #ecebfa 49%, #ecebfa 51%, #fff 52%)
+      width: 30px   /////////////////////////
+      height: 30px /////////////////////////
+      //-webkit-border-radius: 100px
+      //-moz-border-radius: 100px
+      border-radius: 25px   /////////////////////////
+      //-webkit-animation: turning_cw 5s infinite
+      //-moz-animation: turning_cw 5s infinite
+      //animation: turning_cw 5s infinite
+      position: relative   /////////////////////////
+      //opacity: 0.7
+
+      &:hover
+        -webkit-box-shadow: 0 0 30px 15px #453D9B
+        -moz-box-shadow: 0 0 30px 15px #453D9B
+        box-shadow: 0 0 30px 15px #453D9B
+    //.outer-circle_left
+
+    //.indic-circ.show
+    //  +clearfix
+    //  display: block
+    //  border-radius: 30px
+    //  border: 30px solid #30fa29
+    //  left: 43.75%
+    //width: 30px   /////////////////////////
+    //height: 30px
+    //position: relative
+
+
+    .image_diag
+      // +clearfix
+      position: relative
+      border: solid 1px #67aa73
+      background: rgba(10, 238, 10, 0.07)
+      height: 55px
+      // @include span-columns(12)
+      color: indianred
+      text-align: center
+      font-family: $helvetica
+      font-size: golden-ratio(12px,  1)
+      top: 1em
+
+      .indicator
+        // +clearfix
+        // @include span-columns(12)
+        background: #deb2ad
+        text-align: center
+
+        .outer-circle
+          // +clearfix
+          display: none     /////////////////////////
+
+          left: 10.5%    /////////////////////////
+          //-webkit-box-shadow: 0 0 50px 10px #453D9B
+          //-moz-box-shadow: 0 0 50px 10px #453D9B
+          //box-shadow: 0 0 50px 10px #453D9B
+          border: 25px solid #ECEBFA   ///////////////////////// 30px solid rgb(48, 250, 41)
+          //border-top-color: #746EBB
+          //margin: 3% auto
+          //float: center
+          //text-align: center
+          //background: -webkit-linear-gradient(top, #ffffff 48%, #ecebfa 49%, #ecebfa 51%, #fff 52%)
+          //background: -moz-linear-gradient(top, #ffffff 48%, #ecebfa 49%, #ecebfa 51%, #fff 52%)
+          //background: linear-gradient(to bottom, #ffffff 48%, #ecebfa 49%, #ecebfa 51%, #fff 52%)
+          width: 30px   /////////////////////////
+          height: 30px /////////////////////////
+          //-webkit-border-radius: 100px
+          //-moz-border-radius: 100px
+          border-radius: 25px   /////////////////////////
+          //-webkit-animation: turning_cw 5s infinite
+          //-moz-animation: turning_cw 5s infinite
+          //animation: turning_cw 5s infinite
+          position: relative   /////////////////////////
+          //opacity: 0.7
+
+          &:hover
+            -webkit-box-shadow: 0 0 30px 15px #453D9B
+            -moz-box-shadow: 0 0 30px 15px #453D9B
+            box-shadow: 0 0 30px 15px #453D9B
+
+        .outer-circle.show
+          // +clearfix
+          display: block
+          border-radius: 30px
+          border: 30px solid #30fa29
+          left: 43.75%
+
+
+      h2.down
+        font-family: $helvetica
+        color: rgba(0, 0, 0, 1)
+        display: block
+        text-align: center
+        font-size: golden-ratio(6px,  1)
+        //top: .2em
+        position: relative
+
+
+      .scale
+        // +clearfix
+        display: none
+        width: 100%
+        background-color: lightgrey
+        line-height: .1em //$img-small-height
+        position: relative
+        top: .9em
+        background: linear-gradient(to right, rgba(247, 27, 27, 0.68), rgba(165, 165, 0, 0.68), rgba(27, 247, 27, 0.68))
+
+        .small_img_box
+          // +clearfix
+          display: block
+          width: 1.35em
+          height: 100%
+          left: 20.75%
+          vertical-align: top
+          background-color: #b5d31c
+          position: relative
+          padding: 0
+          margin: 0
+          %img
+            display: none
+            vertical-align: top
+            width: 100%
+            height: 100%
+            line-height: $img-small-height
+            padding: 0
+            margin: 0
+
+
+.modal_list_results
+  display: block
+
+
+#overlay
+  visibility: hidden
+  position: absolute
+  left: 0px
+  top: 0px
+  width: 100%
+  height: 100%
+  text-align: center
+  z-index: 1000
+  h2
+    color: #000099
+    font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial, sans-serif
+    font-size: 2em
+
+#overlay div
+  width: 80%
+  margin: 5em auto
+  background-color: #fff
+  border: 1px solid #7D7DBB
+  padding: 15px
+  text-align: center
+  box-shadow: 0 0 10px 1px rgba(79, 130, 128, 0.65)
+  border-radius: .5em
+  .results_list
+    position: relative
+    margin-top: .7em
+    margin-bottom: auto
+    margin-left: auto
+    margin-right: auto
+    padding: .4em
+    color: #000055
+    width: 99%
+    background-color: #f9eddb
+    box-shadow: 0 0 10px 1px rgba(79, 130, 128, 0.1)
+    border: 1px solid #CACAE2
+    border-radius: .5em
+    h2
+      font-family: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif
+      font-size: 2.6em
+      line-height: 2.2em
+      margin: 0 0 0.75em
+    nav span
+      font-size: 1.3em
+      font-family: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif
+      text-shadow: 1px 1px 13px rgb(60, 10, 235)
+
+
+
+table
+  border-collapse: collapse
+  margin: 0.75em 0
+  table-layout: auto //fixed; */
+  width: 100%
+
+  th
+    text-align: center
+  td
+    font-size: 1.5em
+
+
+
+

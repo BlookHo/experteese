@@ -1,0 +1,22 @@
+/**
+ * Created by aleks_i on 31.01.16.
+ */
+
+console.log(" In choose_image.js selectImage = ");
+
+//var formSelect = document.querySelector(".form_select");
+//console.log(" In choose_image.js formSelect = " + formSelect );
+////
+//var selectImage = document.querySelector(".select_image");
+//console.log(" In choose_image.js selectImage = " + selectImage );
+
+//$('.image_display .image_diag .indicator .outer-circle').removeClass("show");
+$('.image_display .image_diag .indicator .outer-circle').css({"display": "none"});
+$('.image_display .image_diag .scale .small_img_box').css({"display": "none"});
+$('.image_display .indic-circ').css({"display": "none"});
+$('.image_display .image_diag h2.down').empty().before();
+console.log(" In choose_image.js selectImage = ");
+$('.button__save').css({"display": "none"});
+
+$('.select_image').empty().html("<%= j render 'choose_from_folder' -%>");
+
