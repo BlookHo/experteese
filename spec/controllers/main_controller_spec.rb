@@ -144,8 +144,7 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
           expect(response.status).to_not eq(401)
         end
         
-        
-        
+                
         it "returns page.title correct" do
           get :index
           # puts response.body
@@ -223,15 +222,6 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
         h1_text = 'Contacts'
         expect(response.body).to have_selector('h1', text: h1_text)
       end
-      # it "should have the content 'Contacts'" do
-      #   # visit '/main/contacts'
-      #   visit contacts_path
-      #   expect(page).to have_content('Contacts')
-      # end
-      # it "should have the title 'Contacts'" do
-      #   visit contacts_path
-      #   expect(page).to have_title("Contacts | #{base_title}")
-      # end
       context '- check visit the contacts_path' do
         before { visit contacts_path }
   
@@ -274,6 +264,17 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
         it { should have_title(full_title('About')) }
         it { should_not have_title('| About') }
       end
+
+
+      context '- check visit the work_path' do
+        before { visit work_path }
+  
+        it { should have_content ('Work with Images') }
+        it { should have_title(full_title('Work with Images')) }
+        it { should_not have_title('| Work with Images') }
+      end
+
+
 
     end
 

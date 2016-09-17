@@ -1,0 +1,32 @@
+- provide(:title, "Work with Images")
+-#%p#notice= notice
+%h1 Experteese - Work with Images
+
+
+%h1 Listing images in work contr.
+
+%h1
+  @images_count = #{@images_count}
+
+
+%table
+  %tr
+    %th
+    %th
+    %th
+    %th
+    %th
+
+  - @images.each do |image|
+    %tr
+      %td= image.name
+      %td= image.file
+      %td= link_to 'Show', image
+      %td= link_to 'Edit', edit_image_path(image)
+      %td= link_to 'Destroy', image, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Image', new_image_path, {:title => "Create new image"}
+
+-#= render 'images'

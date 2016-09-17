@@ -1,0 +1,24 @@
+-#/**
+-# * Created by aleks_i on 25.03.16.
+-# */
+
+
+.image_input_form
+  .file_url{:title => "Upload image by url"}
+    = form_tag("/display_image_by_url", remote: true) do
+      = label_tag :file_url, "input www link:"
+      -#, autofocus: ""  , placeholder: 'input www link:'
+      = text_field_tag :file_url, nil, autofocus: ''
+      %button.button__choose
+        = submit_tag 'Upload'
+
+  .file_device{:title => "Upload image from device folder"}
+    = form_tag("/display_device_image", remote: true, :html => { multipart: true }  )  do
+      -#= form_tag("/disp_image_from_device", remote: true, :html=>{:'data-type' => "text/javascript", multipart: true }  )  do
+      = label_tag :file_device, "input file name:"
+      = hidden_field_tag :authenticity_token, form_authenticity_token
+      = file_field_tag :file_device, :accept => "image/png, image/gif, image/jpeg, image/jpg"
+      -#, :class => "hide"
+      %button.button__choose
+        = submit_tag 'Upload'
+

@@ -1,0 +1,23 @@
+-#:javascript
+-#  function overlay() {
+-#    var el = document.getElementById("overlay");
+-#    el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+-#    console.log("IN list_results: overlay()" );
+//  };
+
+-#/**
+-# * Created by aleks_i on 25.03.16.
+-# */
+
+
+
+%button.button__left.modalBtn
+  -#%a{"data-remote" => "true", :format => "js", :href => "list_results", :title => "List results"} list results
+  %a{"data-remote" => "true", :format => "js", :href => "results_list", :onclick => "overlay()", :title => "List all your diagnosys results"} list results
+
+
+#overlay
+  %div
+    %span.close{:title => "Close table"} x
+    %h2 Your selected images diagnosys results
+    .results_list

@@ -1,0 +1,126 @@
+/**
+ * Created by aleks_i on 25.03.16.
+ */
+
+console.log("IN modal list_results " );
+var compositeResultsSize  = '<%= @composite_results_size %>';
+console.log("compositeResultsSize = " + compositeResultsSize );
+
+var overlayId = document.getElementById('overlay');
+console.log("1 IN list_results: overlayId = " + overlayId );
+
+function overlay() {
+    var overlayId = document.getElementById("overlay");
+    console.log("IN list_results: function overlay() = " + overlayId );
+    overlayId.style.visibility = (overlayId.style.visibility == "visible") ? "hidden" : "visible";
+}
+
+//$('.modalBtn').click(function overlay(){});
+
+$('#overlay').click(function overlay(){
+});
+
+//When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == overlayId) {
+        overlayId.style.visibility = "hidden";
+        console.log("IN window.onclick: overlayId.style.visibility = hidden");
+    }
+};
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+console.log("IN list_results: span class= " + span );
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    overlayId.style.visibility = "hidden";
+    console.log("ON: span.onclick: overlayId.style.display = " + overlayId.style.display );
+    console.log("ON: span.onclick: overlayId.style.visibility = " + overlayId.style.visibility );
+};
+
+$('.results_list').empty().html("<%= j render 'results_list' -%>");
+
+
+// pagination listing
+$(".results_list a, .pagination a").on("click", function(){
+//    console.log("ON: results_list.onclick: this.href = " + this.href );
+    $.getScript(this.href);
+    return false;
+});
+
+
+
+
+// When the user clicks anywhere outside of the modal, close it
+//window.onclick = function(event) {
+//    if (event.target == modalClass) {
+//        modalClass.style.display = "none";
+//        console.log("IN window.onclick: modalClass.style = none");
+//    }
+//};
+
+
+
+//window.onclick = function(event) {
+//    if (event.target == overlayId) {
+//        overlay();
+//        console.log("IN window.onclick: overlayId overlay() call ");
+//    }
+//};
+
+//overlayId.onclick = function() {
+//    var el = document.getElementById("overlay");
+//    el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+//    console.log("IN list_results: overlayId overlay()" );
+//};
+
+//function overlay1() {
+//    var el = document.getElementById("overlay");
+//    el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+//    console.log("IN list_results: overlay()" );
+//}
+
+
+
+//Ver mine
+
+//var modalDialog = document.getElementsByClassName('modalDialog')[0];
+//console.log("IN list_results: modalDialog = " + modalDialog );
+//modalDialog.style.display = "block";
+//
+//var modalDiv = document.getElementById('openModal');
+//console.log("IN list_results: modalDiv = " + modalDiv );
+//modalDiv.style.display = "block";
+//
+
+
+//var modalContentClass = document.getElementsByClassName("modal-content")[0];
+//console.log("IN list_results: modalContentClass = " + modalContentClass );
+//modalContentClass.style.display = "block";
+
+
+//console.log(" modalClass.style.display = " + modalClass.style.display );
+//console.log(" modalContentClass.style.display = " + modalContentClass.style.display );
+
+
+
+
+// Get the button that opens the modal
+//var btnClass = document.getElementsByClassName("modalBtn")[0];
+//console.log("IN list_results: btnClass = " + btnClass );
+
+// When the user clicks on the button, open the modal
+//btnClass.onclick = function() {
+//    modalClass.style.display = "block";
+//    console.log("ON btnClass.onclick: modalClass.style = block");
+//};
+
+//When the user clicks anywhere outside of the modal, close it
+//window.onclick = function(event) {
+//    if (event.target == modalClass) {
+//        modalClass.style.display = "none";
+//        console.log("IN window.onclick: modalClass.style = none");
+//    }
+//};
+
