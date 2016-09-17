@@ -17,8 +17,9 @@ Rails.application.routes.draw do
   match 'help',     to: 'main#help',            via: 'get'
   match 'contacts', to: 'main#contacts',        via: 'get'
   
-  match 'work',     to: 'work#index',            via: 'get'
-  
+  match 'work',          to: 'work#index',            via: 'get'
+  match 'choose_image',  to: 'work#choose_image', via: :get
+
   match 'signup',   to: 'users#new',            via: 'get'
   match 'signin',   to: 'sessions#new',         via: 'get'
   match 'signout',  to: 'sessions#destroy',     via: 'delete'

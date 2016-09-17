@@ -102,8 +102,8 @@ button:hover:not(:disabled)
     text-decoration: none
 
 
-section.image
-  margin-top: 2.05%
+.image
+  //margin-top: 2.05%
   $img-small-height: 1.1em
 
   //@clearfix
@@ -116,8 +116,8 @@ section.image
     display: block
     background: rgba(10, 238, 10, 0.07)
     color: $gray-darker
-    height: 47.4em
-
+    height: 55em
+    width: 100%
 
     input.load_image
       color: $gray-darker
@@ -224,33 +224,24 @@ section.image
     //@include outer-container(100%)
     position: relative
     margin: 0 0 10px 0
-    height: 400px
+    height: 45em
     border: solid 1px #803faa
     background: rgba(239, 122, 6, 0.31)
     color: gray
-    //@include media($medium-screen)
-    //  font-size: 1.6em
-    //@include media($large-screen)
-    //  font-size: 1.8em
-    //@include border-right-radius(6px)
-    //@include border-left-radius(6px)
-    //@include transition-duration(all, 500ms, ease-in-out)
-    //&hover
-    //  background-color: #9bb2fc
 
     h2.up
       font-family: $helvetica
-      font-size: golden-ratio(12px,  1)
       text-align: center
       color: #2094a6
-      margin: 18px  // 15px 15px 15px
+      margin: 10px
       cursor: default
+      height: 2.6em
 
     .img-left-side
       //@include span-columns(2)
-      position: relative
-      height: 300px
-      float: left
+      //position: relative
+      //height: 300px
+      //float: left
       &hover
         background-color: #9bb2fc
     h3
@@ -261,21 +252,22 @@ section.image
 
     .img-right-side
       //@include span-columns(2)
-      position: relative
-      margin-right: 0
-      margin-left: -1.5%
-      height: 340px
-      left: 10px
+      //position: relative
+      //margin-right: 0
+      //margin-left: -1.5%
+      //height: 340px
+      //left: 10px
 
     .img-center
       //@include span-columns(8)
       position: relative
-      float: left
-      height: 300px
+      //float: left
       text-align: center
       object-fit: fill
       border-bottom: solid 5px #b7e9de
       border-right: solid 5px #b7e9de
+      height: 37em
+
       .img-title
         display: none
 
@@ -344,26 +336,22 @@ section.image
 
 
     .image_diag
-      // +clearfix
       position: relative
       border: solid 1px #67aa73
-      background: rgba(10, 238, 10, 0.07)
-      height: 55px
-      // @include span-columns(12)
+      background: rgba(54, 119, 189, 0.14)
+      height: 8.3em
       color: indianred
       text-align: center
       font-family: $helvetica
-      font-size: golden-ratio(12px,  1)
-      top: 1em
+      //font-size: golden-ratio(12px,  1)
+      top: 5em
 
       .indicator
-        // +clearfix
         // @include span-columns(12)
         background: #deb2ad
         text-align: center
 
         .outer-circle
-          // +clearfix
           display: none     /////////////////////////
 
           left: 10.5%    /////////////////////////
@@ -410,7 +398,7 @@ section.image
         font-size: golden-ratio(6px,  1)
         //top: .2em
         position: relative
-
+        margin-top: 3em
 
       .scale
         // +clearfix

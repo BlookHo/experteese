@@ -8,7 +8,9 @@
 
 %header.navbar.navbar-fixed-top.navbar-inverse
   .container
-    = link_to "Experteese", root_path, id: "logo"
+    = link_to "Experteese in ", root_path, id: "logo"
+    .rails_logo
+      = link_to image_tag("rails.png", alt: "Rails logo")
     %nav
       %ul.nav.navbar-nav.pull-right
         %li= link_to "Home", root_path

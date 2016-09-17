@@ -10,4 +10,15 @@ class WorkController < ApplicationController
     logger.info  "@images[2] = #{@images[2].inspect}"
 
   end
+
+  # @note: use in views
+  def choose_image
+    logger.info "In ImagesController#choose_image"
+    folder = "app/assets/images/pictures/"
+    @pictures_files = Dir.entries(folder) # массив имен файлов из указанной папки
+  end
+
+
+
+
 end
