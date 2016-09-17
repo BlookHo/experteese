@@ -118,6 +118,9 @@ button:hover:not(:disabled)
     color: $gray-darker
     height: 55em
     width: 100%
+    &:hover
+      border: solid 1px #497851
+
 
     input.load_image
       color: $gray-darker
@@ -228,6 +231,17 @@ button:hover:not(:disabled)
     border: solid 1px #803faa
     background: rgba(239, 122, 6, 0.31)
     color: gray
+    &:hover
+      border: solid 1px #291537
+
+
+    h2.up-theme
+      font-family: $helvetica
+      text-align: center
+      color: #2094a6
+      margin: 10px
+      cursor: default
+      height: 2.6em
 
     h2.up
       font-family: $helvetica
@@ -238,6 +252,7 @@ button:hover:not(:disabled)
       height: 2.6em
 
     .img-left-side
+      margin-left: 1.35em
       //@include span-columns(2)
       //position: relative
       //height: 300px
@@ -251,10 +266,10 @@ button:hover:not(:disabled)
       font-size: 2.6em
 
     .img-right-side
-      //@include span-columns(2)
+      //margin-right: 1.35em
       //position: relative
       //margin-right: 0
-      //margin-left: -1.5%
+      margin-left: -70%
       //height: 340px
       //left: 10px
 
@@ -264,15 +279,15 @@ button:hover:not(:disabled)
       //float: left
       text-align: center
       object-fit: fill
-      border-bottom: solid 5px #b7e9de
-      border-right: solid 5px #b7e9de
-      height: 37em
+      border-bottom: solid 3px #b7e9de
+      border-right: solid 3px #b7e9de
+      height: 34em
 
       .img-title
         display: none
 
     .img-center:hover
-      border: solid 5px #7384aa
+      border: solid 3px #7384aa
       cursor: pointer  //cursor: hand
       h2.up
         color: #555fbe
@@ -291,7 +306,6 @@ button:hover:not(:disabled)
 
 
     .indic-circ
-      // +clearfix
       display: none
 
       //left: -8%
@@ -344,7 +358,9 @@ button:hover:not(:disabled)
       text-align: center
       font-family: $helvetica
       //font-size: golden-ratio(12px,  1)
-      top: 5em
+      top: 3.5em
+      &:hover
+        border: solid 1px #385D3F
 
       .indicator
         // @include span-columns(12)

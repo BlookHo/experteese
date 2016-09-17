@@ -1,0 +1,6 @@
+form_select
+  = form_tag("/display_image_result", remote: true) do
+    = select_tag :file_name,  options_for_select(@themes, selected: @selected_theme), prompt: "Select file from list"
+    %button.button__choose
+      = submit_tag 'select'
+

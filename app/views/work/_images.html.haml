@@ -25,10 +25,14 @@
 
         .row
           .col-md-12
+            %h2.up-theme{:title => "Theme name"}
+              #{@selected_theme.inspect}
+
+          .col-md-12
             %h2.up{:title => "Image file name"}
               #{@selected_image_name.inspect}
 
-          .col-md-2
+          .col-md-1
             .img-left-side
               %h3{:title => "list to previous image"}
                 %i.fa.fa-angle-double-left.strong
@@ -38,13 +42,13 @@
               %button.button__results.no{:title => "Clear image diag results"}
                 %a{"data-remote" => "true", :format => "js", :href => "#", :title => "Clear image diag results"} clear
 
-          .col-md-8
+          .col-md-10
             .img-center{:title => "Default image"}
               %img{:alt => "Default Image", :src => 'assets/pictures/raduga5обрез.jpg', :title => "Default image",:style => "width:100%; height:100%;" }
               .indic-circ
               .img-title
 
-          .col-md-2
+          .col-md-1
             .img-right-side
               %h3{:title => "list to next image"}
                 %i.fa.fa-angle-double-right

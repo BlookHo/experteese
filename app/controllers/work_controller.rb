@@ -13,11 +13,18 @@ class WorkController < ApplicationController
 
   # @note: use in views
   def choose_image
-    logger.info "In ImagesController#choose_image"
+    logger.info "In WorkController#choose_image"
     folder = "app/assets/images/pictures/"
     @pictures_files = Dir.entries(folder) # массив имен файлов из указанной папки
   end
 
+  # @note: use in views
+  def choose_theme
+    # folder = "app/assets/images/pictures/"
+    @themes = Theme.all.pluck(:name)
+    logger.info "In WorkController#choose_theme @themes = #{@themes}"
+    # массив имен файлов из указанной папки
+  end
 
 
 
