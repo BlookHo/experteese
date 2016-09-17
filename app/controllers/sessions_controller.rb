@@ -9,8 +9,8 @@ class SessionsController < ApplicationController
       if user && user.authenticate(params[:session][:password])
         # Sign the user in and redirect to the user's show page.
         sign_in user
-        redirect_to work_url
-        # redirect_to user
+        redirect_to work_url  # goto work place
+        # redirect_to user  # previous
 
       else
         # Create an error message and re-render the signin form.
