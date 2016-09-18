@@ -10,12 +10,12 @@
         -#.load_image
         -#  = render 'work/button_load'
         -#  %br
-        .load_image
+        .select_theme
           = render 'work/button_theme_select'
           %br
-        .select_image
-          = render 'work/button_select'
-          %br
+        -#.select_image
+        -#  = render 'work/button_select'
+        -#  %br
         .modal_list_results
           = render 'work/button_list_results'
           %br
@@ -26,11 +26,11 @@
         .row
           .col-md-12
             %h2.up-theme{:title => "Theme name"}
-              #{@selected_theme.inspect}
+              #{@selected_theme}
 
           .col-md-12
             %h2.up{:title => "Image file name"}
-              #{@selected_image_name.inspect}
+              #{@selected_image_name}
 
           .col-md-1
             .img-left-side

@@ -1,4 +1,5 @@
 class WorkController < ApplicationController
+  require 'json'
   
   
   def index
@@ -8,6 +9,7 @@ class WorkController < ApplicationController
     logger.info  "@images_count = #{@images_count}"
     logger.info  "@images.size = #{@images.size}"
     logger.info  "@images[2] = #{@images[2].inspect}"
+    @selected_theme = "Select theme to leave your answer"
 
   end
 
@@ -27,5 +29,38 @@ class WorkController < ApplicationController
   end
 
 
+  def display_theme
+    logger.info "In work#display_theme"
 
-end
+    if params[:theme].blank?
+      @selected_theme = "Select theme to leave your answer"
+      logger.info  "In #display_image_result: Default set up @selected_theme = '#{@selected_theme}'"
+    else
+      theme = params[:theme]
+      @selected_theme = theme
+      
+      theme_id = Theme.find_theme_id(theme)
+      logger.info "theme = #{@selected_theme.inspect}, theme_id = #{theme_id} "
+
+      @theme_images = Image.theme_images(theme_id)
+      logger.info "@theme_images[0] = #{@theme_images[0].inspect} " unless @theme_images.blank?
+
+      @first_theme_images = []
+      @first_theme_images = @theme_images.first.attributes.to_json unless @theme_images.blank?
+      logger.info "@first_theme_images = #{@first_theme_images.inspect} "
+      # @first_theme_images_json = @first_theme_images.to_json
+      # logger.info "4 @@first_theme_images_json = #{@first_theme_images_json.inspect} "
+
+
+   
+      
+      
+    end
+  
+      
+  end
+
+  
+  
+
+  end

@@ -18,9 +18,10 @@ Rails.application.routes.draw do
   match 'help',     to: 'main#help',            via: 'get'
   match 'contacts', to: 'main#contacts',        via: 'get'
   
-  match 'work',          to: 'work#index',            via: 'get'
-  match 'choose_image',  to: 'work#choose_image',     via: :get
-  match 'choose_theme',  to: 'work#choose_theme',     via: :get
+  match 'work',          to: 'work#index',             via: 'get'
+  match 'choose_image',  to: 'work#choose_image',      via: :get
+  match 'choose_theme',  to: 'work#choose_theme',      via: :get
+  match 'display_theme', to: 'work#display_theme',     via: :post
 
   match 'signup',   to: 'users#new',            via: 'get'
   match 'signin',   to: 'sessions#new',         via: 'get'

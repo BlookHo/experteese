@@ -30,10 +30,10 @@ button
   text-shadow: rgba(13, 178, 159, 0.24)
   font-size: 1.5em
 
-button:hover:not(:disabled)
-  //background-color: #9bb2fc
-  background: #badde4
-//rgba(255, 200, 141, 0.40)
+  &:hover:not(:disabled)
+    //background-color: #9bb2fc
+    background: #badde4
+    //rgba(255, 200, 141, 0.40)
 
 //$image_heigt: 150px
 .button__left
@@ -45,13 +45,17 @@ button:hover:not(:disabled)
   position: relative
   left: 10%
   border: rgba(255, 255, 255, 0.70)
-  margin-top: 1em
+  //margin-top: 1.2em
   text-align: center
   //text-shadow: rgba(13, 178, 159, 0.24)
 
-  .button__left.modalBtn
+  .modalBtn
     margin-top: .1em
 
+  .theme
+    margin-top: 1.2em
+
+.button__left.modalBtn
 
 
 .button__choose
@@ -124,6 +128,38 @@ button:hover:not(:disabled)
 
     input.load_image
       color: $gray-darker
+
+    select#theme
+      margin-bottom: 10px
+
+    .select_theme
+      display: block
+      height: 10em
+      margin-top: 1em
+
+      .form_select
+        display: block
+        color: #3b519c
+        width: 80%
+        height: 6.667em
+        position: relative
+        text-align: center
+        left: 11%
+        font-family: $helvetica
+        font-size: 1.5em
+        margin-top: 1em
+
+        input
+          color: #3475BE
+          background: rgba(222, 165, 242, 0)
+          padding: 0
+          font-size: .9em
+          height: 1.5em
+          -webkit-transition: background-color 0.3s ease-in-out
+          -moz-transition: background-color 0.3s ease-in-out
+          -o-transition: background-color 0.3s ease-in-out
+          transition: background-color 0.3s ease-in-out
+          cursor: pointer
 
     .select_image
       display: block
@@ -238,18 +274,27 @@ button:hover:not(:disabled)
     h2.up-theme
       font-family: $helvetica
       text-align: center
-      color: #2094a6
+      color: #30498a
       margin: 10px
       cursor: default
-      height: 2.6em
+      height: 2.1em
+      font-size: 2em
 
     h2.up
       font-family: $helvetica
-      text-align: center
-      color: #2094a6
-      margin: 10px
+      text-align: left
+      color: #770772
+      //margin: 10px
       cursor: default
-      height: 2.6em
+      //height: 2em
+      position: relative
+      left: 8%
+      width: 82%
+      margin-top: 15px
+      margin-bottom: 5px
+      margin-left: 5px
+      margin-right: 5px
+      font-size: 1.6em
 
     .img-left-side
       margin-left: 1.35em
@@ -449,7 +494,9 @@ button:hover:not(:disabled)
 
 .modal_list_results
   display: block
-
+  //position: absolute
+  height: 10em
+  margin-top: 1em
 
 #overlay
   visibility: hidden
