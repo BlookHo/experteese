@@ -269,7 +269,7 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
       context '- check visit the work_path' do
         before { visit work_path }
   
-        it { should have_content ('Work with Images') }
+        it { should have_content ('Select theme') }
         it { should have_title(full_title('Work with Images')) }
         it { should_not have_title('| Work with Images') }
       end
