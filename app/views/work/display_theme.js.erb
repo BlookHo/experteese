@@ -16,12 +16,15 @@ $('.select_theme').empty().html("<%= j render 'work/button_theme_select' -%>");
 var firstThemeImages = '<%= raw @first_theme_images %>';
 console.log("2 IN display_theme: @first_theme_images = " + firstThemeImages );
 
-var firstThemeImagesName = JSON.parse(firstThemeImages)["name"];
+//var firstThemeImagesName = JSON.parse(firstThemeImages)["name"];
+var firstThemeImagesName = '<%= @selected_image_name %>';
 console.log("3a IN display_theme: firstThemeImagesName = " + firstThemeImagesName);
-var firstThemeImagesFile = JSON.parse(firstThemeImages)["file"];
+
+//var firstThemeImagesFile = JSON.parse(firstThemeImages)["file"];
+var firstThemeImagesFile = '<%= @first_theme_images_file %>';
 console.log("3b IN display_theme: firstThemeImagesFile = " + firstThemeImagesFile);
 
-
+//'assets/pictures/raduga5обрез.jpg'
 //
 //console.log(JSON.parse(firstThemeImagesJSON)); //Object {id: 5, name: "Кандинский В.В., Жё
 //
