@@ -1,0 +1,99 @@
+
+
+
+//линия-индикатор */
+//
+//#range
+//  ///* контейнер */
+//  -webkit-appearance: none
+//  //appearance: none
+//  padding: 0
+//  border: 10px solid #ccc
+//  border-radius: 5px
+//  box-shadow: inset 0 1px #ccc, inset 0 1px 1px #575555, inset 0 -2px #ccc
+//  background: #fff linear-gradient(#BCBCBC, #fff0f5)
+//  overflow: hidden
+//
+//#range::-moz-range-thumb
+//  ///* ползунок в Firefox */
+//  border-radius: 2px
+//  box-shadow: -13px 0 #40310a, -26px 0 #40310a, -39px 0 #40310a, -52px 0 #40310a, -65px 0 #40310a, -78px 0 #40310a, -91px 0 #40310a, -104px 0 #40310a, -117px 0 #40310a, -130px 0 #40310a, -143px 0 #40310a, -156px 0 #40310a
+//
+//#range::-moz-range-track
+//  ///* линия, по которой он ездит в Firefox */
+//  background: none
+//  border: none
+//
+//#range::-webkit-slider-thumb
+//  ///* ползунок в Хроме */
+//  -webkit-appearance: none
+//  width: 15px
+//  height: 15px
+//  border: 1px solid #818181
+//  border-radius: 2px
+//  background-image: linear-gradient(#dedede, #f2f2f2)
+//  box-shadow: -13px 0 #40310a, -26px 0 #40310a, -39px 0 #40310a, -52px 0 #40310a, -65px 0 #40310a, -78px 0 #40310a, -91px 0 #40310a, -104px 0 #40310a, -117px 0 #40310a, -130px 0 #40310a, -143px 0 #40310a, -156px 0 #40310a
+//
+//
+
+
+
+// next var
+
+p.left
+  color: #555fbe
+  width: 5%
+  height: 1.2em
+  margin-left: 1.2em
+  font-size: 1.5em
+  font-weight: bold
+  position: relative
+  top: -.35em
+
+#slider
+  margin-left: 10%
+  width: 80%
+  float: left
+
+p.right
+  float: left
+  color: #555fbe
+  width: 5%
+  height: 1.2em
+  margin-left: 1em
+  font-size: 1.5em
+  font-weight: bold
+  position: relative
+  top: -.35em
+
+#picHolder
+  width: 250px
+  height: 240px
+  margin: 10px
+
+input[type='range']
+  -webkit-appearance: none
+  padding-left: 2px
+  padding-right: 2px
+  -webkit-border-radius: 5px
+  //background-image: -webkit-linear-gradient(top, #000000, #333333, #000000)
+  //background-image: -webkit-linear-gradient(top, #7d2116, #b89994, #31e465)
+  background: linear-gradient(to right, rgba(247, 27, 27, 0.68), rgba(165, 165, 0, 0.68), rgba(27, 247, 27, 0.68))
+
+
+#chosen_value
+  //display: inline-block
+  border-radius: 10px
+  width: 45px
+  padding-top: 10px
+  padding-bottom: 10px
+  background-image: -webkit-linear-gradient(top, #cccccc, #330000)
+  background-image: -o-linear-gradient(top, #cccccc, #330000)
+  background-image: -moz-linear-gradient(top, #cccccc, #330000)
+  text-align: center
+  color: #ffffff
+  font-weight: bold
+  font-size: large
+  margin-left: 5em
+  margin-top: .8em
+  float: left

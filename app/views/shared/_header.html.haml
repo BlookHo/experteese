@@ -16,7 +16,7 @@
         %li= link_to "Home", root_path
         %li= link_to "Help", help_path
         - if signed_in?
-          %li= link_to "Users", '#'
+          -#%li= link_to "Users", '#'
           %li.logged
             Logged in as #{current_user.email}
           = gravatar_for current_user

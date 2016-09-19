@@ -55,7 +55,7 @@ button
   .theme
     margin-top: 1.2em
 
-.button__left.modalBtn
+//.button__left.modalBtn
 
 
 .button__choose
@@ -74,24 +74,28 @@ button
   font-size: 1.1em
 
 
-.button__results
+.button__results.save
   border-radius: 55px
   height: 2.5em
   box-shadow: 3px 3px 4px #989BB0
   background: rgba(209, 211, 141, 0.4)
-  width: 80%
-  position: relative
-  left: 17%
-  bottom: -51%
+  width: 20%
+  //position: relative
+  //left: 17%
+  //bottom: -51%
   border: rgba(255, 255, 255, 0.70)
   //vertical-align: bottom
   //margin-top: 1em
-  margin-bottom: .5em
-  display: none // block  //none
-  text-align: center
+  margin-top: .5em
+  display:  block  //none
+  //text-align: center
   cursor: auto
   text-decoration: none
-  padding: 0 10px
+  //padding: 0 10px
+  float: left
+  margin-left: 8em
+  margin-bottom: .6em
+
   a
     text-shadow: 0 -1px 1px #4aa5cf
     text-decoration: none
@@ -100,7 +104,7 @@ button
     text-align: center
 
 
-.button__results:hover:not(:disabled)
+.button__results.save:hover:not(:disabled)
   background: #badde4
   a
     text-decoration: none
@@ -134,20 +138,20 @@ button
 
     .select_theme
       display: block
-      height: 10em
+      height: 6em
       margin-top: 1em
 
       .form_select
         display: block
         color: #3b519c
         width: 80%
-        height: 6.667em
+        height: 6em
         position: relative
         text-align: center
         left: 11%
         font-family: $helvetica
         font-size: 1.5em
-        margin-top: 1em
+        //margin-top: 1em
 
         input
           color: #3475BE
@@ -274,7 +278,7 @@ button
     h2.up-theme
       font-family: $helvetica
       text-align: center
-      color: #30498a
+      color: #2094a6
       margin: 10px
       cursor: default
       height: 2.1em
@@ -398,12 +402,12 @@ button
       position: relative
       border: solid 1px #67aa73
       background: rgba(54, 119, 189, 0.14)
-      height: 8.3em
+      height: 8.6em
       color: indianred
       text-align: center
       font-family: $helvetica
       //font-size: golden-ratio(12px,  1)
-      top: 3.5em
+      top: 5.65em
       &:hover
         border: solid 1px #385D3F
 
@@ -453,13 +457,16 @@ button
 
       h2.down
         font-family: $helvetica
-        color: rgba(0, 0, 0, 1)
+        color: #555fbe
         display: block
-        text-align: center
-        font-size: golden-ratio(6px,  1)
+        //text-align: center
+        font-size: 2em
         //top: .2em
-        position: relative
-        margin-top: 3em
+        //position: relative
+        margin-left: 1em
+        margin-bottom: 0
+        float: left
+        margin-top: .85em
 
       .scale
         // +clearfix
@@ -496,7 +503,7 @@ button
   display: block
   //position: absolute
   height: 10em
-  margin-top: 1em
+  //margin-top: 1em
 
 #overlay
   visibility: hidden
