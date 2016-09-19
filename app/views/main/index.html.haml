@@ -10,9 +10,6 @@
 -#.main_page
 -#= image_tag("logo/square/with_title.svg",   {:width => "80", :height =>"80", :class => "opinion_image_preview ttip", title: "Предварительный просмотр"})
 
--#= render 'about'
--#= render 'images/images'
-
 -#%i.fa.fa-flag{ style: "color: #730E15; font-size: 2em; position: relative; left: 25%;" }
 -#= icon('flag', class: 'strong')
 .center.jumbotron
@@ -27,9 +24,7 @@
   - else
     = link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary"
 
+-#
+-#= link_to image_tag("rails.png", alt: "Rails logo"), |
+-#  'http://rubyonrails.org/'
 
-= link_to image_tag("rails.png", alt: "Rails logo"), |
-  'http://rubyonrails.org/'
-
--#%i.fa.fa-flag.iconsMain{ style: "color: #730E15; font-size: 2em; position: relative; left: 3%;" }
--#  %p{style: " display:inline-block; font-size: 1em"}Application is in Progress/Maintenance

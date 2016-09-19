@@ -1,0 +1,12 @@
+-#//-# * Created by aleks_ivanishchev on 19.09.16
+
+.form_select
+  = form_tag("/display_theme", remote: true) do
+    = select_tag :theme,
+      options_for_select(@themes, selected: @selected_theme),
+      prompt: "Select theme",
+      onchange:  "$(this).parent('form').submit();",
+      include_blank: true
+    -#%button.button__choose
+    -#  = submit_tag 'select'
+

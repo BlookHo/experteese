@@ -1,47 +1,82 @@
 -#/**
--# * Created by aleks_i on 25.03.16.
+-# * Created by aleks_ivanishchev on 25.03.16.
 -#*/
 
+.image
+  .row
+    .col-md-3
+      .left_controls
+        -#.load_image
+        -#  = render 'work/button_load'
+        -#  %br
+        .select_theme
+          = render 'work/button_theme_select'
+          %br
+        -#.select_image
+        -#  = render 'work/button_select'
+        -#  %br
+        .modal_list_results
+          = render 'work/button_list_results'
+          %br
 
-%section.image
-  .left_controls
-    .load_image
-      = render 'work/button_load'
-    %br
-    .select_image
-      = render 'work/button_select'
-    %br
-    .modal_list_results
-      = render 'work/button_list_results'
+    .col-md-9
+      .image_display
 
-    %br
+        .row.image
+          .col-md-12
+            %h2.up-theme{:title => "Theme name"}
+              #{@selected_theme}
 
-  .image_display
-    %h2.up{:title => "Image file name"}
-      #{@selected_image_name.inspect}
+          .col-md-12
+            %h2.up{:title => "Image file name"}
+              #{@selected_image_name}
 
-    .img-left-side
-      %h3{:title => "list to previous image"}
-        %i.fa.fa-angle-double-left.strong
+          .col-md-1
+            .img-left-side
+              %h3{:title => "list to previous image"}
+                %i.fa.fa-chevron-circle-left.strong
 
-      %button.button__results.yes{:title => "Save image diag results"}
-        %a{"data-remote" => "true", :format => "js", :href => "#", :title => "Save image diag results"} save
-      %button.button__results.no{:title => "Clear image diag results"}
-        %a{"data-remote" => "true", :format => "js", :href => "#", :title => "Clear image diag results"} clear
+              -#%button.button__results.yes{:title => "Save image diag results"}
+              -#  %a{"data-remote" => "true", :format => "js", :href => "#", :title => "Save image diag results"} save
+              -#%button.button__results.no{:title => "Clear image diag results"}
+              -#  %a{"data-remote" => "true", :format => "js", :href => "#", :title => "Clear image diag results"} clear
 
-    .img-center{:title => "Default image"}
-      %img{:alt => "Default Image", :src => 'assets/pictures/what_is_harmony.jpg', :title => "Default image",:style => "width:100%; height:100%;" }
-      .indic-circ
-      .img-title
+          .col-md-10
+            .img-center{:title => "Default image"}
+              %img{:alt => "Default Image", :src => 'assets/pictures/raduga5обрез.jpg', :title => "Default image",:style => "width:100%; height:100%;" }
+              .indic-circ
+              .img-title
 
-    .img-right-side
-      %h3{:title => "list to next image"}
-        %i.fa.fa-angle-double-right
+          .col-md-1
+            .img-right-side
+              %h3{:title => "list to next image"}
+                %i.fa.fa-chevron-circle-right
 
-    .image_diag
+        .row.diag
+          .col-md-12
+            .image_diag
+              -#.scale
+              -#  .small_img_box
+              -#    %img{:alt => "Default Image", :src => 'assets/pictures/Серый - середина - стандарт.jpg', :title => "Default image",:style => "width:100%; height:100%;" }
 
-      .scale
-        .small_img_box
-          %img{:alt => "Default Image", :src => 'assets/pictures/what_is_harmony.jpg', :title => "Default image",:style => "width:100%; height:100%;" }
-      %h2.down
+              -#main var
+              #chosen_value 50
+              %h2.down{:title => "Value scale"}
+                Make your decision
+              %button.button__results.save{:title => "Save image diag results"}
+                %a{"data-remote" => "true", :format => "js", :href => "#", :title => "Save image diag results"} save
+
+              %p.left 5%
+              #slider
+                %input#slide{:max => "100", :min => "5", :value => "50",
+                             :onchange => "updateSlider(this.value)",
+                             :step => "5", :type => "range"}
+              %p.right 100%
+              %br
+
+              -##picHolder
+              -#  %img#pic{:alt => "cat eye", :src => "assets/pictures/cateye.jpg"}
+              -#
+              -#%input#range{:min => "1", :max => "190", :oninput => "onchangeWidth()", :type => "range", :value => "0"}/
+
 

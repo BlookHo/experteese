@@ -1,0 +1,25 @@
+//-# * Created by aleks_ivanishchev on 19.09.16
+//var selectedTheme = '<%= @selected_theme %>';
+console.log("IN choose_theme.js" );
+
+
+
+//var formSelect = document.querySelector(".form_select");
+//console.log(" In choose_image.js formSelect = " + formSelect );
+//var selectImage = document.querySelector(".select_image");
+//console.log(" In choose_image.js selectImage = " + selectImage );
+//$('.image_display .image_diag .indicator .outer-circle').removeClass("show");
+
+
+//active
+//$('.image_display .image_diag .indicator .outer-circle').css({"display": "none"});
+//$('.image_display .image_diag .scale .small_img_box').css({"display": "none"});
+//$('.image_display .indic-circ').css({"display": "none"});
+//$('.image_display .image_diag h2.down').empty().before();
+//console.log(" In choose_image.js selectImage = ");
+//$('.button__save').css({"display": "none"});
+
+
+
+$('.select_theme').empty().html("<%= j render 'choose_theme_from_arr' -%>");
+

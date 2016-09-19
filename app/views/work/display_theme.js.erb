@@ -1,0 +1,206 @@
+//-# * Created by aleks_ivanishchev on 19.09.16
+
+
+var selectedTheme = '<%= @selected_theme %>';
+console.log("1 IN display_theme: @selected_theme = " + selectedTheme );
+
+//var nameImage = selectedImage.slice(0,-4) ;  // put away . file .jpr
+$('.image_display h2.up-theme').append().html(selectedTheme);
+
+//var titleImage = "Click this image to analyse it";
+//$('.img-title').append().html(titleImage);
+
+//restore buttons
+$('.select_theme').empty().html("<%= j render 'work/button_theme_select' -%>");
+
+var firstThemeImages = '<%= raw @first_theme_images %>';
+console.log("2 IN display_theme: @first_theme_images = " + firstThemeImages );
+
+//var firstThemeImagesName = JSON.parse(firstThemeImages)["name"];
+var firstThemeImagesName = '<%= @selected_image_name %>';
+console.log("3a IN display_theme: firstThemeImagesName = " + firstThemeImagesName);
+
+//var firstThemeImagesFile = JSON.parse(firstThemeImages)["file"];
+var firstThemeImagesFile = '<%= @first_theme_images_file %>';
+console.log("3b IN display_theme: firstThemeImagesFile = " + firstThemeImagesFile);
+
+//'assets/pictures/raduga5обрез.jpg'
+//
+//console.log(JSON.parse(firstThemeImagesJSON)); //Object {id: 5, name: "Кандинский В.В., Жё
+//
+//var fThImageJSON = JSON.parse(firstThemeImagesJSON);
+//console.log("4 IN display_theme: fThImageJSON = " + fThImageJSON); //Object {id: 5, name: "Кандинский В.В., Жё
+//
+//console.log("4a IN display_theme: fThImageJSON['file'] = " + fThImageJSON["file"]); //Кандинский_ж.к.г_авапг.jpg
+//console.log("4b IN display_theme: JSON.parse(firstThemeImagesJSON)['file'] = "
+//    + JSON.parse(firstThemeImagesJSON)["file"]); // Кандинский_ж.к.г_авапг.jpg
+//var filenm = fThImageJSON["file"];
+//console.log("5 IN display_theme: filenm = " + filenm); //Кандинский_ж.к.г_авапг.jpg
+//
+//console.log("6 IN display_theme: @first_theme_images[file] = " + firstThemeImagesJSON["file"] ); // undefined
+//console.log( firstThemeImagesJSON["file"] ); //undefined
+//
+
+//var nameImage = selectedImage.slice(0,-4) ;  // put away . file .jpr
+$('.image_display h2.up').append().html(firstThemeImagesName);
+
+var pathImage = "assets/pictures/" + firstThemeImagesFile;
+// $('.img-center').html('<img alt="Selected Image" src="'+ pathImage + '"/>');
+$(".img-center").attr({title: "Selected image" });
+$(".img-center img").attr({alt: "Selected Image", src: pathImage, title: "Selected image" });
+
+
+//function onchangeWidth() {
+//  document.getElementById('banka').style.backgroundSize = 'auto, 100% ' + document.getElementById('range').value + '%';
+//}
+
+
+
+
+
+$('.img-left-side').click(function(event) {  //ajax
+  console.log("IN display_image - in onclick function(): selected nameImage = " + nameImage );
+  console.log("link clicked: selectedImage =  " + selectedImage);
+  //$('.image_diag h2.down').append().html(selectedImage);
+  event.stopImmediatePropagation(); // would stop the event from bubbling to parent elements,
+
+  //$('.image_display .image_diag .indicator .outer-circle').removeClass("show");
+  $('.image_display .image_diag .indicator .outer-circle').css({"display": "none"});
+  $('.image_display .image_diag .scale .small_img_box').css({"display": "none"});
+  $('.image_display .indic-circ').css({"display": "none"});
+  $('.image_display .image_diag h2.down').css({"display": "none"});
+  // not prevent other click handlers on the same element from firing.
+
+  $.ajax({
+    type: "get",
+    // url: "diag_image",
+    url: "analyse",
+    data: { value: selectedImage },
+    dataType: 'json'
+  }).done(function (data_return) {
+        console.log("success1c:  " + data_return.notice );
+
+        var diagReturned = "diag_Hk: " + data_return.result_hk + "; time: " + data_return.diag_time + " ms;";
+        $('.image_display .image_diag h2.down').css({"display": "block"}).empty()
+            .before().append().html(diagReturned).fadeOut(4500);
+        //setTimeout("window.location.href='< %= home_path %>';",2000);; .fadeOut(4500)
+
+        var resultHK = data_return.result_hk;
+        console.log("resultHK:  " + resultHK );
+        var resultColorIndicator = data_return.color_indicator;
+        console.log("resultColorIndicator:  " + resultColorIndicator );
+
+        var imgScalePos = data_return.img_scale_pos + "%";
+        console.log("imgScalePos:  " + imgScalePos );
+
+        var newLeft ;
+        var newClass;
+        //$('.image_display .image_diag .indicator .outer-circle').addClass('show ');
+        $('.image_display .image_diag .indicator .outer-circle').css({
+          "display": "block",
+          "left": "43.75%",
+          "border-color": resultColorIndicator
+        });
+        $('.image_display .indic-circ').css({
+          "display": "block",
+          "left": "43.75%",
+          "border-color": resultColorIndicator
+        });
+
+        $('.image_display .image_diag .scale .small_img_box').css({"left": imgScalePos, "display": "block" });
+        newClass = $('.image_display .image_diag .indicator .outer-circle').attr("class");
+        console.log("attr: newClass = " + newClass);
+        newLeft = $('.image_display .image_diag .indicator .outer-circle').css("left");
+        console.log("attr border: newLeft = " + newLeft);
+        //            find(".nayIt").addClass("notChosen "  // border: 30px solid #30fa29  // .delay(2000)
+        $('.image_display .image_diag .scale').css({
+          "display": "block"
+//                "border-color": function(){
+//                    return isNaN(resultHK) ? '#000' : resultHK < 200 ? '#f00' : resultHK < 350 ? '#0ff' : '#f90';
+//                }
+//                "border-color": indicator_color(resultHK)
+//                "border-color": resultColorIndicator
+
+        });
+      })
+      .fail(function (data_return) {
+        console.log("error: data_return = " + data_return);
+      });
+
+
+});
+
+
+$('.img-right-side').click(function(event) {  //ajax
+  console.log("IN display_image - in onclick function(): selected nameImage = " + nameImage );
+  console.log("link clicked: selectedImage =  " + selectedImage);
+  //$('.image_diag h2.down').append().html(selectedImage);
+  event.stopImmediatePropagation(); // would stop the event from bubbling to parent elements,
+
+  //$('.image_display .image_diag .indicator .outer-circle').removeClass("show");
+  $('.image_display .image_diag .indicator .outer-circle').css({"display": "none"});
+  $('.image_display .image_diag .scale .small_img_box').css({"display": "none"});
+  $('.image_display .indic-circ').css({"display": "none"});
+  $('.image_display .image_diag h2.down').css({"display": "none"});
+  // not prevent other click handlers on the same element from firing.
+
+  $.ajax({
+    type: "get",
+    // url: "diag_image",
+    url: "analyse",
+    data: { value: selectedImage },
+    dataType: 'json'
+  }).done(function (data_return) {
+        console.log("success1c:  " + data_return.notice );
+
+        var diagReturned = "diag_Hk: " + data_return.result_hk + "; time: " + data_return.diag_time + " ms;";
+        $('.image_display .image_diag h2.down').css({"display": "block"}).empty()
+            .before().append().html(diagReturned).fadeOut(4500);
+        //setTimeout("window.location.href='< %= home_path %>';",2000);; .fadeOut(4500)
+
+        var resultHK = data_return.result_hk;
+        console.log("resultHK:  " + resultHK );
+        var resultColorIndicator = data_return.color_indicator;
+        console.log("resultColorIndicator:  " + resultColorIndicator );
+
+        var imgScalePos = data_return.img_scale_pos + "%";
+        console.log("imgScalePos:  " + imgScalePos );
+
+        var newLeft ;
+        var newClass;
+        //$('.image_display .image_diag .indicator .outer-circle').addClass('show ');
+        $('.image_display .image_diag .indicator .outer-circle').css({
+          "display": "block",
+          "left": "43.75%",
+          "border-color": resultColorIndicator
+        });
+        $('.image_display .indic-circ').css({
+          "display": "block",
+          "left": "43.75%",
+          "border-color": resultColorIndicator
+        });
+
+        $('.image_display .image_diag .scale .small_img_box').css({"left": imgScalePos, "display": "block" });
+        newClass = $('.image_display .image_diag .indicator .outer-circle').attr("class");
+        console.log("attr: newClass = " + newClass);
+        newLeft = $('.image_display .image_diag .indicator .outer-circle').css("left");
+        console.log("attr border: newLeft = " + newLeft);
+        //            find(".nayIt").addClass("notChosen "  // border: 30px solid #30fa29  // .delay(2000)
+        $('.image_display .image_diag .scale').css({
+          "display": "block"
+//                "border-color": function(){
+//                    return isNaN(resultHK) ? '#000' : resultHK < 200 ? '#f00' : resultHK < 350 ? '#0ff' : '#f90';
+//                }
+//                "border-color": indicator_color(resultHK)
+//                "border-color": resultColorIndicator
+
+        });
+      })
+      .fail(function (data_return) {
+        console.log("error: data_return = " + data_return);
+      });
+
+
+});
+
+

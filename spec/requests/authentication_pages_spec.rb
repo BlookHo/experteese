@@ -26,9 +26,9 @@ RSpec.describe "AuthenticationPages", type: :request do
         click_button "Sign in"
       end
 
-      # it { should have_title(user.name) }
+      it { should have_title('Work with Images') }
       # it { should have_content(user.email) }
-      it { should have_content('Work') }
+      it { should have_content('Select theme') }
       # goto work/index
       
       it { should have_link('Profile',     href: user_path(user)) }
