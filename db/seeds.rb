@@ -20,6 +20,17 @@ Image.create([
 {name: 'Серый - стандарт', file: 'Серый - середина - стандарт.jpg', theme_id: 6},
 {name: 'Черно-Белый - стандарт', file: 'Черно-Белый - стандарт.jpg', theme_id: 6},
 {name: 'Черный - стандарт', file: 'Черный лист - стандарт.jpg', theme_id: 6},
+{name: 'P. Picasso, Авиньонские девицы', file: 'Picasso Авиньонские девицы.jpg', theme_id: 2},
+{name: 'P. Picasso, Герника', file: 'Picasso Герника.jpg', theme_id: 2},
+{name: 'P. Picasso, Голубь мира', file: 'Picasso Голубь мира.jpg', theme_id: 2},
+{name: 'P. Picasso, Дама с веером', file: 'Picasso Дама с веером.jpg', theme_id: 2},
+{name: 'P. Picasso, Испанская пара перед гостиницей', file: 'Picasso Испанская пара перед гостиницей.jpg', theme_id: 2},
+{name: 'P. Picasso, Кот, поедающий птичку', file: 'Picasso Кот, поедающий птичку.jpg', theme_id: 2},
+{name: 'P. Picasso, Любительница абсента', file: 'Picasso Любительница абсента.jpg', theme_id: 2},
+{name: 'P. Picasso, Натюрморт', file: 'Picasso Натюрморт.jpg', theme_id: 2},
+{name: 'P. Picasso, Портрет Доры Маар', file: 'Picasso Портрет Доры Маар.jpg', theme_id: 2},
+{name: 'P. Picasso, Средиземноморский пейзаж', file: 'Picasso Средиземноморский пейзаж.jpg', theme_id: 2},
+{name: 'P. Picasso, Стекляная посуда', file: 'Picasso Стекляная посуда.jpg', theme_id: 2},
 {name: 'V.W. van Gogh, Куст', file: 'ван_гог_куст2.jpg', theme_id: 5}
 
 ])

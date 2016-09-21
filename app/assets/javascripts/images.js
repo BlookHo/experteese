@@ -13,7 +13,8 @@ function updateSlider(slideAmount) {
 //set the dimensions
 //   pic.style.width = slideAmount + "%";
 //   pic.style.height = slideAmount + "%";
-  
- 
+   
   // return slideAmount;
 }
+
+
