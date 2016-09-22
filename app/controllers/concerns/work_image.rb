@@ -7,10 +7,14 @@ module WorkImage
   # display image by index for searched theme
   def show_image(theme_id, image_index)
     theme_images = Image.theme_images(theme_id)
-    
+
+    current_user_id = current_user.id
+    logger.info "In show_image: current_user_id = #{current_user_id.inspect} "
+
     one_image_attr = theme_images[image_index].attributes
   
     data = { index: image_index,
+             current_user_id: current_user_id,
              theme_id: theme_id,
              images_arr_size: theme_images.size,
              image_id: one_image_attr["id"],

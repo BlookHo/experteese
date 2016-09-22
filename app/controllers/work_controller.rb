@@ -29,10 +29,14 @@ class WorkController < ApplicationController
     @image_data = {}
     logger.info "1 theme = #{params[:theme].inspect} "
 
+    current_user_id = current_user.id
+    logger.info "2 current_user_id = #{current_user_id.inspect} "
+
+
     if params[:theme] == "-----" #.blank?
       theme = "Select theme to leave your answer"
       theme_id = 1
-      data = { index: 0, name: 'радуга', file: 'raduga5обрез.jpg', image_id: 4}
+      data = { index: 0, name: 'радуга', file: 'raduga5обрез.jpg', image_id: 4, current_user_id: current_user_id}
       logger.info "1 data = #{data.inspect} "
     else
       theme = params[:theme]

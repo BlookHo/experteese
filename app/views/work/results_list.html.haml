@@ -2,18 +2,21 @@
 -# * Created by aleks_i on 25.03.16.
 -# */
 
-.results_list
+.results_list{ title: "Go to work area"}
 
   - if @composite_results.blank?
-    %table
-      %tr
+    %table{ :style => "table-layout: auto; title: 'No Values results...';" }
+      %h2 No Values results ...
+      %h2 Select theme
+      -#%tr
         -#%td.left.grey.italic
-        No Values results...
-        %br
+        -#No Values results...
+    %br
+    %hr
   - else
-    %table{ :style => "table-layout: auto; title: 'All your images diags';" }
-      %h2 All your images diags
-      %tr{ :style => "font-family: $helvetica; font-size: 2em; " }
+    %table{ :style => "table-layout: auto; title: 'All images expert values';" }
+      %h2 All images expert values
+      %tr{ :style => "font-family: $helvetica; font-size: 2em; margin-bottom: .5em" }
         %th.name
           Image name
         %th Image
@@ -28,8 +31,8 @@
 
       -#- @composite_results.each do |composite_diag|
       - @composite_results_paged.each do |composite_diag|
-        %tr
-          %td{ :style => "text-align: left; width: 25" }= composite_diag.name
+        %tr.one_row
+          %td{ :style => "text-align: left; width: 25em" }= composite_diag.name
           %td= image_tag('/assets/pictures/' + composite_diag.file, {:width => "53", :height =>"47", title: "Tested image"} )
           -#                                                          , :class => "opinion_image_preview ttip"
           -#%td= composite_diag.user_id
@@ -38,7 +41,7 @@
           -#%td= composite_diag.hk_hue.round(2)
           -#%td= composite_diag.hk_saturate.round(2)
           -#%td= composite_diag.hk_light.round(2)
-          %td{ :style => "color: rgba(122, 13, 75, 1);" }= composite_diag.created_at.strftime('%d.%m.%y ')
+          %td= composite_diag.created_at.strftime('%d.%m.%y ')
           -#%td= composite_diag.delta_ave_composite
 
 
@@ -46,7 +49,7 @@
       -#.pagination= render 'results_list'
     %br
     %hr
-= link_to "Proceed to work!", work_path, class: "btn btn-lg btn-primary"
+= link_to "Return to work area", work_path, class: "btn btn-lg btn-primary", title: "Go to work area"
 %br
 %br
 

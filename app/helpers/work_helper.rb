@@ -6,6 +6,7 @@ module WorkHelper
     @image_data = {}
    
     @image_data[:theme] = theme
+    @image_data[:current_user_id] = data[:current_user_id]
     @image_data[:theme_id] = data[:theme_id]
     @image_data[:index] = data[:index]
     @image_data[:images_arr_size]  = data[:images_arr_size]
