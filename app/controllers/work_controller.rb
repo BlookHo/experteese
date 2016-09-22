@@ -20,6 +20,7 @@ class WorkController < ApplicationController
   def choose_theme
     @themes = Theme.all.pluck(:name)
     logger.info "In WorkController#choose_theme @themes = #{@themes}"
+    respond_to :js
   end
 
   # @note: first display_theme and show first image from image array
@@ -33,6 +34,7 @@ class WorkController < ApplicationController
       data = { index: 0, name: 'радуга', file: 'raduga5обрез.jpg'}
       # logger.info "1 data = #{data.inspect} "
       image_data(theme, data)
+     
     else
       theme = params[:theme]
       logger.info "2 theme = #{theme.inspect} "
@@ -40,6 +42,7 @@ class WorkController < ApplicationController
       data = show_image(theme_id, 0)
       image_data(theme, data)
     end
+
   end
 
   
@@ -105,7 +108,6 @@ class WorkController < ApplicationController
 
   # @note: this method should show image without diag
   #   then - start to calculate diag
-  # def list_results
   def results_list
     logger.info "In work#results_list "
     res_composite_diag = Image.all.order("ave_value DESC")#.descend
@@ -117,21 +119,22 @@ class WorkController < ApplicationController
     # logger.info "In work_cntrl#results_list: @composite_results_paged = #{@composite_results_paged}"
 
     logger.info "In work_cntrl#results_list: @composite_results_size = #{@composite_results_size}"
-    respond_to do |format|
-      # if new_image_index.blank?
-        format.html #{  render nothing: true, status: :unprocessable_entity }
-        format.js #{} # render diag: @image_diag, status: :unprocessable_entity }
-        format.json { head :ok}
-      # else
-      #   format.html { render display_theme_path, status: :successfully }
-      #   # format.js   { render "diag"=>@image_diag, status: :successfully   }
-      #   format.json { render json:  { new_image_index: prev_image_data[:index],
-      #                                 name: prev_image_data[:name],
-      #                                 file: prev_image_data[:file],
-      #                                 status: :successfully,
-      #                                 notice: 'Successfully listed to previous'} }
-      # end
-    end
+    # respond_to do |format|
+    #   # if new_image_index.blank?
+    #     format.html {}
+    #     format.js {} # render diag: @image_diag, status: :unprocessable_entity }
+    #     # format.json { head :ok}
+    #   # else
+    #   #   format.html { render display_theme_path, status: :successfully }
+    #   #   # format.js   { render "diag"=>@image_diag, status: :successfully   }
+    #   #   format.json { render json:  { new_image_index: prev_image_data[:index],
+    #   #                                 name: prev_image_data[:name],
+    #   #                                 file: prev_image_data[:file],
+    #   #                                 status: :successfully,
+    #   #                                 notice: 'Successfully listed to previous'} }
+    #   # end
+    # end
+    # respond_to :js
 
   end
 

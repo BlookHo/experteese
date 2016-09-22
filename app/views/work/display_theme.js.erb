@@ -8,12 +8,16 @@ console.log("IN display_theme: @image_data = " + imageData );
 var selectedTheme = '<%= @image_data[:theme] %>';
 console.log("3a IN display_theme: selectedTheme = " + selectedTheme);
 
-if(selectedTheme == "Select theme to leave your answer" ){
+if(selectedTheme == "Select theme to leave your answer" || selectedTheme == ""){
   $('.img-left-side').css({"display": "none"});
   $('.img-right-side').css({"display": "none"});
+  $('.image .image_display .image_diag').css({"display": "none"});
+
 }else{
   $('.img-left-side').css({"display": "block"});
   $('.img-right-side').css({"display": "block"});
+  $('.image .image_display .image_diag').css({"display": "block"});
+
 }
 
 $('.image_display h2.up-theme').append().html(selectedTheme);
@@ -38,7 +42,6 @@ var selectedThemeId = '<%= @image_data[:theme_id] %>';
 // show name of image
 //var nameImage = selectedImage.slice(0,-4) ;  // put away . file .jpr
 $('.image_display h2.up').append().html(oneImageName);
-$('.image .image_display .image_diag').css({"display": "block"});
 
 // show image
 var pathImage = "assets/pictures/" + oneImageFile;

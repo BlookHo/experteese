@@ -18,12 +18,11 @@
 //= require turbolinks
 
 // Notifications
-//= require libs/jquery.noty.packaged.min.js
-//= require notifications.js
+// = require libs/jquery.noty.packaged.min.js
+// = require notifications.js
 
 
 //= require bootstrap
-//= require bootstrap/modal
 
 //= require_tree .
 
