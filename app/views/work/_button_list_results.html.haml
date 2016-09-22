@@ -12,12 +12,10 @@
 
 
 %button.button__left.modalBtn
-  -#%a{"data-remote" => "true", :format => "js", :href => "list_results", :title => "List results"} list results
-  %a{"data-remote" => "true", :format => "js", :href => "results_list", :onclick => "overlay()", :title => "List all your diagnosys results"} list results
+
+  -#%a{"data-remote" => "true", :format => "js", :href => "results_list", 'data-target' => '#overlay_m',  :onclick => "overlay()", :title => "List all your diagnosys results"} list results
+  %a{ :href => "results_list",  :title => "List all your diagnosys results"} list results
 
 
-#overlay
-  %div
-    %span.close{:title => "Close table"} x
-    %h2 Your selected images diagnosys results
-    .results_list
+
+

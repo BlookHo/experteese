@@ -6,17 +6,23 @@ console.log("IN modal list_results " );
 var compositeResultsSize  = '<%= @composite_results_size %>';
 console.log("compositeResultsSize = " + compositeResultsSize );
 
-var overlayId = document.getElementById('overlay');
+var overlayId = document.getElementById('overlay_m');
 console.log("1 IN list_results: overlayId = " + overlayId );
 
+//$(document).ready(function($) {
 function overlay() {
-    var overlayId = document.getElementById("overlay");
-    console.log("IN list_results: function overlay() = " + overlayId );
+  jQuery.noConflict();
+  (function ($) {
+    var overlayId = document.getElementById("overlay_m");
+    console.log( overlayId );
+    console.log("IN results_list: function overlay() = " + overlayId );
     overlayId.style.visibility = (overlayId.style.visibility == "visible") ? "hidden" : "visible";
+      }
+  )(jQuery);
+
 }
-
-//$('.modalBtn').click(function overlay(){});
-
+//});
+    //$('.modalBtn').click(function overlay(){});
 $('#overlay').click(function overlay(){
 });
 
