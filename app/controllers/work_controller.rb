@@ -29,20 +29,22 @@ class WorkController < ApplicationController
     @image_data = {}
     logger.info "1 theme = #{params[:theme].inspect} "
 
-    if params[:theme].blank?
+    if params[:theme] == "-----" #.blank?
       theme = "Select theme to leave your answer"
+      theme_id = 1
       data = { index: 0, name: 'радуга', file: 'raduga5обрез.jpg'}
-      # logger.info "1 data = #{data.inspect} "
-      image_data(theme, data)
-     
+      logger.info "1 data = #{data.inspect} "
     else
       theme = params[:theme]
       logger.info "2 theme = #{theme.inspect} "
       theme_id = Theme.find_theme_id(theme)
       data = show_image(theme_id, 0)
-      image_data(theme, data)
     end
+    session[:selected_theme_id] = theme_id
+    logger.info "session[:selected_theme_id] = #{session[:selected_theme_id].inspect} "
 
+    image_data(theme, data)
+    
   end
 
   
@@ -109,8 +111,10 @@ class WorkController < ApplicationController
   # @note: this method should show image without diag
   #   then - start to calculate diag
   def results_list
-    logger.info "In work#results_list "
-    res_composite_diag = Image.all.order("ave_value DESC")#.descend
+    selected_theme_id = session[:selected_theme_id]
+    logger.info "In work#results_list: selected_theme_id = #{selected_theme_id} "
+
+    res_composite_diag = Image.where(theme_id: selected_theme_id).order("ave_value DESC")#.descend
     logger.info " res_composite_diag.size = #{res_composite_diag.size}"
     @composite_results_size = res_composite_diag.size
     # @results = @res_diag.sort_by &:hk_light.descend

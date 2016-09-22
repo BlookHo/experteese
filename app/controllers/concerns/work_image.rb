@@ -7,16 +7,15 @@ module WorkImage
   # display image by index for searched theme
   def show_image(theme_id, image_index)
     theme_images = Image.theme_images(theme_id)
-    # logger.info "2 In show_image: theme_images[0] = #{theme_images[0].inspect} " unless theme_images.blank?
+    
     one_image_attr = theme_images[image_index].attributes
-    # logger.info "3 one_image_attr = #{one_image_attr.inspect} "
   
     data = { index: image_index,
              theme_id: theme_id,
              images_arr_size: theme_images.size,
              name: one_image_attr["name"],
              file: one_image_attr["file"] }
-    logger.info "4 data = #{data.inspect} "
+    logger.info "In show_image:  data = #{data.inspect} "
   
     data
   end

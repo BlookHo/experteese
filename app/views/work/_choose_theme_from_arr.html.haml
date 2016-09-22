@@ -6,8 +6,10 @@
       options_for_select(@themes, selected: @selected_theme),
       prompt: "Select theme",
       onchange:  "$(this).parent('form').submit();",
-      include_blank: true,
       formats: [ :js ]
+
+
+    -#include_blank: true,
 
     -#%button.button__choose
     -#  = submit_tag 'select'
