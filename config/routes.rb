@@ -24,7 +24,10 @@ Rails.application.routes.draw do
   match 'display_theme',    to: 'work#display_theme',     via: :post
   match 'next_image',       to: 'work#next_image',   via: 'get'
   match 'prev_image',       to: 'work#prev_image',   via: 'get'
-  match 'results_list',      to: 'work#results_list', via: :get
+  match 'results_list',     to: 'work#results_list', via: :get
+  match 'save_value',       to: 'work#save_value',      via: :get
+
+  
 
   match 'signup',   to: 'users#new',            via: 'get'
   match 'signin',   to: 'sessions#new',         via: 'get'

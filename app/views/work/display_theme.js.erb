@@ -34,7 +34,9 @@ var imageCurrentIndex = '<%= @image_data[:index] %>';
 var oneImageName = '<%= @image_data[:name] %>';
 //console.log("3a IN display_theme: oneImageName = " + oneImageName);
 var oneImageFile = '<%= @image_data[:file] %>';
-//console.log("3b IN display_theme: oneImageFile = " + oneImageFile);
+console.log("3b IN display_theme: oneImageFile = " + oneImageFile);
+var oneImageId = '<%= @image_data[:image_id] %>';
+console.log("3b IN display_theme: oneImageId = " + oneImageId);
 var themeImagesSize = '<%= @image_data[:images_arr_size] %>';
 //console.log("3c IN display_theme: themeImagesSize = " + themeImagesSize);
 var selectedThemeId = '<%= @image_data[:theme_id] %>';
@@ -78,7 +80,7 @@ $('.img-right-side').click(function(event) {
         console.log("2 IN ajax.show_next_image after done: display_theme: oneImageName = " + oneImageName );
         oneImageFile = data_return.file;
         console.log("3 IN ajax.show_next_image after done:: oneImageFile = " + oneImageFile);
-
+        oneImageId = data_return.image_id;
         $('.image_display h2.up').append().html(oneImageName);
         var pathImage = "assets/pictures/" + oneImageFile;
         $(".img-center").attr({title: "Selected image" });
@@ -119,6 +121,7 @@ $('.img-left-side').click(function(event) {
         console.log("2 IN ajax.show_next_image after done: display_theme: oneImageName = " + oneImageName );
         oneImageFile = data_return.file;
         console.log("3 IN ajax.show_next_image after done:: oneImageFile = " + oneImageFile);
+        oneImageId = data_return.image_id;
 
         $('.image_display h2.up').append().html(oneImageName);
         var pathImage = "assets/pictures/" + oneImageFile;
@@ -145,6 +148,39 @@ $('button.button__results.save').unbind( "click" ).click(function(event) {
   //  var result = document.getElementsByClassName("elementa")[0].innerHTML;
   var displayValue = $('#chosen_value')[0].innerHTML;
   console.log("displayValue = " + displayValue );
+
+  $.ajax({
+    type: "get",
+    url: "save_value",
+    data: { image_id: oneImageId,
+            theme_id: selectedThemeId,
+            value: displayValue },
+    dataType: 'json'
+  }).done(function (data_return) {
+        console.log("success1c:  " + data_return.notice );
+        var userImageValue = data_return.user_value;
+        console.log("1 IN ajax.save_value after done: display_theme: userImageValue = " + userImageValue );
+        var averageValue = data_return.ave_value;
+        console.log("2 IN ajax.show_next_image after done: display_theme: averageValue = " + averageValue );
+//        oneImageFile = data_return.file;
+//        console.log("3 IN ajax.show_next_image after done:: oneImageFile = " + oneImageFile);
+
+          // $('.image_display .ave_value').css({"display": "block"});
+        $('.image_display .image_user_value').append().html(userImageValue);
+        $('.image_display .ave_value').append().html(averageValue);
+
+
+
+//        $('.image_display h2.up').append().html(oneImageName);
+//        var pathImage = "assets/pictures/" + oneImageFile;
+//        $(".img-center").attr({title: "Selected image" });
+//        $(".img-center img").attr({alt: "Selected Image", src: pathImage, title: "Selected image" });
+
+      })
+      .fail(function (data_return) {
+        console.log("error: data_return = " + data_return);
+      });
+
 
 
 });

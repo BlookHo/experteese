@@ -13,6 +13,7 @@ module WorkImage
     data = { index: image_index,
              theme_id: theme_id,
              images_arr_size: theme_images.size,
+             image_id: one_image_attr["id"],
              name: one_image_attr["name"],
              file: one_image_attr["file"] }
     logger.info "In show_image:  data = #{data.inspect} "

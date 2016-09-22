@@ -32,7 +32,7 @@ class WorkController < ApplicationController
     if params[:theme] == "-----" #.blank?
       theme = "Select theme to leave your answer"
       theme_id = 1
-      data = { index: 0, name: 'радуга', file: 'raduga5обрез.jpg'}
+      data = { index: 0, name: 'радуга', file: 'raduga5обрез.jpg', image_id: 4}
       logger.info "1 data = #{data.inspect} "
     else
       theme = params[:theme]
@@ -69,6 +69,7 @@ class WorkController < ApplicationController
         format.json { render json:  { new_image_index: next_image_data[:index],
                                       name: next_image_data[:name],
                                       file: next_image_data[:file],
+                                      image_id: next_image_data[:image_id],
                                       status: :successfully,
                                       notice: 'Successfully listed to next'} }
       end
@@ -99,6 +100,7 @@ class WorkController < ApplicationController
         format.json { render json:  { new_image_index: prev_image_data[:index],
                                       name: prev_image_data[:name],
                                       file: prev_image_data[:file],
+                                      image_id: prev_image_data[:image_id],
                                       status: :successfully,
                                       notice: 'Successfully listed to previous'} }
       end
@@ -123,26 +125,72 @@ class WorkController < ApplicationController
     # logger.info "In work_cntrl#results_list: @composite_results_paged = #{@composite_results_paged}"
 
     logger.info "In work_cntrl#results_list: @composite_results_size = #{@composite_results_size}"
-    # respond_to do |format|
-    #   # if new_image_index.blank?
-    #     format.html {}
-    #     format.js {} # render diag: @image_diag, status: :unprocessable_entity }
-    #     # format.json { head :ok}
-    #   # else
-    #   #   format.html { render display_theme_path, status: :successfully }
-    #   #   # format.js   { render "diag"=>@image_diag, status: :successfully   }
-    #   #   format.json { render json:  { new_image_index: prev_image_data[:index],
-    #   #                                 name: prev_image_data[:name],
-    #   #                                 file: prev_image_data[:file],
-    #   #                                 status: :successfully,
-    #   #                                 notice: 'Successfully listed to previous'} }
-    #   # end
-    # end
-    # respond_to :js
+  
+  end
+
+
+
+  # @note: this method should save value diag for one image
+  #   then - start to calculate average value
+  def save_value
+    image_id = params[:image_id].to_i
+    theme_id = params[:theme_id].to_i
+    value = params[:value].to_i
+    logger.info "In save_value: image_id = #{image_id.inspect},
+                  theme_id = #{theme_id.inspect},
+                  value = #{value.inspect} "
+    
+    new_value_data = {
+      user_id: current_user.id,
+      image_id: image_id,
+      value: value
+    }
+    logger.info "In save_value: new_value_data = #{new_value_data.inspect}"
+    # save image value to   Values (user_id, image_id, value)
+     Value.create(new_value_data)
+
+
+    user_value = value
+    # calc ave_value and save to Image (image_id, ave_value)
+    
+    ave_value = Value.calc_average_value(image_id)
+    logger.info "In save_value: after calc_average_value: ave_value = #{ave_value.inspect}"
+
+    Image.update_ave_value(image_id, ave_value)
+    
+    
+    respond_to do |format|
+      if value.blank?
+        format.html {  render nothing: true, status: :unprocessable_entity }
+        format.json {} # render diag: @image_diag, status: :unprocessable_entity }
+      else
+        format.html { render display_theme_path, status: :successfully }
+        # format.js   { render "diag"=>@image_diag, status: :successfully   }
+        format.json { render json:  {
+                                      user_value: user_value,
+                                      ave_value: ave_value,
+                                      status: :successfully,
+                                      notice: 'Successfully listed to previous'} }
+      end
+    end
+
+
+
+
 
   end
 
 
+  # def calc_average_value(image_id)
+  #
+  #   values_arr = Value.where(image_id: image_id).pluck(:value)
+  #
+  #   values_sum = values_arr.inject(:+)
+  #   ave_value = values_sum/values_arr.size
+  #
+  #   logger.info "In calc_average_value: ave_value = #{ave_value.inspect}"
+  #
+  # end
 
 
 
