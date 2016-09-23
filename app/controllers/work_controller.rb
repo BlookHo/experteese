@@ -36,7 +36,7 @@ class WorkController < ApplicationController
       theme = "Select theme to leave your answer"
       theme_id = 1
       data = { index: 0, name: 'радуга', file: 'raduga5обрез.jpg', image_id: 4,
-               current_user_id: current_user_id, user_valued: false}
+               current_user_id: current_user_id, user_valued: false, common_ave_value: 0, value: 0 }
       logger.info "1 data = #{data.inspect} "
     else
       theme = params[:theme]
@@ -75,6 +75,9 @@ class WorkController < ApplicationController
                                       name: next_image_data[:name],
                                       file: next_image_data[:file],
                                       image_id: next_image_data[:image_id],
+                                      user_valued: next_image_data[:user_valued],
+                                      common_ave_value: next_image_data[:common_ave_value],
+                                      value: next_image_data[:value],
                                       status: :successfully,
                                       notice: 'Successfully listed to next'} }
       end
@@ -106,6 +109,9 @@ class WorkController < ApplicationController
                                       name: prev_image_data[:name],
                                       file: prev_image_data[:file],
                                       image_id: prev_image_data[:image_id],
+                                      user_valued: prev_image_data[:user_valued],
+                                      common_ave_value: prev_image_data[:common_ave_value],
+                                      value: prev_image_data[:value],
                                       status: :successfully,
                                       notice: 'Successfully listed to previous'} }
       end
@@ -130,9 +136,7 @@ class WorkController < ApplicationController
     # logger.info "In work_cntrl#results_list: @composite_results_paged = #{@composite_results_paged}"
 
     logger.info "In work_cntrl#results_list: @composite_results_size = #{@composite_results_size}"
-  
   end
-
 
 
   # @note: this method should save value diag for one image
@@ -140,11 +144,14 @@ class WorkController < ApplicationController
   def save_value
     image_id = params[:image_id].to_i
     theme_id = params[:theme_id].to_i
+    # index = params[:index].to_i
     value = params[:value].to_i
+
     logger.info "In save_value: image_id = #{image_id.inspect},
                   theme_id = #{theme_id.inspect},
-                  value = #{value.inspect} "
-    
+                 value = #{value.inspect} "
+    #                     index = #{index.inspect},
+
     new_value_data = {
       user_id: current_user.id,
       image_id: image_id,
@@ -162,8 +169,9 @@ class WorkController < ApplicationController
     logger.info "In save_value: after calc_average_value: ave_value = #{ave_value.inspect}"
 
     Image.update_ave_value(image_id, ave_value)
-    
-    
+
+    valued_image_data = show_valued_image(theme_id, image_id)
+
     respond_to do |format|
       if value.blank?
         format.html {  render nothing: true, status: :unprocessable_entity }
@@ -174,8 +182,28 @@ class WorkController < ApplicationController
         format.json { render json:  {
                                       user_value: user_value,
                                       ave_value: ave_value,
+                                      # new_image_index: new_image_data[:index],
+                                      # name: new_image_data[:name],
+                                      # file: new_image_data[:file],
+                                      image_id: valued_image_data[:image_id],
+                                      user_valued: valued_image_data[:user_valued],
+                                      common_ave_value: valued_image_data[:common_ave_value],
+                                      value: valued_image_data[:value],
                                       status: :successfully,
-                                      notice: 'Successfully listed to previous'} }
+                                      notice: 'Successfully listed to previous'}
+
+        # # index: image_index,
+        # current_user_id: current_user_id,
+        #     theme_id: theme_id,
+        #     # images_arr_size: theme_images.size,
+        #     image_id: image_id,
+        #     # name: one_image_attr["name"],
+        #     # file: one_image_attr["file"],
+        #     user_valued: user_valued,
+        #     value: value,
+        #     common_ave_value: common_ave_value
+  
+        }
       end
     end
 

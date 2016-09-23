@@ -10,11 +10,21 @@ module WorkImage
 
     current_user_id = current_user.id
     logger.info "In show_image: current_user_id = #{current_user_id.inspect} "
+    
     one_image_attr = theme_images[image_index].attributes
+    logger.info "In show_image: one_image_attr = #{one_image_attr.inspect} "
     image_id = one_image_attr["id"]
+    logger.info "In show_image: image_id = #{image_id.inspect} "
 
-    user_valued = Value.user_valued_image(current_user_id, image_id).exists? # true/false
+    user_valued, value = Value.user_valued_exists(current_user_id, image_id) # 1/0 # true/false .exists?
     logger.info "In show_image: user_valued = #{user_valued.inspect} "
+
+    if user_valued == 1
+      common_ave_value = Image.find(image_id).ave_value
+      logger.info "In show_image: common_ave_value = #{common_ave_value.inspect} "
+    else
+      common_ave_value = 0
+    end
 
     data = { index: image_index,
              current_user_id: current_user_id,
@@ -24,13 +34,52 @@ module WorkImage
              name: one_image_attr["name"],
              file: one_image_attr["file"],
              user_valued: user_valued,
+             value: value,
+             common_ave_value: common_ave_value
       }
     logger.info "In show_image:  data = #{data.inspect} "
-  
     data
   end
+
+  # display image by index for searched theme
+  def show_valued_image(theme_id, image_id)
+    # theme_images = Image.theme_images(theme_id)
   
+    current_user_id = current_user.id
+    logger.info "In show_image: current_user_id = #{current_user_id.inspect} "
   
+    # one_image_attr = theme_images[image_index].attributes
+    # logger.info "In show_image: one_image_attr = #{one_image_attr.inspect} "
+    # image_id = one_image_attr["id"]
+    logger.info "In show_image: image_id = #{image_id.inspect} "
+  
+    user_valued, value = Value.user_valued_exists(current_user_id, image_id) # 1/0 # true/false .exists?
+    logger.info "In show_image: user_valued = #{user_valued.inspect} "
+  
+    if user_valued == 1
+      common_ave_value = Image.find(image_id).ave_value
+      logger.info "In show_image: common_ave_value = #{common_ave_value.inspect} "
+    else
+      common_ave_value = 0
+    end
+  
+    data = {
+            # index: image_index,
+             current_user_id: current_user_id,
+             theme_id: theme_id,
+             # images_arr_size: theme_images.size,
+             image_id: image_id,
+             # name: one_image_attr["name"],
+             # file: one_image_attr["file"],
+             user_valued: user_valued,
+             value: value,
+             common_ave_value: common_ave_value
+    }
+    logger.info "In show_image:  data = #{data.inspect} "
+    data
+  end
+
+
   def next_index(index, length)
     new_index = index
     # logger.info "In next_index: new_index = #{new_index.inspect}, index = #{index.inspect}, length = #{length.inspect} "

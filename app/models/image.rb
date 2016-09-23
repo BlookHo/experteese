@@ -9,4 +9,6 @@ class Image < ApplicationRecord
     image.update(ave_value: ave_value)
   end
 
+  
+  
 end
