@@ -55,19 +55,7 @@ RSpec.describe "UserPages", type: :request do
         before { click_button submit }
         # let(:user) { User.find_by(email: 'user@example.com') }
         it { should have_selector('a' ) }
-        
-        # it {
-          # click_button 'Account'
-          # should have_selector('li#fat-menu.dropdown' )
-          # should have_css('a.dropdown-toggle')
-          # find('li#fat-menu.dropdown').click
-          # find(:css, "li#fat-menu.dropdown").click
-          # find("a.dropdown-toggle").click
-          # should have_link('Sign out') }
-        # it { should have_title(user.name) }
-        # it { should have_selector('div.success.flash', .dropdown-toggle, text: 'Account' text: 'Welcome') }
-        # }
-         end
+      end
 
 
     end

@@ -63,21 +63,6 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
   describe 'CHECK MainController methods'  do  # , focus: true
     # let(:connected_users) { current_user.get_connected_users }
 
-    
-    # context '- before actions - check connected_users' do
-    #   # let(:connected_users) { current_user.get_connected_users }
-    #   it "- Return proper connected_users Array result for current_user_id = 1" do
-    #     puts "Check CommonLogsController \n"
-    #     puts "Before All - data created \n"  #
-    #     # puts "In check connected_users :  connected_users = #{connected_users} \n"
-    #     expect(connected_users).to be_a_kind_of(Array)
-    #   end
-    #   it "- Return proper connected_users Array result for current_user_id = 1" do
-    #     # puts "1 2 In check connected_users :  connected_users = #{connected_users} \n"
-    #     expect(connected_users).to eq([1,2])
-    #   end
-    # end
-  
     subject { page }
     
     describe "GET #root" do
@@ -96,8 +81,7 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
       context '- check visit the root path' do
         before { visit root_path }
   
-        it { should have_content ('Experteese - sample App') }
-        # it { should have_title ("Index | #{base_title}") }
+        it { should have_content ('Ruby on Rails sample application.') }
         it { should have_title(full_title('')) }
         it { should_not have_title('| Index') }
         
@@ -205,7 +189,6 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
         it { should have_title(full_title('Help')) }
         it { should_not have_title('| Help') }
       end
-
 
     end
     
