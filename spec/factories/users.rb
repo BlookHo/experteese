@@ -13,4 +13,11 @@ FactoryGirl.define do
     password_confirmation "222222"
   end
 
+  trait :user_3 do
+    name     "Дима Третьяк"
+    email    "dima_tr@gmail.com"
+    password "222222"
+    password_confirmation "222222"
+  end
+
 end

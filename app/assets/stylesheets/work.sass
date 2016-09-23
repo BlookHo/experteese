@@ -131,6 +131,65 @@ button
     &:hover
       border: solid 1px #497851
 
+    span.common_value
+      text-align: left
+      position: relative
+      left: 15%
+      color: #4863be
+      //width: 80%
+      font-size: 1.4em
+      font-weight: bold
+      top: 3em
+
+      h2.common
+        //display: inline-block
+        border-radius: 10px
+        width: 45px
+        padding-top: 10px
+        padding-bottom: 10px
+        background-image: -webkit-linear-gradient(top, #cccccc, #330000)
+        background-image: -o-linear-gradient(top, #cccccc, #330000)
+        background-image: -moz-linear-gradient(top, #cccccc, #330000)
+        text-align: center
+        color: #ffffff
+        font-weight: bold
+        font-size: large
+        //margin-left: 5em
+        //margin-top: .8em
+        //float: left
+        display: inline-block
+
+
+    span.total_values
+      text-align: left
+      position: relative
+      left: 15%
+      color: #4863be
+      //width: 80%
+      font-size: 1.4em
+      font-weight: bold
+      top: 3em
+      display: block
+
+      h2.total
+        //display: inline-block
+        border-radius: 10px
+        width: inherit //45px
+        padding: 10px
+        //padding-top: 10px
+        //padding-bottom: 10px
+        text-align: center
+        color: #ffffff
+        font-weight: bold
+        font-size: large
+        //margin-left: 5em
+        //margin-top: .8em
+        //float: left
+        display: inline-block
+        background-image: -webkit-linear-gradient(top, #cccccc, #0f3314)
+        background-image: -o-linear-gradient(top, #cccccc, #0f3314)
+        background-image: -moz-linear-gradient(top, #cccccc, #0f3314)
+
 
     input.load_image
       color: $gray-darker
@@ -460,13 +519,18 @@ button
       color: indianred
       text-align: center
       font-family: $helvetica
-      //font-size: golden-ratio(12px,  1)
       top: 3.65em
       &:hover
         border: solid 1px #385D3F
 
+
+
+
+
+
+
+
       .indicator
-        // @include span-columns(12)
         background: #deb2ad
         text-align: center
 
@@ -494,7 +558,6 @@ button
           //-moz-animation: turning_cw 5s infinite
           //animation: turning_cw 5s infinite
           position: relative   /////////////////////////
-          //opacity: 0.7
 
           &:hover
             -webkit-box-shadow: 0 0 30px 15px #453D9B
@@ -502,7 +565,6 @@ button
             box-shadow: 0 0 30px 15px #453D9B
 
         .outer-circle.show
-          // +clearfix
           display: block
           border-radius: 30px
           border: 30px solid #30fa29
@@ -513,17 +575,13 @@ button
         font-family: $helvetica
         color: #555fbe
         display: block
-        //text-align: center
         font-size: 2em
-        //top: .2em
-        //position: relative
         margin-left: 1em
         margin-bottom: 0
         float: left
         margin-top: .85em
 
       .scale
-        // +clearfix
         display: none
         width: 100%
         background-color: lightgrey
@@ -533,7 +591,6 @@ button
         background: linear-gradient(to right, rgba(247, 27, 27, 0.68), rgba(165, 165, 0, 0.68), rgba(27, 247, 27, 0.68))
 
         .small_img_box
-          // +clearfix
           display: block
           width: 1.35em
           height: 100%
@@ -600,8 +657,7 @@ button
   h2
     font-family: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif
     font-size: 2.3em
-    //line-height: 2.2em
-    //margin: 0 0 0.75em
+
   nav span
     font-size: 1.3em
     font-family: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif

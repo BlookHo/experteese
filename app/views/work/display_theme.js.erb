@@ -20,6 +20,13 @@ if(selectedTheme == "Select theme to leave your answer" || selectedTheme == ""){
 
 }
 
+var currentUserId = '<%= @image_data[:current_user_id] %>';
+console.log("3d IN display_theme: currentUserId = " + currentUserId);
+
+var userValuedImage = '<%= @image_data[:user_valued] %>';
+console.log("3d IN display_theme: userValuedImage = " + userValuedImage);
+
+
 $('.image_display h2.up-theme').append().html(selectedTheme);
 
 //var titleImage = "Click this image to analyse it";
@@ -40,8 +47,6 @@ console.log("3b IN display_theme: oneImageId = " + oneImageId);
 var themeImagesSize = '<%= @image_data[:images_arr_size] %>';
 //console.log("3c IN display_theme: themeImagesSize = " + themeImagesSize);
 var selectedThemeId = '<%= @image_data[:theme_id] %>';
-var currentUserId = '<%= @image_data[:current_user_id] %>';
-console.log("3d IN display_theme: currentUserId = " + currentUserId);
 
 
 // show name of image

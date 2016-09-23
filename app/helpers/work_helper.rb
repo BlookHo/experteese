@@ -13,6 +13,7 @@ module WorkHelper
     @image_data[:image_id]  = data[:image_id]
     @image_data[:name]  = data[:name]
     @image_data[:file]  = data[:file]
+    @image_data[:user_valued]  = data[:user_valued]
 
     @image_data
   end
