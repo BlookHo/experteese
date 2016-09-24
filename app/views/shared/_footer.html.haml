@@ -8,19 +8,24 @@
   -#  %a{:href => "http://www.railstutorial.org/"} Ruby on Rails Tutorial
   -#  by
   -#  %a{:href => "http://www.michaelhartl.com/"} Michael Hartl
-  %nav
-    %ul
-      %li= link_to "About", about_path
-      %li= link_to "Contact", contacts_path
-      %li
-        %a{:href => "http://news.railstutorial.org/"} News
 
-  %p{style: "color: #c4f7ff; font-size: 1.3em; position: relative; left: 20%; margin-top: .55em;"}
+  %h3{style: "color: #c4f7ff; font-size: 1.3em; position: relative; left: 20%; margin-top: .55em;"}
     Experteese
     %i.fa.fa-copyright.iconsMain{ style: " font-size: 1.3em; " }
     2016
 
-    -#%p{style: " font-size: 1em; position: relative; left: 40%;"}
-    %span{ style: "color: #730E15; font-size: 1.3em; position: relative; left: 11%;" }
-      %i.fa.fa-flag.iconsMain{ style: "color: #730E15; font-size: 1em; " }
-      App is in Progress/Maintenance
+    %p.app_notice_dev{style: " font-size: 1em; position: relative; left: 40%;"}
+      %span{ style: "color: #730E15; font-size: 1.3em; position: relative; left: 11%;" }
+        %i.fa.fa-flag.iconsMain{ style: "color: #730E15; font-size: 1em; " }
+        App is in Progress/Maintenance
+
+
+  .footer_menu
+    %nav
+      %ul
+        %li= link_to "About", about_path
+        %li= link_to "Contact", contacts_path
+        %li
+          %a{:href => "http://news.railstutorial.org/"} News
+
+
