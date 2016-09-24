@@ -7,6 +7,8 @@ class WorkController < ApplicationController
     # logger.info  "@images_count = #{@images_count}"
     @selected_theme = "Select theme to leave your answer"
     @selected_image_name = 'радуга'
+    @values_qty = Value.all.count
+
   end
 
   # # @note: use in views
@@ -31,7 +33,7 @@ class WorkController < ApplicationController
 
     current_user_id = current_user.id
     logger.info "2 current_user_id = #{current_user_id.inspect} "
-
+    
     if params[:theme] == "-----" #.blank?
       theme = "Select theme to leave your answer"
       theme_id = 1
@@ -150,7 +152,6 @@ class WorkController < ApplicationController
     logger.info "In save_value: image_id = #{image_id.inspect},
                   theme_id = #{theme_id.inspect},
                  value = #{value.inspect} "
-    #                     index = #{index.inspect},
 
     new_value_data = {
       user_id: current_user.id,
@@ -168,7 +169,7 @@ class WorkController < ApplicationController
     ave_value = Value.calc_average_value(image_id)
     logger.info "In save_value: after calc_average_value: ave_value = #{ave_value.inspect}"
 
-    Image.update_ave_value(image_id, ave_value)
+    Image.update_ave_value(image_id, ave_value.round)
 
     valued_image_data = show_valued_image(theme_id, image_id)
 
@@ -178,31 +179,17 @@ class WorkController < ApplicationController
         format.json {} # render diag: @image_diag, status: :unprocessable_entity }
       else
         format.html { render display_theme_path, status: :successfully }
-        # format.js   { render "diag"=>@image_diag, status: :successfully   }
         format.json { render json:  {
                                       user_value: user_value,
                                       ave_value: ave_value,
-                                      # new_image_index: new_image_data[:index],
-                                      # name: new_image_data[:name],
-                                      # file: new_image_data[:file],
+                                      values_qty: valued_image_data[:values_qty],
                                       image_id: valued_image_data[:image_id],
                                       user_valued: valued_image_data[:user_valued],
                                       common_ave_value: valued_image_data[:common_ave_value],
                                       value: valued_image_data[:value],
                                       status: :successfully,
                                       notice: 'Successfully listed to previous'}
-
-        # # index: image_index,
-        # current_user_id: current_user_id,
-        #     theme_id: theme_id,
-        #     # images_arr_size: theme_images.size,
-        #     image_id: image_id,
-        #     # name: one_image_attr["name"],
-        #     # file: one_image_attr["file"],
-        #     user_valued: user_valued,
-        #     value: value,
-        #     common_ave_value: common_ave_value
-  
+   
         }
       end
     end

@@ -3,6 +3,10 @@
 // get data from controller
 var imageData = '<%= raw @image_data %>';
 console.log("IN display_theme: @image_data = " + imageData );
+var valuesQty = '<%= @image_data[:values_qty] %>';
+console.log("IN display_theme: valuesQty = " + valuesQty );
+$('.left_controls span.total_values h2.total').append().html(valuesQty);
+// $('.left_controls span.total_values').css({"display": "block"});
 
 // show theme
 var selectedTheme = '<%= @image_data[:theme] %>';
@@ -220,6 +224,9 @@ $('button.button__results.save').unbind( "click" ).click(function(event) {
           console.log("5 IN IF: userValuedFlag == true? == " + userValuedFlag);
           $('.left_controls span.common_value').css({"display": "block"});
           $('.image .image_display .image_diag').css({"display": "none"});
+
+          var valuesQty = data_return.values_qty;
+          $('.left_controls span.total_values h2.total').append().html(valuesQty);
 
           var imageCommonValue = data_return.common_ave_value;
           console.log("6 IN save_value: imageCommonValue = " + imageCommonValue);

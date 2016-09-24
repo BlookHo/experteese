@@ -17,7 +17,7 @@ class Value < ApplicationRecord
     ave_value = values_sum/values_arr.size
 
     logger.info "In calc_average_value: values_arr = #{values_arr.inspect}, values_sum = #{values_sum.inspect}, ave_value = #{ave_value.inspect}"
-    ave_value
+    ave_value.round
   end
 
   def self.user_valued_exists(current_user_id, image_id)

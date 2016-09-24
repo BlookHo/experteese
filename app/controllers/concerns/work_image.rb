@@ -19,6 +19,8 @@ module WorkImage
     user_valued, value = Value.user_valued_exists(current_user_id, image_id) # 1/0 # true/false .exists?
     logger.info "In show_image: user_valued = #{user_valued.inspect} "
 
+    values_qty = Value.all.count
+
     if user_valued == 1
       common_ave_value = Image.find(image_id).ave_value
       logger.info "In show_image: common_ave_value = #{common_ave_value.inspect} "
@@ -27,6 +29,7 @@ module WorkImage
     end
 
     data = { index: image_index,
+             values_qty: values_qty,
              current_user_id: current_user_id,
              theme_id: theme_id,
              images_arr_size: theme_images.size,
@@ -55,7 +58,9 @@ module WorkImage
   
     user_valued, value = Value.user_valued_exists(current_user_id, image_id) # 1/0 # true/false .exists?
     logger.info "In show_image: user_valued = #{user_valued.inspect} "
-  
+
+    values_qty = Value.all.count
+
     if user_valued == 1
       common_ave_value = Image.find(image_id).ave_value
       logger.info "In show_image: common_ave_value = #{common_ave_value.inspect} "
@@ -64,13 +69,10 @@ module WorkImage
     end
   
     data = {
-            # index: image_index,
+             values_qty: values_qty,
              current_user_id: current_user_id,
              theme_id: theme_id,
-             # images_arr_size: theme_images.size,
              image_id: image_id,
-             # name: one_image_attr["name"],
-             # file: one_image_attr["file"],
              user_valued: user_valued,
              value: value,
              common_ave_value: common_ave_value
