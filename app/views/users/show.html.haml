@@ -1,20 +1,22 @@
 - provide(:title, @user.name)
-%p#notice= notice
-
-.row
-  %aside.span4
-    %section
-      %h1
-        = gravatar_for @user
-        = @user.name
-
-%p
-  %b Email:
-  = @user.email
-
-= link_to "Proceed to work!", work_path, class: "btn btn-lg btn-primary"
+-#%p#notice= notice
 
 
-= link_to 'Edit', edit_user_path(@user)
-\|
-= link_to 'Back', users_path
+.show_user
+  .row
+    %aside.span4
+      %section
+        %h1
+          = gravatar_for @user
+          = @user.name
+
+  %p
+    %b Email:
+    = @user.email
+
+  = link_to "Proceed to work!", work_path, class: "btn btn-lg btn-primary"
+
+  -#
+  -#= link_to 'Edit', edit_user_path(@user)
+  -#\|
+  -#= link_to 'Back', users_path
