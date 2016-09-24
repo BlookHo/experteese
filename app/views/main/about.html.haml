@@ -1,18 +1,40 @@
 - provide(:title, "About")
 
 %h1 About
-%p
-  The
-  %a{:href => "http://www.railstutorial.org/"}
-    %em
-      Ruby on Rails
-      Tutorial
-  is a
-  %a{:href => "http://www.railstutorial.org/book"} book
-  and
-  %a{:href => "http://screencasts.railstutorial.org/"} screencast series
-  to teach web development with
-  = succeed "." do
-    %a{:href => "http://rubyonrails.org/"} Ruby on Rails
 
-    %i.fa.fa-video-camera{ style: "color: #730E15; font-size: 2em; position: relative; left: 30%;" }
+.about-copy
+  %h1
+    Приложение Experteese предназначено для сбора оценок предпочтений пользователей.
+    Пользователи выступают в роли экспертов. Их мнение крайне важно.
+    На основе частных мнений экспертов вычисляется средняя квалифицированная оценка.
+    Собранные в данном приложении данные представляют интерес как для самих экспертов,
+    так и для сторонних организаций и пользователей.
+  -#%p
+  -#  A few reasons why this product is worth using, what it is for and why you need it.
+  -#  %br
+  -#  First wide reason and second short reason.
+  .about-video
+    %i.fa.fa-video-camera.strong{ style: "color: #008096; display: block; font-size: 1.5em; position: relative; left: 5%;" }
+      %p
+        Video tour
+
+  %i.fa.fa-flag.iconsMain{ style: "color: #C44BB4; font-size: 4em; position: relative; left: 50%;" }
+
+
+
+
+-#%p
+-#  The
+-#  %a{:href => "http://www.railstutorial.org/"}
+-#    %em
+-#      Ruby on Rails
+-#      Tutorial
+-#  is a
+-#  %a{:href => "http://www.railstutorial.org/book"} book
+-#  and
+-#  %a{:href => "http://screencasts.railstutorial.org/"} screencast series
+-#  to teach web development with
+-#  = succeed "." do
+-#    %a{:href => "http://rubyonrails.org/"} Ruby on Rails
+-#
+-#  %i.fa.fa-video-camera{ style: "color: #730E15; font-size: 2em; position: relative; left: 30%;" }

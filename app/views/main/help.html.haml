@@ -1,18 +1,43 @@
 - provide(:title, "Help")
 
 %h1
-  Help - URL = http://localhost:3000/main/help
+  -#Help - URL = http://localhost:3000/main/help
 - if signed_in?
   %h1
-    @current_user = #{@current_user.name.inspect}, #{@current_user.email.inspect}
+    Уважаемый пользователь  #{@current_user.name.inspect} !
+    -##{@current_user.email.inspect}
+    Всегда рады помочь!
 
-%p
-  Get help on the Ruby on Rails Tutorial at the
-  = succeed "." do
-    %a{:href => "http://www.railstutorial.org/help"} Rails Tutorial help page
-  = succeed "." do
-    %a{:href => "http://www.railstutorial.org/book"}
-      %em Ruby on Rails Tutorial
-      book
-  %i.fa.fa-flag.iconsMain{ style: "color: #25b45e; font-size: 2em; position: relative; left: 25%;" }
+.about-copy
+  %h1.list
+    Пользовательский интерфейс Experteese построен по принципу "одностраничного приложения".
+    Это существенно упрощает взаимодействие пользователей с приложением.
+  %br
+  %h1
+    Основные шаги.
+  %h3
+    1. Регистрация нового пользователя. Это необходимо для получения доступа к сервису.
+    %br
+    2. Если пользователь зарегистрирован, то ему необходимо войти на сайт - sign in.
+    %br
+    3. Прежде всего нужно выбрать тему, по котрой эксперт намерен оставить свои оценки. Выбрав тему из списка, пользователь получает доступ к списку изображений.
+    %br
+    4. Пользователь оценивает предъявляемые на экране изображения, выбирая желаемое значение на шкале оценок.
+    %br
+    5. На экране отображается усредненная оценка всех экспертов, участвовавших в опросе по данному изображению на выбранную тему.. А также общее количество всех оценок на сайте.
+    %br
+    6. Имеется возможность просмотра итоговых оценок по всем изображениям на выбранную тему.
+
+
+
+
+-#%p
+-#  Get help on the Ruby on Rails Tutorial at the
+-#  = succeed "." do
+-#    %a{:href => "http://www.railstutorial.org/help"} Rails Tutorial help page
+-#  = succeed "." do
+-#    %a{:href => "http://www.railstutorial.org/book"}
+-#      %em Ruby on Rails Tutorial
+-#      book
+%i.fa.fa-flag.iconsMain{ style: "color: #3C0AEB; margin-top: 1.5em; font-size: 4em; position: relative; left: 50%;" }
 
