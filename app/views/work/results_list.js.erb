@@ -2,14 +2,14 @@
  * Created by aleks_i on 25.03.16.
  */
 
-console.log("IN modal list_results " );
+console.log("IN  results_list " );
+
 var compositeResultsSize  = '<%= @composite_results_size %>';
 console.log("compositeResultsSize = " + compositeResultsSize );
 
 var overlayId = document.getElementById('overlay_m');
 console.log("1 IN list_results: overlayId = " + overlayId );
 
-//$(document).ready(function($) {
 function overlay() {
   jQuery.noConflict();
   (function ($) {
@@ -21,8 +21,6 @@ function overlay() {
   )(jQuery);
 
 }
-//});
-    //$('.modalBtn').click(function overlay(){});
 $('#overlay').click(function overlay(){
 });
 

@@ -19,10 +19,10 @@ module WorkImage
     user_valued, value = Value.user_valued_exists(current_user_id, image_id) # 1/0 # true/false .exists?
     logger.info "In show_image: user_valued = #{user_valued.inspect} "
 
-    values_qty = Value.all.count
+    values_qty = Value.all.count.round
 
     if user_valued == 1
-      common_ave_value = Image.find(image_id).ave_value
+      common_ave_value = Image.find(image_id).ave_value.round
       logger.info "In show_image: common_ave_value = #{common_ave_value.inspect} "
     else
       common_ave_value = 0
@@ -59,10 +59,10 @@ module WorkImage
     user_valued, value = Value.user_valued_exists(current_user_id, image_id) # 1/0 # true/false .exists?
     logger.info "In show_image: user_valued = #{user_valued.inspect} "
 
-    values_qty = Value.all.count
+    values_qty = Value.all.count.round
 
     if user_valued == 1
-      common_ave_value = Image.find(image_id).ave_value
+      common_ave_value = Image.find(image_id).ave_value.round
       logger.info "In show_image: common_ave_value = #{common_ave_value.inspect} "
     else
       common_ave_value = 0

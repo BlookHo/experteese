@@ -1,31 +1,60 @@
 //-# * Created by aleks_ivanishchev on 19.09.16
-//var selectedTheme = '<%= @selected_theme %>';
 console.log("IN choose_theme.js" );
-
-
-
-//var formSelect = document.querySelector(".form_select");
-//console.log(" In choose_image.js formSelect = " + formSelect );
-//var selectImage = document.querySelector(".select_image");
-//console.log(" In choose_image.js selectImage = " + selectImage );
-//$('.image_display .image_diag .indicator .outer-circle').removeClass("show");
 
 $('.image .image_display .image_diag').css({"display": "none"});
 $('.img-left-side').css({"display": "none"});
 $('.img-right-side').css({"display": "none"});
 
 
-
-
-//active
-//$('.image_display .image_diag .indicator .outer-circle').css({"display": "none"});
-//$('.image_display .image_diag .scale .small_img_box').css({"display": "none"});
-//$('.image_display .indic-circ').css({"display": "none"});
-//$('.image_display .image_diag h2.down').empty().before();
-//console.log(" In choose_image.js selectImage = ");
-//$('.button__save').css({"display": "none"});
-
+////When the user clicks anywhere outside of form_select, close it and rerender button_theme_select
+//var selectTheme = document.getElementsByClassName('.selectTheme');
+$(document).click( function(){
+  console.log(": In doc.click = "  );
+  $('.form_select').css({"display": "none"});
+  $('.select_theme').empty().html("<%= j render 'work/button_theme_select' -%>");
+});
 
 
 $('.select_theme').empty().html("<%= j render 'choose_theme_from_arr' -%>");
+
+
+//
+////When the user clicks anywhere outside of the modal, close it
+//window.onclick = function(event) {
+//  if (event.target == selectTheme) {
+////      resultsList.style.visibility = "hidden";
+//    $('.select_theme').css({"display": "none"});
+//
+//    console.log("IN window.onclick: selectTheme display: none  /   .style.visibility = hidden");
+//  }
+//
+//};
+//
+//$(document).ready(function(){
+//  $('.select_theme').click(function(event){
+//    console.log('click - form');
+//    event.stopPropagation();
+//  });
+//  $('html').click(function(event){
+//    console.log('click - body');
+//    //hide the form if the body is clicked
+//    $('.select_theme').css('display','none');
+//  });
+////  $('button').click(function(event){
+////    $('.form-container').toggle();
+////    event.stopPropagation();
+////  });
+//
+//});
+//
+//
+//$(function() {
+//  $('.select_theme').on('click', function() {
+//    $('.select_theme').css({"display": "none"});
+//  });
+//})();
+//
+//
+//
+
 

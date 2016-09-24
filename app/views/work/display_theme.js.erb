@@ -6,11 +6,9 @@ console.log("IN display_theme: @image_data = " + imageData );
 var valuesQty = '<%= @image_data[:values_qty] %>';
 console.log("IN display_theme: valuesQty = " + valuesQty );
 $('.left_controls span.total_values h2.total').append().html(valuesQty);
-// $('.left_controls span.total_values').css({"display": "block"});
 
 // show theme
 var selectedTheme = '<%= @image_data[:theme] %>';
-//console.log("3a IN display_theme: selectedTheme = " + selectedTheme);
 
 if(selectedTheme == "Select theme to leave your answer" || selectedTheme == ""){
   $('.img-left-side').css({"display": "none"});
@@ -22,14 +20,12 @@ if(selectedTheme == "Select theme to leave your answer" || selectedTheme == ""){
   $('.image .image_display .image_diag').css({"display": "block"});
 }
 var userValuedImage = '<%= @image_data[:user_valued] %>';
-//console.log("3b IN display_theme: userValuedImage = " + userValuedImage);
 
 if(userValuedImage == 1){
   console.log("3c1 IN IF: userValuedImage == true? == " + userValuedImage);
   $('.left_controls span.common_value').css({"display": "block"});
   $('.image .image_display .image_diag').css({"display": "none"});
   var imageCommonValue = '<%= @image_data[:common_ave_value] %>';
-//  console.log("3c2 IN display_theme: imageCommonValue = " + imageCommonValue);
   $('.left_controls span.common_value h2.common').append().html(imageCommonValue);
 
   var imageValue = '<%= @image_data[:value] %>';
@@ -37,7 +33,6 @@ if(userValuedImage == 1){
   $('.image .image_display .image_user_value').css({"display": "block"});
 }else{
   $('.left_controls span.common_value').css({"display": "none"});
-//  console.log("3c2 IN ELSE: userValuedImage == false? == " + userValuedImage);
   $('.image .image_display .image_user_value').css({"display": "none"});
 }
 
@@ -73,6 +68,8 @@ var pathImage = "assets/pictures/" + oneImageFile;
 // $('.img-center').html('<img alt="Selected Image" src="'+ pathImage + '"/>');
 $(".img-center").attr({title: "Selected image" });
 $(".img-center img").attr({alt: "Selected Image", src: pathImage, title: "Selected image" });
+
+
 
 
 

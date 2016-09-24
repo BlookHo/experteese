@@ -72,7 +72,6 @@ class WorkController < ApplicationController
         format.json {} # render diag: @image_diag, status: :unprocessable_entity }
       else
         format.html { render display_theme_path, status: :successfully }
-        # format.js   { render "diag"=>@image_diag, status: :successfully   }
         format.json { render json:  { new_image_index: next_image_data[:index],
                                       name: next_image_data[:name],
                                       file: next_image_data[:file],
@@ -103,7 +102,7 @@ class WorkController < ApplicationController
     respond_to do |format|
       if new_image_index.blank?
         format.html {  render nothing: true, status: :unprocessable_entity }
-        format.json {} # render diag: @image_diag, status: :unprocessable_entity }
+        format.json {}
       else
         format.html { render display_theme_path, status: :successfully }
         # format.js   { render "diag"=>@image_diag, status: :successfully   }
@@ -132,10 +131,8 @@ class WorkController < ApplicationController
     res_composite_diag = Image.where(theme_id: selected_theme_id).order("ave_value DESC")#.descend
     logger.info " res_composite_diag.size = #{res_composite_diag.size}"
     @composite_results_size = res_composite_diag.size
-    # @results = @res_diag.sort_by &:hk_light.descend
     @composite_results = res_composite_diag.take(@composite_results_size)
     @composite_results_paged = pages_of(@composite_results, 6)
-    # logger.info "In work_cntrl#results_list: @composite_results_paged = #{@composite_results_paged}"
 
     logger.info "In work_cntrl#results_list: @composite_results_size = #{@composite_results_size}"
   end
@@ -146,7 +143,6 @@ class WorkController < ApplicationController
   def save_value
     image_id = params[:image_id].to_i
     theme_id = params[:theme_id].to_i
-    # index = params[:index].to_i
     value = params[:value].to_i
 
     logger.info "In save_value: image_id = #{image_id.inspect},
@@ -159,24 +155,24 @@ class WorkController < ApplicationController
       value: value
     }
     logger.info "In save_value: new_value_data = #{new_value_data.inspect}"
+    
     # save image value to   Values (user_id, image_id, value)
-     Value.create(new_value_data)
-
+    Value.create(new_value_data)
 
     user_value = value
-    # calc ave_value and save to Image (image_id, ave_value)
     
-    ave_value = Value.calc_average_value(image_id)
+    # calc ave_value and save to Image (image_id, ave_value)
+    ave_value = Value.calc_average_value(image_id).round
     logger.info "In save_value: after calc_average_value: ave_value = #{ave_value.inspect}"
 
-    Image.update_ave_value(image_id, ave_value.round)
+    Image.update_ave_value(image_id, ave_value)
 
     valued_image_data = show_valued_image(theme_id, image_id)
 
     respond_to do |format|
       if value.blank?
         format.html {  render nothing: true, status: :unprocessable_entity }
-        format.json {} # render diag: @image_diag, status: :unprocessable_entity }
+        format.json {}
       else
         format.html { render display_theme_path, status: :successfully }
         format.json { render json:  {
@@ -195,24 +191,8 @@ class WorkController < ApplicationController
     end
 
 
-
-
-
   end
-
-
-  # def calc_average_value(image_id)
-  #
-  #   values_arr = Value.where(image_id: image_id).pluck(:value)
-  #
-  #   values_sum = values_arr.inject(:+)
-  #   ave_value = values_sum/values_arr.size
-  #
-  #   logger.info "In calc_average_value: ave_value = #{ave_value.inspect}"
-  #
-  # end
-
-
+  
 
 
 
