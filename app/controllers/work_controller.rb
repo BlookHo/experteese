@@ -7,7 +7,8 @@ class WorkController < ApplicationController
     @selected_theme = "Select theme to leave your answer"
     @selected_image_name = 'радуга'
     @values_qty = Value.all.count
-    session[:selected_theme_id] = @selected_theme
+    
+    session[:selected_theme_id] = @selected_theme # to display nothing
   end
 
   # # @note: use in views
@@ -42,11 +43,16 @@ class WorkController < ApplicationController
                current_user_id: current_user_id, user_valued: false, common_ave_value: 0, value: 0 }
       logger.info "1 data = #{data.inspect} "
     else
-      theme = params[:theme]
-      logger.info "2 theme = #{theme.inspect} "
-      theme_id = Theme.find_theme_id(theme)
-      data = show_image(theme_id, 0)
-      
+      # if params[:theme_id].blank?   # from results_list link_to
+        theme = params[:theme]
+        logger.info "2 theme = #{theme.inspect} "
+        theme_id = Theme.find_theme_id(theme)
+        data = show_image(theme_id, 0)
+      # else
+      #   theme_id = params[:theme_id].to_i
+      #   logger.info "3 theme_id = #{theme_id.inspect} "
+      #   data = show_image(theme_id, 0)
+      # end
     end
     session[:selected_theme_id] = theme_id
     logger.info "session[:selected_theme_id] = #{session[:selected_theme_id].inspect} "
@@ -59,15 +65,15 @@ class WorkController < ApplicationController
   # @note: this method should show image without diag
   #   then - start to calculate diag
   def results_list
-    selected_theme_id = session[:selected_theme_id]
-    logger.info "In work#results_list: selected_theme_id = #{selected_theme_id} "
-
-    res_composite_diag = Image.where(theme_id: selected_theme_id).order("ave_value DESC")#.descend
-    logger.info " res_composite_diag.size = #{res_composite_diag.size}"
+    @selected_theme_id = session[:selected_theme_id]
+    logger.info "In work#results_list: @selected_theme_id = #{@selected_theme_id} "
+    
+    res_composite_diag = Image.where(theme_id: @selected_theme_id).order("ave_value DESC")#.descend
     @composite_results_size = res_composite_diag.size
     @composite_results = res_composite_diag.take(@composite_results_size)
     @composite_results_paged = pages_of(@composite_results, 6)
 
+    # @work_path = URI(display_theme_path).path    # { :method => "post", :action => "display_theme"}
     logger.info "In work_cntrl#results_list: @composite_results_size = #{@composite_results_size}"
   end
 
