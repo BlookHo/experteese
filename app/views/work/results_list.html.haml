@@ -2,15 +2,16 @@
 -# * Created by aleks_i on 25.03.16.
 -# */
 
-.results_list{ title: "Go to work area"}
+.-{ title: "Go to work area"}
 
   - if @composite_results.blank?
     %table{ :style => "table-layout: auto; title: 'No Values results...';" }
-      %h2 No Values results ...
-      %h2 Select theme
-      -#%tr
-        -#%td.left.grey.italic
-        -#No Values results...
+      .no_results
+        %h2 No Values results ...
+        %h2 Select theme
+        -#%tr
+          -#%td.left.grey.italic
+          -#No Values results...
     %br
     %hr
   - else
