@@ -1,13 +1,16 @@
 class Value < ApplicationRecord
+  belongs_to :user
   
-  
-  # scope :theme_images, -> (theme_id) { select('id','name','file','ave_value').where(theme_id: theme_id) }
-  scope :user_valued_image, -> (current_user_id, image_id) { where(user_id: current_user_id, image_id: image_id) }
-
-  #
+  # todo: validations
   # t.integer  "user_id"
   # t.integer  "image_id"
   # t.integer  "value"
+  # validates :name, presence: true, uniqueness: true, length: { maximum: 50 }
+
+
+  # scope :theme_images, -> (theme_id) { select('id','name','file','ave_value').where(theme_id: theme_id) }
+  scope :user_valued_image, -> (current_user_id, image_id) { where(user_id: current_user_id, image_id: image_id) }
+
 
   def self.calc_average_value(image_id)
     

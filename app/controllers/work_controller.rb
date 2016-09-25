@@ -4,11 +4,11 @@ class WorkController < ApplicationController
   
   def index
     @images_count = Image.all.count
-    # logger.info  "@images_count = #{@images_count}"
     @selected_theme = "Select theme to leave your answer"
     @selected_image_name = 'радуга'
     @values_qty = Value.all.count
-
+    
+    session[:selected_theme_id] = @selected_theme # to display nothing
   end
 
   # # @note: use in views
@@ -25,6 +25,8 @@ class WorkController < ApplicationController
     respond_to :js
   end
 
+  
+  
   # @note: first display_theme and show first image from image array
   def display_theme
     logger.info "In work#display_theme"
@@ -41,11 +43,16 @@ class WorkController < ApplicationController
                current_user_id: current_user_id, user_valued: false, common_ave_value: 0, value: 0 }
       logger.info "1 data = #{data.inspect} "
     else
-      theme = params[:theme]
-      logger.info "2 theme = #{theme.inspect} "
-      theme_id = Theme.find_theme_id(theme)
-      data = show_image(theme_id, 0)
-      
+      # if params[:theme_id].blank?   # from results_list link_to
+        theme = params[:theme]
+        logger.info "2 theme = #{theme.inspect} "
+        theme_id = Theme.find_theme_id(theme)
+        data = show_image(theme_id, 0)
+      # else
+      #   theme_id = params[:theme_id].to_i
+      #   logger.info "3 theme_id = #{theme_id.inspect} "
+      #   data = show_image(theme_id, 0)
+      # end
     end
     session[:selected_theme_id] = theme_id
     logger.info "session[:selected_theme_id] = #{session[:selected_theme_id].inspect} "
@@ -55,144 +62,21 @@ class WorkController < ApplicationController
   end
 
   
-  def next_image
-    current_index = params[:index].to_i
-    theme_id = params[:theme_id].to_i
-    length = params[:length].to_i
-
-    new_image_index = next_index(current_index, length)
-    next_image_data = show_image(theme_id, new_image_index)
-    # logger.info "In next_image: current_index = #{current_index.inspect},
-    #               new_image_index = #{new_image_index.inspect},
-    #               next_image_data = #{next_image_data.inspect} "
-    
-    respond_to do |format|
-      if new_image_index.blank?
-        format.html {  render nothing: true, status: :unprocessable_entity }
-        format.json {} # render diag: @image_diag, status: :unprocessable_entity }
-      else
-        format.html { render display_theme_path, status: :successfully }
-        format.json { render json:  { new_image_index: next_image_data[:index],
-                                      name: next_image_data[:name],
-                                      file: next_image_data[:file],
-                                      image_id: next_image_data[:image_id],
-                                      user_valued: next_image_data[:user_valued],
-                                      common_ave_value: next_image_data[:common_ave_value],
-                                      value: next_image_data[:value],
-                                      status: :successfully,
-                                      notice: 'Successfully listed to next'} }
-      end
-    end
-
-
-  end
-
-
-  def prev_image
-    current_index = params[:index].to_i
-    theme_id = params[:theme_id].to_i
-    length = params[:length].to_i
-  
-    new_image_index = prev_index(current_index, length)
-    prev_image_data = show_image(theme_id, new_image_index)
-    # logger.info "In prev_image: current_index = #{current_index.inspect},
-    #               new_image_index = #{new_image_index.inspect},
-    #               prev_image_data = #{prev_image_data.inspect} "
-  
-    respond_to do |format|
-      if new_image_index.blank?
-        format.html {  render nothing: true, status: :unprocessable_entity }
-        format.json {}
-      else
-        format.html { render display_theme_path, status: :successfully }
-        # format.js   { render "diag"=>@image_diag, status: :successfully   }
-        format.json { render json:  { new_image_index: prev_image_data[:index],
-                                      name: prev_image_data[:name],
-                                      file: prev_image_data[:file],
-                                      image_id: prev_image_data[:image_id],
-                                      user_valued: prev_image_data[:user_valued],
-                                      common_ave_value: prev_image_data[:common_ave_value],
-                                      value: prev_image_data[:value],
-                                      status: :successfully,
-                                      notice: 'Successfully listed to previous'} }
-      end
-    end
-
-  end
-
-
-
   # @note: this method should show image without diag
   #   then - start to calculate diag
   def results_list
-    selected_theme_id = session[:selected_theme_id]
-    logger.info "In work#results_list: selected_theme_id = #{selected_theme_id} "
-
-    res_composite_diag = Image.where(theme_id: selected_theme_id).order("ave_value DESC")#.descend
-    logger.info " res_composite_diag.size = #{res_composite_diag.size}"
+    @selected_theme_id = session[:selected_theme_id]
+    logger.info "In work#results_list: @selected_theme_id = #{@selected_theme_id} "
+    
+    res_composite_diag = Image.where(theme_id: @selected_theme_id).order("ave_value DESC")#.descend
     @composite_results_size = res_composite_diag.size
     @composite_results = res_composite_diag.take(@composite_results_size)
     @composite_results_paged = pages_of(@composite_results, 6)
 
+    # @work_path = URI(display_theme_path).path    # { :method => "post", :action => "display_theme"}
     logger.info "In work_cntrl#results_list: @composite_results_size = #{@composite_results_size}"
   end
 
-
-  # @note: this method should save value diag for one image
-  #   then - start to calculate average value
-  def save_value
-    image_id = params[:image_id].to_i
-    theme_id = params[:theme_id].to_i
-    value = params[:value].to_i
-
-    logger.info "In save_value: image_id = #{image_id.inspect},
-                  theme_id = #{theme_id.inspect},
-                 value = #{value.inspect} "
-
-    new_value_data = {
-      user_id: current_user.id,
-      image_id: image_id,
-      value: value
-    }
-    logger.info "In save_value: new_value_data = #{new_value_data.inspect}"
-    
-    # save image value to   Values (user_id, image_id, value)
-    Value.create(new_value_data)
-
-    user_value = value
-    
-    # calc ave_value and save to Image (image_id, ave_value)
-    ave_value = Value.calc_average_value(image_id).round
-    logger.info "In save_value: after calc_average_value: ave_value = #{ave_value.inspect}"
-
-    Image.update_ave_value(image_id, ave_value)
-
-    valued_image_data = show_valued_image(theme_id, image_id)
-
-    respond_to do |format|
-      if value.blank?
-        format.html {  render nothing: true, status: :unprocessable_entity }
-        format.json {}
-      else
-        format.html { render display_theme_path, status: :successfully }
-        format.json { render json:  {
-                                      user_value: user_value,
-                                      ave_value: ave_value,
-                                      values_qty: valued_image_data[:values_qty],
-                                      image_id: valued_image_data[:image_id],
-                                      user_valued: valued_image_data[:user_valued],
-                                      common_ave_value: valued_image_data[:common_ave_value],
-                                      value: valued_image_data[:value],
-                                      status: :successfully,
-                                      notice: 'Successfully listed to previous'}
-   
-        }
-      end
-    end
-
-
-  end
-  
 
 
 
