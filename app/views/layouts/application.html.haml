@@ -1,8 +1,9 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    -#%title Experteese
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %meta{:name => "viewport", :content => "text/html; charset=UTF-8, width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"}
+      -#%title Experteese
     -#%title
       = "#{yield(:title)} | Experteese"
       -#= content_for?(:title) ? yield(:title) : "Experteese"
