@@ -26,6 +26,7 @@ if(userValuedImage == 1){
   $('.left_controls span.common_value').css({"display": "block"});
   $('.image .image_display .image_diag').css({"display": "none"});
   var imageCommonValue = '<%= @image_data[:common_ave_value] %>';
+  console.log("3c2 IN IF: imageCommonValue = " + imageCommonValue);
   $('.left_controls span.common_value h2.common').append().html(imageCommonValue);
 
   var imageValue = '<%= @image_data[:value] %>';

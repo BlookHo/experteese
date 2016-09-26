@@ -22,8 +22,13 @@ module WorkImage
     values_qty = Value.all.count.round
 
     if user_valued == 1
-      common_ave_value = Image.find(image_id).ave_value.round
-      logger.info "In show_image: common_ave_value = #{common_ave_value.inspect} "
+      common_ave_value = Image.find_image(image_id).ave_value
+      logger.info "In 1show_image: common_ave_value = #{common_ave_value.inspect} "
+      if common_ave_value.blank?
+        common_ave_value = 0
+      end
+      common_ave_value.round unless common_ave_value.blank?
+      logger.info "In 2show_image: common_ave_value = #{common_ave_value.inspect} "
     else
       common_ave_value = 0
     end

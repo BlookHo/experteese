@@ -82,6 +82,10 @@ Theme.create([
 ])
 
 
+Value.delete_all
+Value.reset_pk_sequence
+
+
 User.delete_all
 User.reset_pk_sequence
 User.create([
