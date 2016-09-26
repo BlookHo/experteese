@@ -11,7 +11,16 @@ Image.delete_all
 Image.reset_pk_sequence
 Image.create([
 
-{name: 'P.-A. Renoir, Бал в Мулен де ла Галетт', file: 'Ball_Renour.jpg', theme_id: 2},
+{name: 'P.-A. Renoir, Бал в Мулен де ла Галетт', file: 'Renoir Бал в Мулен де ла Галлет.jpg', theme_id: 2},
+{name: 'P.-A. Renoir, Букет', file: 'Renoir букет.jpg', theme_id: 2},
+{name: 'P.-A. Renoir, Девушка с веером', file: 'Renoir Девушка с веером.jpg', theme_id: 2},
+{name: 'P.-A. Renoir, Завтрак гребцов', file: 'Renoir ЗАВТРАК ГРЕБЦОВ.jpg', theme_id: 2},
+{name: 'P.-A. Renoir, Зонтики', file: 'Renoir зонтики.jpg', theme_id: 2},
+{name: 'P.-A. Renoir, Лягушатник', file: 'Renoir Лягушатник.jpg', theme_id: 2},
+{name: 'P.-A. Renoir, Мадам Шарпантье', file: 'Renoir Мадам Шарпантье.jpg', theme_id: 2},
+{name: 'P.-A. Renoir, Новый мост в Париже', file: 'Renoir Новый мост в Париже.jpg', theme_id: 2},
+{name: 'P.-A. Renoir, Портрет Жанны Самари', file: 'Renoir Портрет Жанны Самари.jpg', theme_id: 2},
+{name: 'P.-A. Renoir, Речной пейзаж', file: 'Renoir Речной пейзаж.jpg', theme_id: 2},
 {name: 'P. Picasso, Фабрика', file: 'Picasso Fabrique.jpg', theme_id: 3},
 {name: 'H. Matiss, Танец', file: 'dance_mattis2.jpg', theme_id: 4},
 {name: 'радуга', file: 'raduga5обрез.jpg', theme_id: 7},
@@ -31,7 +40,30 @@ Image.create([
 {name: 'P. Picasso, Портрет Доры Маар', file: 'Picasso Портрет Доры Маар.jpg', theme_id: 3},
 {name: 'P. Picasso, Средиземноморский пейзаж', file: 'Picasso Средиземноморский пейзаж.jpg', theme_id: 3},
 {name: 'P. Picasso, Стекляная посуда', file: 'Picasso Стекляная посуда.jpg', theme_id: 3},
-{name: 'V.W. van Gogh, Куст', file: 'ван_гог_куст2.jpg', theme_id: 6}
+{name: 'V.W. van Gogh, Автопортрет', file: 'van Gogh Автопортрет.jpg', theme_id: 6},
+{name: 'V.W. van Gogh, Белый дом ночью', file: 'van Gogh Белый дом ночью.jpg', theme_id: 6},
+{name: 'V.W. van Gogh, Куст 2', file: 'van Gogh ван_гог_куст2.jpg', theme_id: 6},
+{name: 'V.W. van Gogh, Ветви цветущего миндаля', file: 'van Gogh Ветви цветущего миндаля.jpg', theme_id: 6},
+{name: 'V.W. van Gogh, Два срезанных подсолнуха', file: 'van Gogh Два срезанных подсолнуха.jpg', theme_id: 6},
+{name: 'V.W. van Gogh, Едоки картофеля', file: 'van Gogh Едоки картофеля.jpg', theme_id: 6},
+{name: 'V.W. van Gogh, Звездная ночь', file: 'van Gogh Звездная ночь.jpg', theme_id: 6},
+{name: 'V.W. van Gogh, Ирисы', file: 'van Gogh Ирисы.jpg', theme_id: 6},
+{name: 'V.W. van Gogh, Куст', file: 'van Gogh куст.jpg', theme_id: 6},
+{name: 'V.W. van Gogh, Маковое поле', file: 'van Gogh Маковое поле.jpg', theme_id: 6},
+{name: 'V.W. van Gogh, Мост', file: 'van Gogh Мост.jpg', theme_id: 6},
+{name: 'V.W. van Gogh, Натюрморт с картофелем', file: 'van Gogh Натюрморт с картофелем.jpg', theme_id: 6},
+{name: 'Кандинский В.В., Английский сад', file: 'Кандинский Английский сад.jpg', theme_id: 5},
+{name: 'Кандинский В.В., Зимний пезаж', file: 'Кандинский Зимний пезаж.jpg', theme_id: 5},
+{name: 'Кандинский В.В., Зубовская площадь', file: 'Кандинский Зубовская площадь.jpg', theme_id: 5},
+{name: 'Кандинский В.В., Комета', file: 'Кандинский Комета.jpg', theme_id: 5},
+{name: 'Кандинский В.В., Композиция №5', file: 'Кандинский Композиция №5.jpg', theme_id: 5},
+{name: 'Кандинский В.В., Композиция №6', file: 'Кандинский Композиция №6.jpg', theme_id: 5},
+{name: 'Кандинский В.В., Композиция №7', file: 'Кандинский Композиция №7.jpg', theme_id: 5},
+{name: 'Кандинский В.В., Осень', file: 'Кандинский Осень.jpg', theme_id: 5},
+{name: 'Кандинский В.В., Осень в Баварии', file: 'Кандинский Осень в Баварии.jpg', theme_id: 5},
+{name: 'Кандинский В.В., Пейзаж', file: 'Кандинский Пейзаж.jpg', theme_id: 5},
+{name: 'Кандинский В.В., Черные вершины', file: 'Кандинский Черные вершины.jpg', theme_id: 5}
+
 
 ])
 
