@@ -62,8 +62,18 @@ Image.create([
 {name: 'Кандинский В.В., Осень', file: 'Кандинский Осень.jpg', theme_id: 5},
 {name: 'Кандинский В.В., Осень в Баварии', file: 'Кандинский Осень в Баварии.jpg', theme_id: 5},
 {name: 'Кандинский В.В., Пейзаж', file: 'Кандинский Пейзаж.jpg', theme_id: 5},
-{name: 'Кандинский В.В., Черные вершины', file: 'Кандинский Черные вершины.jpg', theme_id: 5}
-
+{name: 'Кандинский В.В., Черные вершины', file: 'Кандинский Черные вершины.jpg', theme_id: 5},
+{name: 'Черный', file: 'Car color black.jpg', theme_id: 8},
+{name: 'Синий', file: 'Car color blue.jpg', theme_id: 8},
+{name: 'Коричневый беж', file: 'Car color brown biege.jpg', theme_id: 8},
+{name: 'Серый', file: 'Car color gray.jpg', theme_id: 8},
+{name: 'Зеленый', file: 'Car color green.jpg', theme_id: 8},
+{name: 'Красный', file: 'Car color red.jpg', theme_id: 8},
+{name: 'Серебряный', file: 'Car color silver.jpg', theme_id: 8},
+{name: 'Розовый техно', file: 'Car color techno_pink.jpg', theme_id: 8},
+{name: 'Белый', file: 'Car color white.jpg', theme_id: 8},
+{name: 'Желтый', file: 'Car color yellow.jpg', theme_id: 8},
+{name: 'Cat eye', file: 'cateye.jpg', theme_id: 7}
 
 ])
 
@@ -77,7 +87,8 @@ Theme.create([
 {name: "Какое из произведений художника А.Матисса наилучшим образом характеризует его творчество?"},      # 4
 {name: "Какое из произведений художника В.Кандинского наилучшим образом характеризует его творчество?"},  # 5
 {name: "Какое из произведений художника В.ван Гога наилучшим образом характеризует его творчество?"},     # 6
-{name: "Какое из изображений является наиболее гармоничным по вашему восприятию?"}                        # 7
+{name: "Какое из изображений является наиболее гармоничным по вашему восприятию?"},                       # 7
+{name: "Какой цвет автомобиля является наиболее популярным в этом году?"}                                 # 8
 
 ])
 
