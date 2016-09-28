@@ -1,0 +1,5 @@
+ru:
+  time:
+    formats:
+      myformat: "%d.%m.%Y в %k:%M:%S"
+#      myformat: '%d-%m-%Y %H:%M;%s'

@@ -11,6 +11,10 @@
     = link_to "Experteese in ", root_path, id: "logo"
     .rails_logo
       = link_to image_tag("rails.png", alt: "Rails logo")
+    %p.locale
+      %b I18n.locale:
+      = I18n.locale
+
     %nav
       %ul.nav.navbar-nav.pull-right
         %li= link_to "Home", root_path
