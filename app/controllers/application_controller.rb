@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  before_filter :set_locale
+  before_action :set_locale
 
 
 
@@ -25,9 +25,41 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  
+  
+  
   private
-  def set_locale
-    I18n.locale = params[:locale] || I18n.default_locale
+  
+  def extr_locale_in_accept_lang
+    request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
   end
 
+  def set_locale_from_params
+    if params[:locale]
+      if I18n.available_locales.include?(params[:locale].to_sym)
+        I18n.locale = params[:locale]
+        flash.now[:notice] = " #{params[:locale]} Есть Перевод страницы"
+
+        logger.info flash.now[:notice]
+
+      else
+        flash.now[:notice] = " #{params[:locale]} Перевод страницы отсутствует"
+        logger.error flash.now[:notice]
+      end
+      params[:locale]
+    end
+  end
+
+  # 1-st ver
+  # def set_locale
+  #   I18n.locale = params[:locale] || I18n.default_locale
+  # end
+
+  def set_locale
+    I18n.locale = set_locale_from_params || I18n.default_locale
+    Rails.application.routes.default_url_options[:locale]= I18n.locale
+
+  end
+  
+  
 end

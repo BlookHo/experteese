@@ -12,6 +12,10 @@
     .rails_logo
       = link_to image_tag("rails.png", alt: "Rails logo")
     %p.locale
+      = link_to_unless I18n.locale == :ru, "Русский", locale: :ru
+      |
+      = link_to_unless I18n.locale == :en, "English", locale: :en
+
       %b I18n.locale:
       = I18n.locale
 

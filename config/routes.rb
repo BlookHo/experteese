@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   
   
   # scope '(:locale)' do
-  scope "(:locale)", :locale => /en|ru/ do
+  # scope "(:locale)" do #, :locale => /en|ru/ do
     
     
     
@@ -58,6 +58,6 @@ Rails.application.routes.draw do
   
 
     
-  end
+  # end
     
 end
