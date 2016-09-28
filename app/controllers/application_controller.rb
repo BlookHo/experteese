@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
 
 
-
   include SessionsHelper # to see in views and controllers
 
   # STEP 1
@@ -38,13 +37,11 @@ class ApplicationController < ActionController::Base
     if params[:locale]
       if I18n.available_locales.include?(params[:locale].to_sym)
         I18n.locale = params[:locale]
-        flash.now[:notice] = " #{params[:locale]} Есть Перевод страницы"
-
+        # flash.now[:notice] = " #{params[:locale]} Есть Перевод страницы"
         logger.info flash.now[:notice]
-
       else
-        flash.now[:notice] = " #{params[:locale]} Перевод страницы отсутствует"
-        logger.error flash.now[:notice]
+        flash.now[:alarm] = " #{params[:locale]} Перевод страницы отсутствует"
+        logger.error flash.now[:alarm]
       end
       params[:locale]
     end
@@ -58,7 +55,6 @@ class ApplicationController < ActionController::Base
   def set_locale
     I18n.locale = set_locale_from_params || I18n.default_locale
     Rails.application.routes.default_url_options[:locale]= I18n.locale
-
   end
   
   

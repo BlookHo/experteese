@@ -1,8 +1,25 @@
 ru:
-  hello: "Hello world"
+  hello: "Привет, мир"
+
+  shared:
+    header:
+      logo_title: "Experteese на Ruby_on_Rails"
+      home: "Главная"
+      help: "Помощь"
+      sign_in: "Войти"
+      sign_out: "Выйти"
+      person: "Я"
+      profile: "Моя страница"
+      settings: "Настройки"
+#      logged_msg: "Вошел как "
 
 
-#
+
+    footer:
+      about: "О сайте"
+      contact: "Контакты"
+      dev_msg: "Сайт в процессе разработки"
+
 #  will_paginate:
 #    previous_label: "&#8592; Назад"
 #    next_label: "Вперёд &#8594;"

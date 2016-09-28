@@ -21,3 +21,22 @@
 
 en:
   hello: "Hello world"
+
+  shared:
+    header:
+      logo_title: "Experteese in Ruby_on_Rails"
+      home: "Home"
+      help: "Help"
+      sign_in: "Sign in"
+      sign_out: "Sign out"
+      person: "Me"
+      profile: "My page"
+      settings: "Settings"
+#      logged_msg: "Logged in as "
+
+    footer:
+      about: "About"
+      contact: "Contacts"
+      dev_msg: "App is in Progress/Maintenance"
+
+

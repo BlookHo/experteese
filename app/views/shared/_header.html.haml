@@ -7,39 +7,53 @@
 -#      %li= link_to "Log in", '#'
 
 %header.navbar.navbar-fixed-top.navbar-inverse
-  .container
-    = link_to "Experteese in ", root_path, id: "logo"
+  .container.header
+    = link_to t('.logo_title'), root_path, id: "logo"
     .rails_logo
       = link_to image_tag("rails.png", alt: "Rails logo")
-    %p.locale
-      = link_to_unless I18n.locale == :ru, "Русский", locale: :ru
-      |
-      = link_to_unless I18n.locale == :en, "English", locale: :en
 
-      %b I18n.locale:
-      = I18n.locale
+      %p.locale
+        = link_to_unless I18n.locale == :ru, "Русский", locale: :ru
+        |
+        = link_to_unless I18n.locale == :en, "English", locale: :en
+
+        %b
+          = I18n.locale
+
+
 
     %nav
       %ul.nav.navbar-nav.pull-right
-        %li= link_to "Home", root_path
-        %li= link_to "Help", help_path
+        %li= link_to t('.home'), root_path
+        %li= link_to t('.help'), help_path
         - if signed_in?
           -#%li= link_to "Users", '#'
           %li.logged
-            Logged in as #{current_user.email}
+            #{current_user.email}
           = gravatar_for current_user
           %li#fat-menu.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-              Account
-              %b.caret
+              %p
+                = t('.person')
+                %b.caret
             %ul.dropdown-menu
-              %li= link_to "Profile", current_user
-              %li= link_to "Settings", '#'
+              %li= link_to t('.profile'), current_user
+              %li= link_to t('.settings'), '#'
               %li.divider
               %li
-                = link_to "Sign out", signout_path, method: "delete"
+                = link_to t('.sign_out'), signout_path, method: "delete"
         - else
-          %li= link_to "Sign in", signin_path
+          %li= link_to t('.sign_in'), signin_path
+
+
+        -#%p.locale
+        -#  = link_to_unless I18n.locale == :ru, "Русский", locale: :ru
+        -#  |
+        -#  = link_to_unless I18n.locale == :en, "English", locale: :en
+        -#
+        -#  %b
+        -#    = I18n.locale
+
 
     -#.dropdown
     -#  %button.btn.btn-primary.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
