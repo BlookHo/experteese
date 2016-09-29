@@ -13,10 +13,17 @@
       = link_to image_tag("rails.png", alt: "Rails logo")
 
       %p.locale
-        = link_to_unless I18n.locale == :ru, "Русский", locale: :ru
-        |
-        = link_to_unless I18n.locale == :en, "English", locale: :en
 
+        -#.ru_link
+        = link_to image_tag("Russia.jpg", alt: "",  style: "width: 10%; height: 10%", title: "Русский" ), locale: :ru
+        -#= link_to image_tag("Russia.jpg", alt: "",  style: "width: 8%; height: 8%; " )+" РУ", locale: :ru
+        -#%p{style: "color: #c4f7ff"}" РУ"
+        -#= link_to_unless I18n.locale == :ru, "Русский", locale: :ru
+        -#%image_tag(style= "width: 8%; height: 8%" src= "assets/Russia.jpg")
+        -#|
+        = link_to image_tag("United_Kingdom.jpg", alt: "",  style: "width: 12%; height: 12%", title: "English"), locale: :en
+        -#= link_to image_tag("United_Kingdom.jpg", alt: "",  style: "width: 9%; height: 9%")+" EN", locale: :en
+        -#= link_to_unless I18n.locale == :en, "English", locale: :en
         %b
           = I18n.locale
 

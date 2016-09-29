@@ -39,4 +39,42 @@ en:
       contact: "Contacts"
       dev_msg: "App is in Progress/Maintenance"
 
+  sessions:
+    new:
+      sign_in: "Sign in"
+      sign_up: "Sign up"
+      email: "E-mail"
+      password: "Password"
+      new_user?: "New user?"
 
+  users:
+    form:
+      name: "Name"
+      email: "E-mail"
+      password: "Password"
+      password_confirmation: "Password confirmation"
+#      confirmation: "Подтверждение"
+      create_account: "Create my account"
+
+    new:
+      new_user_sign_up: "New user sign up"
+      back: "Back"
+
+
+    show:
+      work: "Proceed to work"
+      email: "Email"
+
+  work:
+    button_theme_select:
+      select_theme: "select theme"
+
+    button_list_results:
+      results_list: "list results"
+
+    choose_theme_from_arr:
+      select_theme: "Select theme"
+
+    images:
+      common_value: "common value"
+      total_values: "total values"

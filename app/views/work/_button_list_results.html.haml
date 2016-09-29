@@ -14,7 +14,8 @@
 %button.button__left.modalBtn
 
   -#%a{"data-remote" => "true", :format => "js", :href => "results_list", 'data-target' => '#overlay_m',  :onclick => "overlay()", :title => "List all your diagnosys results"} list results
-  %a{ :href => "results_list",  :title => "List all your diagnosys results"} list results
+  %a{ :href => "results_list",  :title => "List all your diagnosys results"}
+    = t('.results_list')
 
 
 

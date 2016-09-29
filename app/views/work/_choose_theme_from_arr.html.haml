@@ -4,7 +4,7 @@
   = form_tag("/display_theme", remote: true,  :format => "js") do
     = select_tag :theme,
       options_for_select(@themes, selected: @selected_theme),
-      prompt: "Select theme",
+      prompt: t('.select_theme'),
       onchange:  "$(this).parent('form').submit();",
       formats: [ :js ]
 

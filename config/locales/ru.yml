@@ -13,12 +13,56 @@ ru:
       settings: "Настройки"
 #      logged_msg: "Вошел как "
 
-
-
     footer:
       about: "О сайте"
       contact: "Контакты"
       dev_msg: "Сайт в процессе разработки"
+
+  sessions:
+    new:
+      sign_in: "Войти"
+      sign_up: "Зарегистрироваться"
+      email: "E-mail"
+      password: "Пароль"
+      new_user?: "Новый пользователь?"
+
+
+  users:
+    form:
+      name: "Имя"
+      email: "E-mail"
+      password: "Пароль"
+      password_confirmation: "Подтверждение пароля"
+#      confirmation: "Подтверждение"
+      create_account: "Создать мой аккаунт"
+
+    new:
+      new_user_sign_up: "Регистрация нового пользователя"
+      back: "Назад"
+
+    show:
+      work: "Экспертиза"
+      email: "Email"
+
+  work:
+    button_theme_select:
+      select_theme: "выбрать тему"
+
+
+    button_list_results:
+      results_list: "результаты"
+
+    choose_theme_from_arr:
+      select_theme: "выберите тему"
+
+    images:
+      common_value: "средняя оценка"
+      total_values: "всего оценок"
+
+
+
+
+#      name: "Имя"
 
 #  will_paginate:
 #    previous_label: "&#8592; Назад"

@@ -7,19 +7,19 @@
           %li= msg
 
   .field
-    = f.label :name
+    = f.label t('.name')
     = f.text_field :name
   .field
-    = f.label :email
+    = f.label t('.email')
     = f.text_field :email
   .field
-    = f.label :password
+    = f.label t('.password')
     = f.password_field :password
   .field
-    = f.label :password_confirmation, "Confirmation"
+    = f.label t('.password_confirmation')
     = f.password_field :password_confirmation
 
 
   .actions
     -#= f.submit 'Save'
-    = f.submit "Create my account", class: "btn btn-large btn-primary"
+    = f.submit t(".create_account"), class: "btn btn-large btn-primary"
