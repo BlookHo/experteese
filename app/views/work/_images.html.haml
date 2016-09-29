@@ -8,6 +8,7 @@
 -#    %span.close{:title => "Close table"} x
 -#    %h2 Your selected images diagnosys results
 -#    .results_list
+-#@current_locale = #{@current_locale.inspect}
 
 .image
   .row
@@ -17,7 +18,7 @@
         -#  = render 'work/button_load'
         -#  %br
         .select_theme
-          = render 'work/button_theme_select'
+          = render 'work/button_theme_select', locale: @current_locale
           %br
         -#.select_image
         -#  = render 'work/button_select'
@@ -27,10 +28,10 @@
           %br
 
         %span.common_value
-          Common value
+          = t('.common_value')
           %h2.common{:title => "Common value"}
         %span.total_values
-          Total values
+          = t('.total_values')
           %h2.total{:title => "Total values"} #{@values_qty.round}
 
         -#.brainlook
@@ -44,7 +45,7 @@
 
         .row.image
           .col-md-12
-            %h2.up-theme{:title => "Theme name"}
+            %h2.up-theme{:title => t('.theme_name')}
               #{@selected_theme}
 
           .col-md-12
@@ -83,9 +84,10 @@
               -#main var
               #chosen_value 50
               %h2.down{:title => "Value scale"}
-                Make your decision
+                = t(".make_decision")
               %button.button__results.save{:title => "Save image diag results"}
-                %a{"data-remote" => "true", :format => "js", :href => "#", :title => "Save image diag results"} save
+                %a{"data-remote" => "true", :format => "js", :href => "#", :title => "Save image diag results"}
+                  = t(".save_decision")
 
               %p.left 5%
               #slider

@@ -2,13 +2,13 @@
 -# * Created by aleks_i on 25.03.16.
 -# */
 
-.-{ title: "Go to work area"}
+.-{ title: t(".page_title")}
 
   - if @composite_results.blank?
     %table{ :style => "table-layout: auto; title: 'No Values results...';" }
       .results
-        %h2 No Values results ...
-        %h2 Select theme
+        %h2=  t(".no_values")
+        %h2=  t(".select_theme")
         -#%tr
           -#%td.left.grey.italic
           -#No Values results...
@@ -51,7 +51,7 @@
     %br
     %hr
 -#= link_to "Return to main page", display_theme_path(theme_id: @selected_theme_id), :method => "post",  class: "btn btn-lg btn-primary", title: "Go to main page", remote: true
-= link_to "Return to main page", work_path,  class: "btn btn-lg btn-primary", title: "Go to main page"
+= link_to t(".return_to_main"), work_path,  class: "btn btn-lg btn-primary", title: "Go to main page"
 %br
 %br
 

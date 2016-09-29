@@ -1,7 +1,7 @@
 - provide(:title, "Sign up")
 
-%h1 New user Sign up
+%h1= t('.new_user_sign_up')
 
 = render 'form'
 
-= link_to 'Back', root_path, :class => "ui_link"
+= link_to t('.back'), root_path, :class => "ui_link"
