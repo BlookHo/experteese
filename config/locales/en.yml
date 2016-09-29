@@ -22,6 +22,8 @@
 en:
   hello: "Hello world"
 
+
+
   shared:
     header:
       logo_title: "Experteese in Ruby_on_Rails"
@@ -66,15 +68,46 @@ en:
       email: "Email"
 
   work:
+
+    index:
+      def_select_theme: "Select theme to leave your answer"
+
+
     button_theme_select:
-      select_theme: "select theme"
+      select_theme_bt: "select theme"
 
     button_list_results:
       results_list: "list results"
 
     choose_theme_from_arr:
-      select_theme: "Select theme"
+      select_theme: "select theme ar"
+
+    choose_theme:
+      select_theme: "select theme ch"
 
     images:
       common_value: "common value"
       total_values: "total values"
+
+      make_decision: "Make your decision"
+      save_decision: "save"
+
+
+      # titles
+      theme_name: "Theme name"
+
+    display_theme:
+      select_theme: "Select theme di"
+
+
+    results_list:
+      no_values: "No Values results for selected theme..."
+      select_theme: "Select other theme"
+      return_to_main: "Return to main"
+
+      # titles
+      page_title: "Go to work area"
+
+
+
+

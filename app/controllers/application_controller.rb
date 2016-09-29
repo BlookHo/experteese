@@ -24,17 +24,27 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  
-  
-  
-  private
-  
+
   def extr_locale_in_accept_lang
-    request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+    # locale = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+    # locale = request.env['HTTP_ACCEPT_LANGUAGE']#.scan(/^[a-z]{2}/).first
+
+    # locale = request.env['Request URL']#.scan(/^[a-z]{2}/).first
+    locale = params[:locale]#.scan(/^[a-z]{2}/).first
+
+    logger.info "In extr_locale_in_accept_lang: locale = #{locale}"
   end
 
+
+  private
+  
+
   def set_locale_from_params
+            
     if params[:locale]
+  
+      extr_locale_in_accept_lang
+      
       if I18n.available_locales.include?(params[:locale].to_sym)
         I18n.locale = params[:locale]
         # flash.now[:notice] = " #{params[:locale]} Есть Перевод страницы"

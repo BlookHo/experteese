@@ -15,15 +15,17 @@ $(document).click(function(e){
   else {
     console.log(": In doc.click = OUT side content area"  );
     $('.form_select').css({"display": "none"});
-    $('.select_theme').empty().html("<%= j render 'work/button_theme_select' -%>");
+    $('.select_theme').empty().html("<%= j render 'work/button_theme_select', locale: params[:locale] -%>");
   }
 });
 
+var parLoc = '<%= @params_locale %>';
+console.log("IN choose_theme.js: params[:locale] = " + parLoc );
+var currLocale = '<%= I18n.locale %>';
+console.log("IN choose_theme.js: currLocale = " + currLocale );
 
 
-
-
-$('.select_theme').empty().html("<%= j render 'choose_theme_from_arr' -%>");
+$('.select_theme').empty().html("<%= j render 'choose_theme_from_arr', locale: I18n.locale -%>");
 
 
 //

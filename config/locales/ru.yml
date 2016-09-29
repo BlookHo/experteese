@@ -1,6 +1,8 @@
 ru:
   hello: "Привет, мир"
 
+
+
   shared:
     header:
       logo_title: "Experteese на Ruby_on_Rails"
@@ -45,8 +47,12 @@ ru:
       email: "Email"
 
   work:
+
+    index:
+      def_select_theme: "Выберите тему для оценки"
+
     button_theme_select:
-      select_theme: "выбрать тему"
+      select_theme_bt: "выбрать тему"
 
 
     button_list_results:
@@ -58,6 +64,24 @@ ru:
     images:
       common_value: "средняя оценка"
       total_values: "всего оценок"
+
+      make_decision: "Выберите свою оценку"
+      save_decision: "сохранить"
+
+      # titles
+      theme_name: "Тема"
+
+    display_theme:
+      select_theme: "Выберите тему для оценки"
+
+
+    results_list:
+      no_values: "Результаты по выбранной теме отсутствуют..."
+      select_theme: "Выберите другую тему"
+      return_to_main: "На главную"
+
+      # titles
+      page_title: "Перейдите к выбору темы"
 
 
 
