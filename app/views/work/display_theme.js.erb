@@ -10,10 +10,11 @@ $('.left_controls span.total_values h2.total').append().html(valuesQty);
 // show theme
 var selectedTheme = '<%= @image_data[:theme] %>';
 
-if(selectedTheme == "Select theme to leave your answer" || selectedTheme == ""){
+if( selectedTheme == "Выберите тему для оценки" || selectedTheme == "Select theme to leave your answer" || selectedTheme == ""){
   $('.img-left-side').css({"display": "none"});
   $('.img-right-side').css({"display": "none"});
   $('.image .image_display .image_diag').css({"display": "none"});
+  // $('.left_controls span.total_values h2.total').css({"display": "none"});
 }else{
   $('.img-left-side').css({"display": "block"});
   $('.img-right-side').css({"display": "block"});

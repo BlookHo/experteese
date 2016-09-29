@@ -23,13 +23,13 @@ class WorkController < ApplicationController
   # @note: use in views
   def choose_theme
   
-    @current_locale = params[:locale]
-    logger.info "In WorkController#choose_theme @@current_locale = #{@current_locale}"
-    session[:current_locale] = @current_locale
+    # @current_locale = params[:locale]
+    # logger.info "In WorkController#choose_theme @@current_locale = #{@current_locale}"
+    # session[:current_locale] = @current_locale
 
     @themes = Theme.all.pluck(:name)
     logger.info "In WorkController#choose_theme @themes = #{@themes}"
-    respond_to :js, locale: I18n.locale
+    respond_to :js
   end
 
   
@@ -48,7 +48,9 @@ class WorkController < ApplicationController
     if params[:theme] == "-----" #.blank?
       theme = t(".select_theme") #"Select theme to leave your answer"
       theme_id = 1
-      data = { index: 0, name: 'радуга', file: 'raduga5обрез.jpg', image_id: 4,
+      values_qty = Value.all.count.round
+
+      data = { index: 0, name: 'радуга', values_qty: values_qty, file: 'raduga5обрез.jpg', image_id: 4,
                current_user_id: current_user_id, user_valued: false, common_ave_value: 0, value: 0 }
       logger.info "1 data = #{data.inspect} "
     else
