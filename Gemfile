@@ -60,7 +60,14 @@ gem 'kaminari'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
- gem 'rspec-rails', '~> 3.5'  # 3.5.2 Installed
+
+  # Лучше отображает ошибки
+  gem "better_errors"
+  # gem "binding_of_caller"
+
+
+
+  gem 'rspec-rails', '~> 3.5'  # 3.5.2 Installed
   gem 'rails-controller-testing', '0.1.1'
   # gem 'minitest-reporters',       '1.1.9'
   # gem "minitest"

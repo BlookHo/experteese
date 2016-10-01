@@ -1,14 +1,16 @@
 - provide(:title, "Contacts")
 
-%h1 Contacts
+%h1= t('.contacts_title')
 
 .about-copy
-  %h1
+  %h1.list
     Приложение Experteese разработано в качестве практического материала для изучения курса
     "Применение альтернативных фреймвоков Ruby_on_Rails".
+    %br
 
     Предложения по развитию приложения и улучшению его функциональности прошу направлять по адресу:
     zoneiva@gmail.com
+    %br
 
   %i.fa.fa-flag.iconsMain{ style: "color: #C44BB4; font-size: 4em; position: relative; left: 50%;" }
 

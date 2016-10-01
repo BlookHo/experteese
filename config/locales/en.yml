@@ -39,7 +39,7 @@ en:
     footer:
       about: "About"
       contact: "Contacts"
-      dev_msg: "App is in Progress/Maintenance"
+      dev_msg: "App is in Development"
 
   sessions:
     new:
@@ -109,5 +109,10 @@ en:
       page_title: "Go to work area"
 
 
+  main:
+    about:
+      about_title: "About"
 
+    contacts:
+      contacts_title: "Contacts"
 
