@@ -66,28 +66,16 @@ module Api
     # @note: this method should save value diag for one image
     #   then - start to calculate average value
     def save_value
-      image_id = params[:image_id].to_i
-      theme_id = params[:theme_id].to_i
       value = params[:value].to_i
-      logger.info "In save_value: theme_id = #{theme_id.inspect} "
-  
-      new_value_data = {
-        user_id: current_user.id,
-        image_id: image_id,
-        value: value
-      }
-      logger.info "In save_value: new_value_data = #{new_value_data.inspect}"
+      new_value_data = { user_id: current_user.id, image_id: params[:image_id].to_i, value: value }
       valued_image_data = Image.value_and_update(new_value_data)
 
       respond_to do |format|
         if value.blank?
-          format.html {  render nothing: true, status: :unprocessable_entity }
-          format.json {}
+          format.html { render nothing: true, status: :unprocessable_entity }
         else
-          format.html { render display_theme_path, status: :successfully }
           format.json { render json:  {
             user_value:       value,
-            # ave_value:        ave_value,
             values_qty:       valued_image_data[:values_qty],
             image_id:         valued_image_data[:image_id],
             user_valued:      valued_image_data[:user_valued],
