@@ -212,11 +212,11 @@ $('button.button__results.save').unbind( "click" ).click(function(event) {
         console.log("success1c:  " + data_return.notice );
         var userImageValue = data_return.user_value;
 //        console.log("1 IN ajax.save_value after done: display_theme: userImageValue = " + userImageValue );
-        var averageValue = data_return.ave_value;
+      //  var averageValue = data_return.ave_value;
 //        console.log("2 IN ajax.show_next_image after done: display_theme: averageValue = " + averageValue );
 
         $('.image .image_display .image_user_value').append().html(userImageValue);
-        $('.left_controls h2.common').append().html(averageValue);
+      //  $('.left_controls h2.common').append().html(averageValue);
 
         var userValuedFlag = data_return.user_valued;
         if(userValuedFlag  == 1){
