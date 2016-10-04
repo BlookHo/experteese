@@ -31,8 +31,6 @@ module Api
                                         notice: 'Successfully listed to next'} }
         end
       end
-
-
     end
 
 
@@ -61,9 +59,7 @@ module Api
                                         notice: 'Successfully listed to previous'} }
         end
       end
-
     end
-
 
 
 
@@ -81,13 +77,7 @@ module Api
         value: value
       }
       logger.info "In save_value: new_value_data = #{new_value_data.inspect}"
-
-
-
-      # todo: Практическое занятие "Рефакторинг" + image_spec.rb + image.rb model + work_image.rb
-        Image.value_and_update(new_value_data)
-        valued_image_data = show_valued_image(theme_id, image_id)
-      # valued_image_data = Image.value_and_update(new_value_data)
+      valued_image_data = Image.value_and_update(new_value_data)
 
       respond_to do |format|
         if value.blank?
@@ -108,7 +98,6 @@ module Api
           }
         end
       end
-
 
     end
 

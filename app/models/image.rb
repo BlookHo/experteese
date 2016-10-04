@@ -21,6 +21,7 @@ class Image < ApplicationRecord
     image.update(ave_value: ave_value)
   end
 
+  
   # Refactored method - transferred from work_image.rb module
   def self.show_valued_image(new_value_data)
     image_id = new_value_data[:image_id]
@@ -57,7 +58,6 @@ class Image < ApplicationRecord
   end
 
 
-  # todo: Практическое занятие "Рефакторинг"
   def self.value_and_update(new_value_data)
     image_id = new_value_data[:image_id]
     theme_id = new_value_data[:theme_id]
@@ -67,9 +67,7 @@ class Image < ApplicationRecord
     puts "in value_and_update: ave_value = #{ave_value} \n"
     update_ave_value(image_id, ave_value)
     
-    # todo: Практическое занятие "Рефакторинг"
-    # show_valued_image(new_value_data)
-        
+    show_valued_image(new_value_data)
   end
   
   
