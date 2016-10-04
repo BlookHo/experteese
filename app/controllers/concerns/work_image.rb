@@ -49,6 +49,7 @@ module WorkImage
     data
   end
 
+  # todo: Refactored: deleted here - to model Image
   # display image by index for searched theme
   def show_valued_image(theme_id, image_id)
     # theme_images = Image.theme_images(theme_id)
