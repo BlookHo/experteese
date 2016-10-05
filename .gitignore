@@ -21,6 +21,7 @@
 .byebug_history
 
 /config/secrets.yml
+secrets.yml
 
 .idea/*
 #workspace.xml
