@@ -2,62 +2,7 @@ require 'rails_helper'
 
 RSpec.describe MainController, type: :controller    do #  , focus: true
 
-  # let(:current_user) { create(:user) }   # User = 1. Tree = 1. profile_id = 63
-  # let(:currentuser_id) {current_user.id}
-  #
-  # before {
-  #   allow(controller).to receive(:logged_in?)
-  #   allow(controller).to receive(:current_user).and_return current_user
-  #
-  #   FactoryGirl.create(:user, :user_2)  # User = 2. Tree = 2. profile_id = 66
-  #   FactoryGirl.create(:user, :user_3 )  # User = 3 . Tree = [3]. profile_id = 22
-  #   FactoryGirl.create(:user, :user_4 )  # User = 4 . Tree = 10. profile_id = 444
-  #   # puts "before All: current_user.id = #{current_user.id} \n" # id = 1
-  #   # puts "before All: User.last.id = #{User.last.id} \n" # id = 2
-  #   # puts "before All: User.find(2).profile_id = #{User.find(2).profile_id} \n" # id = 2 profile_id = 66
-  #
-  #   FactoryGirl.create(:connected_user, :correct)      # 1  2
-  #   FactoryGirl.create(:connected_user, :correct_3_4)  # 3  4
-  #   # puts "before All: ConnectedUser.count = #{ConnectedUser.all.count} \n" # 2 rows
-  #
-  #   # Profile
-  #   FactoryGirl.create(:profile, :profile_63)
-  #   FactoryGirl.create(:profile, :profile_64)
-  #   FactoryGirl.create(:profile, :profile_65)
-  #   FactoryGirl.create(:profile, :profile_66)
-  #   FactoryGirl.create(:profile, :profile_67)
-  #   FactoryGirl.create(:profile, :profile_68)
-  #   FactoryGirl.create(:profile, :profile_69)
-  #   FactoryGirl.create(:profile, :profile_70)
-  #   FactoryGirl.create(:profile, :profile_78)
-  #   FactoryGirl.create(:profile, :profile_79)
-  #   FactoryGirl.create(:profile, :profile_80)
-  #   FactoryGirl.create(:profile, :profile_81)
-  #   FactoryGirl.create(:profile, :profile_82)
-  #   FactoryGirl.create(:profile, :profile_83)
-  #   FactoryGirl.create(:profile, :profile_84)
-  #   # puts "before All: Profile.find(63).user_id = #{Profile.find(63).user_id.inspect} \n"  # id = 63
-  #   # puts "before All: Profile.find(66).name_id = #{Profile.find(66).name_id.inspect} \n"  # id = 66
-  #   # puts "before All: Profile.last.id = #{Profile.last.id} \n"  # id = 64
-  #   # puts "before All: Profile.last.name_id = #{Profile.last.name_id} \n"  # name_id = 90
-  #   # puts "before All: Profile.count = #{Profile.all.count} \n" # 2
-  #
-  # }
-  #
-  # after {
-  #   User.delete_all
-  #   User.reset_pk_sequence
-  #   ConnectedUser.delete_all
-  #   ConnectedUser.reset_pk_sequence
-  #   Tree.delete_all
-  #   Tree.reset_pk_sequence
-  #   Profile.delete_all
-  #   Profile.reset_pk_sequence
-  #   Name.delete_all
-  #   Name.reset_pk_sequence
-  # }
 
-  
   let(:base_title) {"Experteese RoR Sample App"}
   
   describe 'CHECK MainController methods'  do  # , focus: true
@@ -107,7 +52,6 @@ RSpec.describe MainController, type: :controller    do #  , focus: true
 
       end
     end
-
     
     
     describe "GET #index" do

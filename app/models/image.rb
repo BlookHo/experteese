@@ -27,18 +27,11 @@ class Image < ApplicationRecord
     image_id = new_value_data[:image_id]
     theme_id = new_value_data[:theme_id]
     current_user_id = new_value_data[:user_id]
-    logger.info "In show_image: current_user_id = #{current_user_id.inspect} "
-    
-    logger.info "In show_image: image_id = #{image_id.inspect} "
-  
     user_valued, value = Value.user_valued_exists(current_user_id, image_id) # 1/0 ?
-    logger.info "In show_image: user_valued = #{user_valued.inspect} "
-  
     values_qty = Value.all.count.round
   
     if user_valued == 1
       common_ave_value = find(image_id).ave_value.round
-      logger.info "In show_image: common_ave_value = #{common_ave_value.inspect} "
     else
       common_ave_value = 0
     end
@@ -52,9 +45,8 @@ class Image < ApplicationRecord
       value: value,
       common_ave_value: common_ave_value
     }
-    logger.info "In show_image:  data = #{data.inspect} "
+    # logger.info "In show_image:  data = #{data.inspect} "
     data
-
   end
 
 

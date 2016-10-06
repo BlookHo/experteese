@@ -13,16 +13,17 @@ RSpec.describe "AuthenticationPages", type: :request do
     subject { page }
     before { visit signin_path }
 
-    describe "signin page" do
-      it { should have_content('Sign in') }
+    
+    describe "signin page", focus: true   do
+      it { should have_content( 'Войти')  }
       it { should have_title('Sign in') }
     end
 
-    describe "with valid information" do
+    describe "with valid information"     do  #  , focus: true
       let(:user) { FactoryGirl.create(:user, :user_2) }
       before do
         fill_in "Email",    with: user.email.upcase
-        fill_in "Password", with: user.password
+        fill_in "Пароль", with: user.password
         click_button "Sign in"
       end
 

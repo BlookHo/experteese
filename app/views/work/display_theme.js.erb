@@ -14,7 +14,6 @@ if( selectedTheme == "Выберите тему для оценки" || selected
   $('.img-left-side').css({"display": "none"});
   $('.img-right-side').css({"display": "none"});
   $('.image .image_display .image_diag').css({"display": "none"});
-  // $('.left_controls span.total_values h2.total').css({"display": "none"});
 }else{
   $('.img-left-side').css({"display": "block"});
   $('.img-right-side').css({"display": "block"});
@@ -43,9 +42,6 @@ console.log("3d IN display_theme: currentUserId = " + currentUserId);
 
 $('.image_display h2.up-theme').append().html(selectedTheme);
 
-//var titleImage = "Click this image to analyse it";
-//$('.img-title').append().html(titleImage);
-
 //restore button
 $('.select_theme').empty().html("<%= j render 'work/button_theme_select' -%>");
 
@@ -72,18 +68,9 @@ $(".img-center").attr({title: "Selected image" });
 $(".img-center img").attr({alt: "Selected Image", src: pathImage, title: "Selected image" });
 
 
-
-
-
 // AJAX call to next image list
 $('.img-right-side').click(function(event) {
   event.stopImmediatePropagation(); // would stop the event from bubbling to parent elements,
-
-//    //$('.image_display .image_diag .indicator .outer-circle').removeClass("show");
-//    $('.image_display .image_diag .scale .small_img_box').css({"display": "none"});
-//    $('.image_display .indic-circ').css({"display": "none"});
-//    $('.image_display .image_diag h2.down').css({"display": "none"});
-//    // not prevent other click handlers on the same element from firing.
 
   $.ajax({
     type: "get",
@@ -95,11 +82,8 @@ $('.img-right-side').click(function(event) {
   }).done(function (data_return) {
         console.log("success1c:  " + data_return.notice );
         imageCurrentIndex = data_return.new_image_index;
-//        console.log("1 IN ajax.show_next_image after done: display_theme: imageCurrentIndex = " + imageCurrentIndex );
         oneImageName = data_return.name;
-//        console.log("2 IN ajax.show_next_image after done: display_theme: oneImageName = " + oneImageName );
         oneImageFile = data_return.file;
-//        console.log("3 IN ajax.show_next_image after done:: oneImageFile = " + oneImageFile);
         oneImageId = data_return.image_id;
         $('.image_display h2.up').append().html(oneImageName);
         var pathImage = "assets/pictures/" + oneImageFile;
@@ -107,22 +91,18 @@ $('.img-right-side').click(function(event) {
         $(".img-center img").attr({alt: "Selected Image", src: pathImage, title: "Selected image" });
 
         var userValuedFlag = data_return.user_valued;
-//        console.log("4 IN show_next_image: userValuedFlag = " + userValuedFlag);
         if(userValuedFlag  == 1){
-//          console.log("5 IN IF: userValuedFlag == true? == " + userValuedFlag);
           $('.left_controls span.common_value').css({"display": "block"});
           var imageValue = data_return.value;
           $('.image .image_display .image_user_value').append().html(imageValue);
           $('.image .image_display .image_diag').css({"display": "none"});
 
           var imageCommonValue = data_return.common_ave_value;
-//          console.log("6 IN display_theme: imageCommonValue = " + imageCommonValue);
           $('.left_controls span.common_value h2.common').append().html(imageCommonValue);
 
           $('.image .image_display .image_user_value').css({"display": "block"});
         }else{
           $('.left_controls span.common_value').css({"display": "none"});
-//          console.log("7 IN ELSE: userValuedImage == false? == " + userValuedFlag);
           $('.image .image_display .image_user_value').css({"display": "none"});
           $('.image .image_display .image_diag').css({"display": "block"});
         }
@@ -149,11 +129,8 @@ $('.img-left-side').click(function(event) {
   }).done(function (data_return) {
         console.log("success1c:  " + data_return.notice );
         imageCurrentIndex = data_return.new_image_index;
-//        console.log("1 IN ajax.prev_image after done: display_theme: imageCurrentIndex = " + imageCurrentIndex );
         oneImageName = data_return.name;
-//        console.log("2 IN ajax.prev_image after done: display_theme: oneImageName = " + oneImageName );
         oneImageFile = data_return.file;
-//        console.log("3 IN ajax.prev_image after done:: oneImageFile = " + oneImageFile);
         oneImageId = data_return.image_id;
 
         $('.image_display h2.up').append().html(oneImageName);
@@ -162,15 +139,12 @@ $('.img-left-side').click(function(event) {
         $(".img-center img").attr({alt: "Selected Image", src: pathImage, title: "Selected image" });
 
         var userValuedFlag = data_return.user_valued;
-//        console.log("4 IN prev_image: userValuedFlag = " + userValuedFlag);
         if(userValuedFlag  == 1){
-//          console.log("5 IN IF: userValuedFlag == true? == " + userValuedFlag);
           $('.left_controls span.common_value').css({"display": "block"});
           var imageValue = data_return.value;
           $('.image .image_display .image_user_value').append().html(imageValue);
           $('.image .image_display .image_diag').css({"display": "none"});
           var imageCommonValue = data_return.common_ave_value;
-//        console.log("6 IN display_theme: imageCommonValue = " + imageCommonValue);
           $('.left_controls span.common_value h2.common').append().html(imageCommonValue);
           $('.image .image_display .image_user_value').css({"display": "block"});
         }else{
@@ -196,7 +170,6 @@ $('.img-left-side').click(function(event) {
 $('button.button__results.save').unbind( "click" ).click(function(event) {
   console.log("clicked: button__results.save: ");
   event.stopImmediatePropagation(); // would stop the event from bubbling to parent elements,
-  //  var result = document.getElementsByClassName("elementa")[0].innerHTML;
   var displayValue = $('#chosen_value')[0].innerHTML;
   console.log("displayValue = " + displayValue );
 
@@ -211,12 +184,7 @@ $('button.button__results.save').unbind( "click" ).click(function(event) {
   }).done(function (data_return) {
         console.log("success1c:  " + data_return.notice );
         var userImageValue = data_return.user_value;
-//        console.log("1 IN ajax.save_value after done: display_theme: userImageValue = " + userImageValue );
-      //  var averageValue = data_return.ave_value;
-//        console.log("2 IN ajax.show_next_image after done: display_theme: averageValue = " + averageValue );
-
         $('.image .image_display .image_user_value').append().html(userImageValue);
-      //  $('.left_controls h2.common').append().html(averageValue);
 
         var userValuedFlag = data_return.user_valued;
         if(userValuedFlag  == 1){
@@ -243,122 +211,4 @@ $('button.button__results.save').unbind( "click" ).click(function(event) {
       });
 });
 
-
-////        var diagReturned = "diag_Hk: " + data_return.result_hk + "; time: " + data_return.diag_time + " ms;";
-//        $('.image_display .image_diag h2.down').css({"display": "block"}).empty()
-//            .before().append().html(diagReturned).fadeOut(4500);
-//        //setTimeout("window.location.href='< %= home_path %>';",2000);; .fadeOut(4500)
-//
-//        var resultHK = data_return.result_hk;
-//        console.log("resultHK:  " + resultHK );
-//        var resultColorIndicator = data_return.color_indicator;
-//        console.log("resultColorIndicator:  " + resultColorIndicator );
-//
-//        var imgScalePos = data_return.img_scale_pos + "%";
-//        console.log("imgScalePos:  " + imgScalePos );
-//
-//        var newLeft ;
-//        var newClass;
-//        //$('.image_display .image_diag .indicator .outer-circle').addClass('show ');
-//        $('.image_display .image_diag .indicator .outer-circle').css({
-//          "display": "block",
-//          "left": "43.75%",
-//          "border-color": resultColorIndicator
-//        });
-//        $('.image_display .indic-circ').css({
-//          "display": "block",
-//          "left": "43.75%",
-//          "border-color": resultColorIndicator
-//        });
-//
-//        $('.image_display .image_diag .scale .small_img_box').css({"left": imgScalePos, "display": "block" });
-//        newClass = $('.image_display .image_diag .indicator .outer-circle').attr("class");
-//        console.log("attr: newClass = " + newClass);
-//        newLeft = $('.image_display .image_diag .indicator .outer-circle').css("left");
-//        console.log("attr border: newLeft = " + newLeft);
-//        //            find(".nayIt").addClass("notChosen "  // border: 30px solid #30fa29  // .delay(2000)
-//        $('.image_display .image_diag .scale').css({
-//          "display": "block"
-////                "border-color": function(){
-////                    return isNaN(resultHK) ? '#000' : resultHK < 200 ? '#f00' : resultHK < 350 ? '#0ff' : '#f90';
-////                }
-////                "border-color": indicator_color(resultHK)
-////                "border-color": resultColorIndicator
-//
-//        });
-
-//
-//
-//$('.img-left-side').click(function(event) {  //ajax
-//  console.log("IN display_image - in onclick function(): selected nameImage = " + nameImage );
-//  console.log("link clicked: selectedImage =  " + selectedImage);
-//  //$('.image_diag h2.down').append().html(selectedImage);
-//  event.stopImmediatePropagation(); // would stop the event from bubbling to parent elements,
-//
-//  //$('.image_display .image_diag .indicator .outer-circle').removeClass("show");
-//  $('.image_display .image_diag .indicator .outer-circle').css({"display": "none"});
-//  $('.image_display .image_diag .scale .small_img_box').css({"display": "none"});
-//  $('.image_display .indic-circ').css({"display": "none"});
-//  $('.image_display .image_diag h2.down').css({"display": "none"});
-//  // not prevent other click handlers on the same element from firing.
-//
-//  $.ajax({
-//    type: "get",
-//    // url: "diag_image",
-//    url: "analyse",
-//    data: { value: selectedImage },
-//    dataType: 'json'
-//  }).done(function (data_return) {
-//        console.log("success1c:  " + data_return.notice );
-//
-//        var diagReturned = "diag_Hk: " + data_return.result_hk + "; time: " + data_return.diag_time + " ms;";
-//        $('.image_display .image_diag h2.down').css({"display": "block"}).empty()
-//            .before().append().html(diagReturned).fadeOut(4500);
-//        //setTimeout("window.location.href='< %= home_path %>';",2000);; .fadeOut(4500)
-//
-//        var resultHK = data_return.result_hk;
-//        console.log("resultHK:  " + resultHK );
-//        var resultColorIndicator = data_return.color_indicator;
-//        console.log("resultColorIndicator:  " + resultColorIndicator );
-//
-//        var imgScalePos = data_return.img_scale_pos + "%";
-//        console.log("imgScalePos:  " + imgScalePos );
-//
-//        var newLeft ;
-//        var newClass;
-//        //$('.image_display .image_diag .indicator .outer-circle').addClass('show ');
-//        $('.image_display .image_diag .indicator .outer-circle').css({
-//          "display": "block",
-//          "left": "43.75%",
-//          "border-color": resultColorIndicator
-//        });
-//        $('.image_display .indic-circ').css({
-//          "display": "block",
-//          "left": "43.75%",
-//          "border-color": resultColorIndicator
-//        });
-//
-//        $('.image_display .image_diag .scale .small_img_box').css({"left": imgScalePos, "display": "block" });
-//        newClass = $('.image_display .image_diag .indicator .outer-circle').attr("class");
-//        console.log("attr: newClass = " + newClass);
-//        newLeft = $('.image_display .image_diag .indicator .outer-circle').css("left");
-//        console.log("attr border: newLeft = " + newLeft);
-//        //            find(".nayIt").addClass("notChosen "  // border: 30px solid #30fa29  // .delay(2000)
-//        $('.image_display .image_diag .scale').css({
-//          "display": "block"
-////                "border-color": function(){
-////                    return isNaN(resultHK) ? '#000' : resultHK < 200 ? '#f00' : resultHK < 350 ? '#0ff' : '#f90';
-////                }
-////                "border-color": indicator_color(resultHK)
-////                "border-color": resultColorIndicator
-//
-//        });
-//      })
-//      .fail(function (data_return) {
-//        console.log("error: data_return = " + data_return);
-//      });
-//
-//
-//});
-//
 

@@ -5,7 +5,7 @@ class MainController < ApplicationController
   
   def index
   
-    @tasks = "fsdfsdf"
+    @tasks = "index"
     respond_to  :json, :html
   
     # respond_to do |format|
