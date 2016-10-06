@@ -68,6 +68,9 @@ ru:
       make_decision: "Выберите свою оценку"
       save_decision: "сохранить"
 
+      share_opinion: "Поделись своим мнением"
+
+
       # titles
       theme_name: "Тема"
 
