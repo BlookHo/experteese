@@ -1,10 +1,19 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  # caches_action :index
+  
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    # @users = User.all
+    # expires_in 5.minutes
+    # sleep 15
+
+    @users = User.all_cached
+    # @users = User.all
+    @stats = Rails.cache.stats.first.last
+
   end
 
   # GET /users/1

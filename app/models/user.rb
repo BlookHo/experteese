@@ -19,6 +19,17 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, length: { minimum: 6 }
 
+
+  def self.all_cached
+    # ids = Rails.cache.fetch('User.all') do
+    #   User.all.pluck(:id)
+    # end
+    # User.find(ids)
+    
+    Rails.cache.fetch('User.all') { all }
+  end
+
+
   def User.new_remember_token
     SecureRandom.urlsafe_base64
   end

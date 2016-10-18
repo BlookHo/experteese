@@ -23,6 +23,7 @@
 
 
 //= require bootstrap
+//= require_tree ./channels
 
 //= require_tree .
 
