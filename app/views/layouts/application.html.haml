@@ -9,7 +9,7 @@
       -#= content_for?(:title) ? yield(:title) : "Experteese"
     -#%title= content_for?(:title) ? "#{full_title(yield(:title))} | Experteese" : "Experteese"
     %title= "#{full_title(yield(:title))}"
-
+    = action_cable_meta_tag
     -#%title<
     -#  = yield(:title)
     -#  | Experteese

@@ -74,7 +74,7 @@ $('.img-right-side').click(function(event) {
 
   $.ajax({
     type: "get",
-    url: "next_image",
+    url: "api/next_image",
     data: { index: imageCurrentIndex,
             theme_id: selectedThemeId,
             length: themeImagesSize },
@@ -121,7 +121,7 @@ $('.img-left-side').click(function(event) {
 
   $.ajax({
     type: "get",
-    url: "prev_image",
+    url: "api/prev_image",
     data: { index: imageCurrentIndex,
       theme_id: selectedThemeId,
       length: themeImagesSize },
@@ -175,7 +175,7 @@ $('button.button__results.save').unbind( "click" ).click(function(event) {
 
   $.ajax({
     type: "get",
-    url: "save_value",
+    url: "api/save_value",
     data: { image_id: oneImageId,
             theme_id: selectedThemeId,
             value: displayValue

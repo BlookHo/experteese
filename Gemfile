@@ -14,7 +14,7 @@ gem 'activerecord-reset-pk-sequence'
 # gem 'sqlite3'
 
 # Use Puma as the app server
-gem 'puma', '~> 3.0'
+gem 'puma', '~> 3.0'  # 3.6.0
 
 gem 'haml-rails'  # 0.9.0 Installed
 
@@ -47,8 +47,9 @@ gem 'rails-asset-jqueryui'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 3.0'
+gem 'redis', '~> 3.0'  # 3.3.1
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

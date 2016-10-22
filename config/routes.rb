@@ -26,7 +26,10 @@ Rails.application.routes.draw do
     namespace :api, defaults: { format: :json } do
       # We are going to list our resources here
     
-    
+        match 'next_image',       to: 'api#next_image',   via: 'get'
+        match 'prev_image',       to: 'api#prev_image',   via: 'get'
+        match 'save_value',       to: 'api#save_value',   via: :get
+
       # match 'next_image',       to: 'api/api#next_image',   via: 'get'
   
     end
@@ -48,8 +51,8 @@ Rails.application.routes.draw do
     # match 'save_value',       to: 'work#save_value',      via: :get
   
     # api
-    match 'next_image',       to: 'api/api#next_image',   via: 'get'
-    match 'prev_image',       to: 'api/api#prev_image',   via: 'get'
+    # match 'next_image',       to: 'api/api#next_image',   via: 'get'
+    # match 'prev_image',       to: 'api/api#prev_image',   via: 'get'
     match 'save_value',       to: 'api/api#save_value',   via: :get
   
   

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  
+   
   describe User do
     before { @user = User.new(name: "Example User", email: "user@example.com",
       password: "foobar", password_confirmation: "foobar" ) }
@@ -17,15 +17,15 @@ RSpec.describe User, type: :model do
 
     it { should be_valid }
 
-    describe "remember token" do
+    describe "remember token"   do  # , focus: true
       before { @user.save }
       # its(:remember_token) { should_not be_blank }
       it { expect(@user.remember_token).not_to be_blank }
 
     end
 
-    describe "with a password that's too short" do
-      before { @user.password = @user.password_confirmation = "a" * 5 }
+    describe "Проверка того, что пароль - слишком короткий"   do # , focus: true
+      before { @user.password = @user.password_confirmation = "a" * 6 }
       it { should be_invalid }
     end
     

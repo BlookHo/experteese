@@ -210,6 +210,7 @@ GEM
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
+    redis (3.3.1)
     rspec (3.5.0)
       rspec-core (~> 3.5.0)
       rspec-expectations (~> 3.5.0)
@@ -312,6 +313,7 @@ DEPENDENCIES
   rails-asset-jqueryui
   rails-controller-testing (= 0.1.1)
   rails_12factor
+  redis (~> 3.0)
   rspec-rails (~> 3.5)
   sass-rails (~> 5.0)
   spring
