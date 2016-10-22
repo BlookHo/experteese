@@ -82,7 +82,7 @@ module Api
             common_ave_value: valued_image_data[:common_ave_value],
             value:            valued_image_data[:value],
             status:           :successfully,
-            notice:           'Successfully listed to previous'}
+            notice:           'Successfully saved'}
           }
         end
       end
