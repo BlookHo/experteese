@@ -52,24 +52,19 @@ module WorkImage
 
   def next_index(index, length)
     new_index = index
-    # logger.info "In next_index: new_index = #{new_index.inspect}, index = #{index.inspect}, length = #{length.inspect} "
-    if index < length-1
-      new_index += 1
-    else
-      new_index = 0
-    end
-    # logger.info "In next_index: new_index = #{new_index.inspect} "
+    # if index < length-1
+    #   new_index += 1
+    # else
+    #   new_index = 0
+    # end
+    index < length-1 ? new_index += 1 : new_index = 0
     new_index
   end
 
   
   def prev_index(index, length)
     new_index = index
-    if index > 0
-      new_index -= 1
-    else
-      new_index = length-1
-    end
+    index > 0 ? new_index -= 1 : new_index = length-1
     new_index
   end
 

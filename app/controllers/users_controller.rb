@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+
   # caches_action :index
   
   # GET /users
@@ -11,14 +12,15 @@ class UsersController < ApplicationController
     # sleep 15
 
     @users = User.all_cached
-    # @users = User.all
     @stats = Rails.cache.stats.first.last
-
   end
 
   # GET /users/1
   # GET /users/1.json
+  # SERIALIZED !! FOR API DEMONSTRATION
   def show
+    user = User.find(params[:id])
+    render json: user
   end
 
   # GET /users/new

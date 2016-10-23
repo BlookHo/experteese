@@ -48,6 +48,8 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 
+gem 'active_model_serializers'
+
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 3.0'  # 3.3.1
 
@@ -123,8 +125,8 @@ gem 'font-awesome-sass' #, '~> 4.6.2'
 gem 'font-awesome-rails', '~> 4.6', '>= 4.6.3.1'
 
 # Memcached
-# gem 'dalli'
-# gem 'memcached' # before - check to be installed: $ sudo apt-get install libsasl2-dev
+gem 'dalli'
+gem 'memcached' # before - check to be installed: $ sudo apt-get install libsasl2-dev
 
 # Connect test to Memcached according http://blog.elijaa.org/2010/05/21/memcached-telnet-command-summary/
 # gem 'actionpack-action_caching'

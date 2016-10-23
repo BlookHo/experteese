@@ -2,7 +2,13 @@ module Api
   class ApiController < ApplicationController
     include WorkImage
 
-
+    def show
+      user = User.find(params[:id])
+  
+      render(json: Api::V1::UserSerializer.new(user).to_json)
+    end
+    
+    
     def next_image
       current_index = params[:index].to_i
       theme_id = params[:theme_id].to_i
@@ -82,7 +88,7 @@ module Api
             common_ave_value: valued_image_data[:common_ave_value],
             value:            valued_image_data[:value],
             status:           :successfully,
-            notice:           'Successfully listed to previous'}
+            notice:           'Successfully saved'}
           }
         end
       end
