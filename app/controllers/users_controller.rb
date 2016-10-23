@@ -12,15 +12,15 @@ class UsersController < ApplicationController
     # sleep 15
 
     @users = User.all_cached
-  
+    @stats = Rails.cache.stats.first.last
   end
 
   # GET /users/1
   # GET /users/1.json
   # SERIALIZED !! FOR API DEMONSTRATION
   def show
-    # user = User.find(params[:id])
-    # render json: user
+    user = User.find(params[:id])
+    render json: user
   end
 
   # GET /users/new

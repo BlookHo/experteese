@@ -1,19 +1,19 @@
 %h1 Listing users
 
--#%h1 Cache Stats
--#%table
--#  %tr
--#    %th Metric
--#    %th Value
--#  %tr
--#    %td Cache hits:
--#    %td= @stats['get_hits']
--#  %tr
--#    %td Cache misses:
--#    %td= @stats['get_misses']
--#  %tr
--#    %td Cache flushes:
--#    %td= @stats['cmd_flush']
+%h1 Cache Stats
+%table
+  %tr
+    %th Metric
+    %th Value
+  %tr
+    %td Cache hits:
+    %td= @stats['get_hits']
+  %tr
+    %td Cache misses:
+    %td= @stats['get_misses']
+  %tr
+    %td Cache flushes:
+    %td= @stats['cmd_flush']
 
 
 %table
