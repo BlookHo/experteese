@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     # sleep 15
 
     @users = User.all_cached
-    @stats = Rails.cache.stats.first.last
+    # @stats = Rails.cache.stats.first.last
   end
 
   # GET /users/1
