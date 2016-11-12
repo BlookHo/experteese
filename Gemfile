@@ -115,6 +115,9 @@ group :test do
   # Auto cleans test db after each test run
   gem 'database_cleaner'
 
+  # automatic merging of coverage across test suites
+  gem 'simplecov', :require => false #, :group => :test
+  
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

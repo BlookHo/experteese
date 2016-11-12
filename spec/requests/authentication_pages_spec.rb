@@ -14,7 +14,7 @@ RSpec.describe "AuthenticationPages", type: :request do
     before { visit signin_path }
 
     
-    describe "signin page", focus: true   do
+    describe "signin page"   do  # , focus: true
       it { should have_content( 'Войти')  }
       it { should have_title('Sign in') }
     end
