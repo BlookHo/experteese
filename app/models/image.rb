@@ -65,3 +65,18 @@ class Image < ApplicationRecord
   
   
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,4 +1,4 @@
-%h1 Listing users
+%h1 Список пользователей
 
 -#%h1 Cache Stats
 -#%table
@@ -19,8 +19,8 @@
 %table
   %thead
     %tr
-      %th Name
-      %th Email
+      %th Имя
+      %th Эл.почта
       %th
       %th
       %th
@@ -30,10 +30,10 @@
       %tr
         %td= user.name
         %td= user.email
-        %td= link_to 'Show', user
-        %td= link_to 'Edit', edit_user_path(user)
-        %td= link_to 'Destroy', user, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to 'Показать', user
+        %td= link_to 'Редактировать', edit_user_path(user)
+        %td= link_to 'Удалить', user, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New User', new_user_path
+= link_to 'Новый пользователь', new_user_path

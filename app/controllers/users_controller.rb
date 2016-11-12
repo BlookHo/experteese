@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def index
     # @users = User.all
     # expires_in 5.minutes
-    # sleep 15
+    # sleep 15e
 
     @users = User.all_cached
     # @stats = Rails.cache.stats.first.last
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   # SERIALIZED !! FOR API DEMONSTRATION
   def show
     user = User.find(params[:id])
-    render json: user
+    # render json: user
   end
 
   # GET /users/new
