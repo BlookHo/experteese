@@ -34,7 +34,7 @@
     = javascript_include_tag 'application'
     -#, 'data-turbolinks-track': 'reload'
 
-    = render 'layouts/shim'
+    -#= render 'layouts/shim'
     -#[if lt IE 9]>
     -#%script{:src => "//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js"}
     -#[endif]
@@ -43,7 +43,7 @@
     #overlay{style:'display:none;'}
     = render 'shared/header'
     .container
-      = render 'shared/flash'
+      -#= render 'shared/flash'
       = yield
     = render 'shared/footer'
     -#= debug(params) if Rails.env.development?

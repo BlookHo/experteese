@@ -38,7 +38,14 @@ Rails.application.routes.draw do
     match 'about',    to: 'main#about',           via: 'get'
     match 'help',     to: 'main#help',            via: 'get'
     match 'contacts', to: 'main#contacts',        via: 'get'
-    
+    ###
+    match 'test',     to: 'main#test',            via: 'get'
+    match 'task_one',     to: 'main#task_one',            via: 'get'
+    match 'task_one_view',     to: 'main#task_one_view',            via: 'get'
+    match 'task_one_view',     to: 'main#task_one_view',            via: 'post'
+    match 'display_wheather',     to: 'main#display_wheather',            via: 'get'
+  ###
+
     match 'work',             to: 'work#index',             via: 'get'
     match 'choose_image',     to: 'work#choose_image',      via: :get
     match 'choose_theme',     to: 'work#choose_theme',      via: :get
