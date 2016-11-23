@@ -33,8 +33,8 @@ Rails.application.routes.draw do
     match 'help',     to: 'main#help',            via: 'get'
     match 'contacts', to: 'main#contacts',        via: 'get'
 
-    # tests #
-    match 'test',               to: 'main#test',              via: 'get'
+    # main#tasks #
+    match 'task',               to: 'main#task',              via: 'get'
     match 'task_one',           to: 'main#task_one',          via: 'get'
     match 'display_wheather',   to: 'main#display_wheather',  via: 'get'
     ###

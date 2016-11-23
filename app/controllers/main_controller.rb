@@ -1,8 +1,9 @@
 class MainController < ApplicationController
   require 'json'
-  
-  
-  
+
+  include TaskHelper
+
+
   def index
   
     # @tasks = "index"
@@ -27,29 +28,29 @@ class MainController < ApplicationController
     @current_user = current_user
   end
 
-  def test
-    logger.info "In test"
-
-    @json = {"forecast": [
-        {
-            "code": "30",
-            "date": "22 Nov 2016",
-            "day": "Tue",
-            "high": "11",
-            "low": "2",
-            "text": "Partly Cloudy"
-        },
-        {
-            "code": "26",
-            "date": "01 Dec 2016",
-            "day": "Thu",
-            "high": "14",
-            "low": "11",
-            "text": "Cloudy"
-        }
-    ],
-    }
-    logger.info "In test: @json = #{@json.inspect}"
+  def task
+    # logger.info "In task"
+    #
+    # @json = {"forecast": [
+    #     {
+    #         "code": "30",
+    #         "date": "22 Nov 2016",
+    #         "day": "Tue",
+    #         "high": "11",
+    #         "low": "2",
+    #         "text": "Partly Cloudy"
+    #     },
+    #     {
+    #         "code": "26",
+    #         "date": "01 Dec 2016",
+    #         "day": "Thu",
+    #         "high": "14",
+    #         "low": "11",
+    #         "text": "Cloudy"
+    #     }
+    # ],
+    # }
+    # logger.info "In task: @json = #{@json.inspect}"
   end
 
   def task_one
@@ -65,14 +66,11 @@ class MainController < ApplicationController
   def display_wheather
 
     obj = ActiveSupport::JSON.decode(params[:cond_wheather])
-    logger.info "In display_wheather"
-    @cond_wheather = obj['query']['results']['channel']['item']['forecast']
-    logger.info "In display_wheather: obj = #{obj.inspect}, @cond_wheather = #{@cond_wheather.inspect}"
-
-
-
-
-    logger.info "In display_wheather: @composite_results = #{@composite_results.inspect}"
+    # logger.info "In display_wheather"
+    location =  obj['query']['results']['channel']['location']
+    @title = location["city"] + " - " + location["country"] + ", " + location["region"]
+    cond_wheather = obj['query']['results']['channel']['item']['forecast'].to_a
+    @cond_wheather = add_weather_image(cond_wheather)
 
   end
 

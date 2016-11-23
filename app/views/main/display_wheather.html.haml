@@ -3,58 +3,47 @@
 -# */
 
 - provide(:title, "Display")
-%h1
-  Wheather Display
-%h3
-  %p @cond_wheather = #{@cond_wheather}
-  %p @composite_results = #{@composite_results}
+%h3.test_weather
+  Прогноз погоды для:  #{@title.inspect}
+  %br
+  (https://developer.yahoo.com)
+  %br
+  %hr
 
-  - if @composite_results.blank?
-    %table{ :style => "table-layout: auto; title: 'No Values results...';" }
-      .results
-        %h2=  ".no_values"
-        %h2=  ".select_theme"
-    -#%tr
-          -#%td.left.grey.italic
-          -#No Values results...
-    %br
-    %hr
-  - else
-    %table{ :style => "table-layout: auto; title: 'All images expert values';" }
-      .results
-        %h2 All images expert values
-      %tr{ :style => "font-family: $helvetica; font-size: 2em; margin-bottom: .5em" }
-        %th.name
-          Image name
-        %th Image
-        -#%th user_id
-        %th Value
-        -#%th Harmony, %
-        -#%th hue
-        -#%th sat
-        -#%th light
-        %th date
-      -#%th delta_ave_composite
+- if @cond_wheather.blank?
+  %table{ :style => "table-layout: auto; title: 'No Values results...';" }
+    .results
+      %h2=  "no values"
+      %h2=  "no weather prognose"
+  -#%tr
+        -#%td.left.grey.italic
+        -#No Values results...
+  %br
+  %hr
+- else
+  %table{ :style => "table-layout: auto; title: 'All images expert values';" }
+    .results
+    %tr{ :style => "font-family: $helvetica; font-size: 1.3em; " }
+      %th.name
+        date
+      %th day
+      %th high
+      %th low
+      %th wheather
+      %th image
 
-      -#- @composite_results.each do |composite_diag|
-      - @composite_results.each do |composite_diag|
-        %tr.one_row
-          %td{ :style => "text-align: left; width: 25em" }= composite_diag.name
-          %td= image_tag('/assets/pictures/' + composite_diag.file, {:width => "53", :height =>"47", title: "Tested image"} )
-          -#                                                          , :class => "opinion_image_preview ttip"
-          -#%td= composite_diag.user_id
-          %td{ :style => "color: rgba(122, 13, 75, 1);" }= composite_diag.ave_value
-          -#%td= ((composite_diag.hk_composite-150)/5.0).round(2)
-          -#%td= composite_diag.hk_hue.round(2)
-          -#%td= composite_diag.hk_saturate.round(2)
-          -#%td= composite_diag.hk_light.round(2)
-          %td= composite_diag.created_at.strftime('%d.%m.%y ')
-      -#%td= composite_diag.delta_ave_composite
+    - @cond_wheather.take(7).each do |one_day_weather|
+      %tr.weather_one_row
+        %td{ :style => "text-align: left; width: 7em" }= one_day_weather['date']
+        %td{ :style => "color: rgba(122, 13, 75, 1);" }= one_day_weather['day']
 
-      = paginate @composite_results_paged
-    -#.pagination= render 'results_list' work_path  'javascript:history.go(-1);'
-    %br
-    %hr
+        %td= one_day_weather['high']
+        %td= one_day_weather['low']
+        %td= one_day_weather['text']
+        %td= image_tag('/assets/weather/' + one_day_weather['image'], {:width => "53", :height =>"47", title: "Weather image"} )
+
+    -#= paginate @composite_results_paged
+  -#.pagination= render 'results_list' work_path  'javascript:history.go(-1);'
 -#= link_to "Return to main page", display_theme_path(theme_id: @selected_theme_id), :method => "post",  class: "btn btn-lg btn-primary", title: "Go to main page", remote: true
 = link_to t(".return_to_main"), work_path,  class: "btn btn-lg btn-primary", title: "Go to main page"
 %br
