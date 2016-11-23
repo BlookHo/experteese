@@ -4,14 +4,29 @@
 %h1= 'tests'
 
 .about-copy
+
+  .select_theme
+    = render 'main/button_test_select'
+    -#, locale: @current_locale
+
   %h3.list
     Test 1
-    = link_to 'Задача 1. Базовые умения верстки и обмена данными', task_one_path, remote: true,  :format => "js"
+    = link_to 'Задача 1. Базовые умения верстки и обмена данными', task_one_path,  remote: true
+    -#,  :format => "js"
     %br
-    Eсть прогноз погоды по ссылке в формате JSON: https://developer.yahoo.com/weather/
-    1) Отрисовать столбиковую диаграмму на неделю;
-    2) К каждому столбику добавить изображение состояния погоды - облачность, дождь и т.д.
+    .test_task
+      Eсть прогноз погоды по ссылке в формате JSON: https://developer.yahoo.com/weather/
+      %br
+      1) Отрисовать столбиковую диаграмму на неделю;
+      %br
+      2) К каждому столбику добавить изображение состояния погоды - облачность, дождь и т.д.
     %br
+
+    .test_start_btn
+    -#  = render 'main/test_start_btn'
+      -#, locale: @current_locale
+
+
     -#.select_theme
     -#= render 'work/button_theme_select', locale: @current_locale
 

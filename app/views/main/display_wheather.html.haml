@@ -2,9 +2,12 @@
 -# * Created by aleks_i on 25.03.16.
 -# */
 
--#.-{ title: t(".page_title")}
+- provide(:title, "Display")
 %h1
   Wheather Display
+%h3
+  %p @cond_wheather = #{@cond_wheather}
+  %p @composite_results = #{@composite_results}
 
   - if @composite_results.blank?
     %table{ :style => "table-layout: auto; title: 'No Values results...';" }

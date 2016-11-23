@@ -28,89 +28,51 @@ class MainController < ApplicationController
   end
 
   def test
-    @current_user = current_user
+    logger.info "In test"
+
+    @json = {"forecast": [
+        {
+            "code": "30",
+            "date": "22 Nov 2016",
+            "day": "Tue",
+            "high": "11",
+            "low": "2",
+            "text": "Partly Cloudy"
+        },
+        {
+            "code": "26",
+            "date": "01 Dec 2016",
+            "day": "Thu",
+            "high": "14",
+            "low": "11",
+            "text": "Cloudy"
+        }
+    ],
+    }
+    logger.info "In test: @json = #{@json.inspect}"
   end
 
   def task_one
-    @task_data = "current_user"
-    logger.info "In task_one: @task_data = #{@task_data.inspect}"
-
-  end
-
-  # wheather_params = ActionController::Parameters.new
-  # ActionController::Parameters.permit_all_parameters = true
-
-  # params = ActionController::Parameters.new({
-  #                                               cond_wheather: {
-  #                                                   date: 'Francesco',
-  #                                                   age:  22,
-  #                                                   role: 'admin'
-  #                                               }
-  #                                           })
-
-
-
-  def task_one_view
-    @task_data = "current_user task_one_view"
-    logger.info "In task_one_view: @task_data = #{@task_data.inspect}"
-    # logger.info "In task_one_view: wheather_params = #{wheather_params.inspect}"
-
-    cond_wheather = params[:cond_wheather]
-
-    logger.info "In task_one_view: cond_wheather = #{cond_wheather.inspect}"
-
-
-    @composite_results = []
-
-
-    # new_image_index = next_index(current_index, length)
-    # next_image_data = show_image(theme_id, new_image_index)
-    # logger.info "In next_image: current_index = #{current_index.inspect},
-    #               new_image_index = #{new_image_index.inspect},
-    #               next_image_data = #{next_image_data.inspect} "
-
-
-    # respond_to do |format|
-    #   if cond_wheather.blank?
-    #     format.html { render 'task_one_view', status: :unprocessable_entity }
-    #     format.json { render json:  { status: :unsuccessfully} }
-    #   else
-    #     format.html { render 'task_one_view', status: :successfully }
-    #     format.json { render json:  { status: :successfully} }
-    #
-    #     # format.json { render json:  { new_image_index: next_image_data[:index],
-    #     #                               name: next_image_data[:name],
-    #     #                               file: next_image_data[:file],
-    #     #                               image_id: next_image_data[:image_id],
-    #     #                               user_valued: next_image_data[:user_valued],
-    #     #                               common_ave_value: next_image_data[:common_ave_value],
-    #     #                               value: next_image_data[:value],
-    #     #                               status: :successfully,
-    #     #                               notice: 'Successfully listed to next'} }
-    #   end
-    # end
-
-    # respond_to do |format|
-    #   if cond_wheather
-    #     flash.now[:notice] = "Welcome to the Experteese - sample App!"
-    #     format.html { } #redirect_to '/display_wheather', notice: 'User was successfully created.' }
-    #     # format.json { } #render json: { status: :successfully}}
-    #   else
-    #     flash.now[:alert] = "Bad registration"
-    #     format.html { } #redirect_to '/display_wheather', notice: 'User was successfully created.' }
-    #     # format.json { render json:  { status: :unsuccessfully}  }
-    #   end
-    # end
-
-    render 'display_wheather'
-    # display_wheather
+    # @result = HTTParty.post('https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22nome%2C%20ak%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys'.to_str,
+    #                         :body => @jsonParams.to_json,
+    #                         :headers => { 'Content-Type' => 'application/json',
+    #                                       'Api-Access-Key' => 'xxxxxxxx',
+    #                                       'Transaction-Hash' => xxxx } )
+    logger.info "In task_one: task_one_data"
   end
 
 
   def display_wheather
 
-    @composite_results = []
+    obj = ActiveSupport::JSON.decode(params[:cond_wheather])
+    logger.info "In display_wheather"
+    @cond_wheather = obj['query']['results']['channel']['item']['forecast']
+    logger.info "In display_wheather: obj = #{obj.inspect}, @cond_wheather = #{@cond_wheather.inspect}"
 
+
+
+
+    logger.info "In display_wheather: @composite_results = #{@composite_results.inspect}"
 
   end
 

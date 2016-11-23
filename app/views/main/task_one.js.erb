@@ -1,90 +1,57 @@
-//require: 'json'
+
+//var jsonDataLink = '<%= raw @json_data_link %>';
+//console.log("IN task_one.js: jsonDataLink = " + jsonDataLink);
 
 
+//var taskData = '<%= raw @composite_results %>';
+//var compositeResults = '<%= @composite_results %>';
+//console.log("IN task_one.js: compositeResults = " + compositeResults);
 
-//var taskData = '<%= raw @task_data %>';
-var taskData = '<%= @task_data %>';
+var askSiteForJson = function(url) {
+//  stopImmediatePropagation(); // when ajax deal with events:
+// would stop the event from bubbling to parent elements,
 
-console.log("IN task_one.js: @task_data = " + taskData);
-
-//$.ajax({
-//  type: "get",
-//  url: "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22nome%2C%20ak%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
-//  dataType: 'json'
-////  context: document.body
-//
-//  }).done(function(data_return) {
-//  console.log(data_return);
-//  console.log("success1c:  " + data_return.query);
-//    console.log("success1c:  " + JSON.stringify(data_return));
-//  })
-//  .fail(function (data_return) {
-//    console.log("error: data_return = " + data_return);
-//  });
-
-//  $( this ).addClass( "done" );
-
-
-var sendJsontoView = function(cond_wheather) {
-
-  $.ajax({
-    type: "get",
-    url: "/task_one_view",
-//    dataType: 'json',
-    data: { cond_wheather: cond_wheather}
-
-//  }).done(function(data_return) {
-//    console.log(data_return);
-  }).done(function() {
-//    console.log(data_return);
-    console.log("success in sendJsontoView ");
-
-
-//    return data_return;
-  })
-      .fail(function (data_return) {
-        console.log("error In sendJsontoView: data_return = " + data_return);
-      });
-
-
-};
-
-
-
-
-var goForJson = function(url) {
-//  stopImmediatePropagation(); // would stop the event from bubbling to parent elements,
   $.ajax({
     type: "get",
     url: url,
     dataType: 'json'
-
   }).done(function(data_return) {
-    console.log(data_return);
-    var hashJson = JSON.stringify(data_return);
+//    console.log(data_return);
+//    var hashJson = JSON.stringify(data_return);
+//    console.log("success ajax:  " + hashJson);
+//    var obj = JSON.parse(hashJson);
+//    console.log(obj);
+//    var condWeather = obj.query.results.channel.item.forecast;
+//    console.log(condWeather);
 
-    console.log("success1c:  " + hashJson);
+// to pass params to controller and render action#view
 
-    console.log(hashJson);
+// alternative # 1: with use of extra action#view
 
-    var obj = JSON.parse(hashJson);
-    var condWeather = obj.query.results.channel.item.forecast;
-    console.log("condWeather .query.. forecast =  ");
-    console.log(condWeather);
+//    $.ajax({
+//      type: "post",
+//      url: "/task_one_view?cond_wheather=" + condWeather,
+//      data: { cond_wheather: condWeather}
+//    }).done(function(data_return) {
+//      console.log("success in sendJsontoView ");
+//      console.log("In sendJsontoView: data_return  = " + data_return);
+//    })
+//    .fail(function (data_return) {
+//      console.log("error In sendJsontoView: data_return = " + data_return);
+//    });
 
-    sendJsontoView(condWeather);
+
+// alternative # 2:
+//    window.location.href = "display_wheather?cond_wheather=" + condWeather ;
+    window.location.href = "display_wheather?cond_wheather=" + JSON.stringify(data_return) ;
 
   })
   .fail(function (data_return) {
-    console.log("error: data_return = " + data_return);
+    console.log("Error in askSiteForJson(): data_return = " + data_return);
   });
-
-
 };
 
 var yahooURL = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22nome%2C%20ak%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
 
-var weatherData = goForJson(yahooURL);
+askSiteForJson(yahooURL);
 
-console.log("got Json:  " + JSON.stringify(weatherData));
-//console.log("success1c:  " + data_return.query);
