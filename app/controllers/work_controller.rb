@@ -1,11 +1,12 @@
 class WorkController < ApplicationController
   require 'json'
   include WorkImage
-  
+  include WorkHelper
+
   def index
     @images_count = Image.all.count
     # @selected_theme = "Select theme to leave your answer"
-    @selected_theme = t(".def_select_theme")
+    @selected_theme = t('.def_select_theme')
     @selected_image_name = 'радуга'
     @values_qty = Value.all.count
     @current_locale = I18n.locale

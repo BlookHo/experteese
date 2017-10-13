@@ -72,3 +72,4 @@ class ImagesController < ApplicationController
       params.fetch(:image, {})
     end
 end
+
