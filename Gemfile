@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.3.1'
+# ruby '2.3.1'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -12,6 +12,7 @@ gem 'activerecord-reset-pk-sequence'
 
 # # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 
 # Use Puma as the app server
 gem 'puma', '~> 3.0'  # 3.6.0
@@ -21,8 +22,8 @@ gem 'haml-rails'  # 0.9.0 Installed
 gem 'bootstrap-sass', '3.3.6' # Installed 3.3.6
 
 # Use ActiveModel has_secure_password
-gem 'bcrypt'
-
+# gem 'bcrypt'
+gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 # # Image loading with remote
 # gem 'remotipart', '~> 1.2'
 
