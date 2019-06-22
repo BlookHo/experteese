@@ -19,7 +19,7 @@ gem 'puma', '~> 3.0'  # 3.6.0
 
 gem 'haml-rails'  # 0.9.0 Installed
 
-gem 'bootstrap-sass', '3.3.6' # Installed 3.3.6
+gem 'bootstrap-sass', '3.4.0' # Installed 3.3.6
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt'
@@ -38,10 +38,10 @@ gem 'coffee-rails', '~> 4.2'
 # gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'jquery-rails', '>= 4.3.4'
 # Use jquery as the JavaScript library
 gem 'jquery-ui-rails'
-gem 'rails-asset-jqueryui'
+gem 'rails-asset-jqueryui', '>= 0.0.3'
 
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
