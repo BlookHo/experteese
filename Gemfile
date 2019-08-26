@@ -69,8 +69,6 @@ group :development, :test do
   gem "better_errors"
   gem "binding_of_caller"
 
-
-
   gem 'rspec-rails', '~> 3.5'  # 3.5.2 Installed
   gem 'rails-controller-testing', '0.1.1'
   # gem 'minitest-reporters',       '1.1.9'
