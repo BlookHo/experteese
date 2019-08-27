@@ -23,13 +23,8 @@ RSpec.describe ThemesController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # Theme. As you add validations to Theme, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
-
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+  let(:valid_attributes) { skip("Add a hash of attributes valid for your model") }
+  let(:invalid_attributes) { skip("Add a hash of attributes invalid for your model") }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -37,6 +32,7 @@ RSpec.describe ThemesController, type: :controller do
   let(:valid_session) { {} }
 
   describe "GET #index" do
+
     it "assigns all themes as @themes" do
       theme = Theme.create! valid_attributes
       get :index, params: {}, session: valid_session
@@ -45,6 +41,7 @@ RSpec.describe ThemesController, type: :controller do
   end
 
   describe "GET #show" do
+
     it "assigns the requested theme as @theme" do
       theme = Theme.create! valid_attributes
       get :show, params: {id: theme.to_param}, session: valid_session
@@ -53,6 +50,7 @@ RSpec.describe ThemesController, type: :controller do
   end
 
   describe "GET #new" do
+
     it "assigns a new theme as @theme" do
       get :new, params: {}, session: valid_session
       expect(assigns(:theme)).to be_a_new(Theme)
@@ -60,6 +58,7 @@ RSpec.describe ThemesController, type: :controller do
   end
 
   describe "GET #edit" do
+
     it "assigns the requested theme as @theme" do
       theme = Theme.create! valid_attributes
       get :edit, params: {id: theme.to_param}, session: valid_session
@@ -69,6 +68,7 @@ RSpec.describe ThemesController, type: :controller do
 
   describe "POST #create" do
     context "with valid params" do
+
       it "creates a new Theme" do
         expect {
           post :create, params: {theme: valid_attributes}, session: valid_session
@@ -88,6 +88,7 @@ RSpec.describe ThemesController, type: :controller do
     end
 
     context "with invalid params" do
+
       it "assigns a newly created but unsaved theme as @theme" do
         post :create, params: {theme: invalid_attributes}, session: valid_session
         expect(assigns(:theme)).to be_a_new(Theme)
@@ -102,9 +103,7 @@ RSpec.describe ThemesController, type: :controller do
 
   describe "PUT #update" do
     context "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
+      let(:new_attributes) { skip("Add a hash of attributes valid for your model") }
 
       it "updates the requested theme" do
         theme = Theme.create! valid_attributes
@@ -142,6 +141,7 @@ RSpec.describe ThemesController, type: :controller do
   end
 
   describe "DELETE #destroy" do
+
     it "destroys the requested theme" do
       theme = Theme.create! valid_attributes
       expect {
@@ -155,5 +155,4 @@ RSpec.describe ThemesController, type: :controller do
       expect(response).to redirect_to(themes_url)
     end
   end
-
 end
