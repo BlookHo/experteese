@@ -25,6 +25,9 @@
 # Ignore coverage assets and results files
 /coverage/
 
+# Ignore coverage assets and results files
+/brakeman/
+
 # Ignore RubyMine settings
 .idea/*
 
