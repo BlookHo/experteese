@@ -12,8 +12,8 @@ require 'rails_helper'
 # end
 
 RSpec.describe ApplicationHelper, type: :helper do
-  # pending "add some examples to (or delete) #{__FILE__}"
   describe "full_title" do
+
     it "should include the page title" do
       expect(full_title("foo")).to match(/foo/)
     end
@@ -26,8 +26,4 @@ RSpec.describe ApplicationHelper, type: :helper do
       expect(full_title("")).not_to match(/\|/)
     end
   end
-
-
-
-
 end
