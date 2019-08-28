@@ -85,6 +85,10 @@ end
 group :test do
   # For active record imitation in tests
   gem 'factory_girl_rails'
+
+  # TODO: move all factories to FactoryBot
+  # gem 'factory_bot_rails' #, '~> 4.8', '>= 4.8.2'
+
   # Faker, a port of Data::Faker from Perl,
   # is used to easily generate fake data: names, addresses, phone numbers, etc.
   gem 'faker', '~> 1.5'
