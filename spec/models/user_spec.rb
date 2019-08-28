@@ -40,11 +40,11 @@ RSpec.describe User, type: :model do
       let(:user_for_invalid_password) { found_user.authenticate('invalid') }
 
       it 'with valid password' do
-        expect.to eq found_user.authenticate(user.password)
+        expect(found_user).to eq found_user.authenticate(user.password)
       end
 
       it 'with invalid password' do
-        expect.not_to eq user_for_invalid_password
+        expect(user).not_to eq user_for_invalid_password
       end
 
       it 'fgfg' do
