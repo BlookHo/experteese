@@ -1,140 +1,146 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-
   describe User do
-    before do
-      @user = User.new(name: "Example User", email: "user@example.com",
-      password: "foobar", password_confirmation: "foobar" )
+    subject { user }
+
+    let(:user) do
+      User.new(name: 'Example User',
+               email: 'user@example.com',
+               password: 'foobar',
+               password_confirmation: 'foobar')
     end
 
-    subject { @user }
-    it { should respond_to(:name) }
-    it { should respond_to(:email) }
-    it { should respond_to(:password_digest) }
-    it { should respond_to(:password) }
-    it { should respond_to(:password_confirmation) }
-    it { should respond_to(:authenticate) }
-    it { should respond_to(:remember_token) }
+    it { is_expected.to respond_to(:name) }
+    it { is_expected.to respond_to(:email) }
+    it { is_expected.to respond_to(:password_digest) }
+    it { is_expected.to respond_to(:password) }
+    it { is_expected.to respond_to(:password_confirmation) }
+    it { is_expected.to respond_to(:authenticate) }
+    it { is_expected.to respond_to(:remember_token) }
 
-    it { should be_valid }
+    it { is_expected.to be_valid }
 
-    describe "remember token"  do  # , focus: true
-      before { @user.save }
-      # its(:remember_token) { should_not be_blank }
-      it { expect(@user.remember_token).not_to be_blank }
+    describe 'remember token' do
+      before { user.save }
+
+      it { expect(user.remember_token).not_to be_blank }
     end
 
-    describe "Проверка того, что пароль - слишком короткий"   do # , focus: true
-      before { @user.password = @user.password_confirmation = "a" * 6 }
-      it { should be_invalid }
+    describe 'wnen password is too short - less then 6 symbols' do
+      before { user.password = user.password_confirmation = 'a' * 5 }
+
+      it { is_expected.to be_invalid }
     end
 
-    describe "return value of authenticate method" do
-      before { @user.save }
-      let(:found_user) { User.find_by(email: @user.email) }
+    describe 'return value of authenticate method' do
+      before { user.save }
 
-      context "with valid password" do
-        it { should eq found_user.authenticate(@user.password) }
+      let(:found_user) { User.find_by(email: user.email) }
+      let(:user_for_invalid_password) { found_user.authenticate('invalid') }
+
+      it 'with valid password' do
+        expect.to eq found_user.authenticate(user.password)
       end
 
-      context "with invalid password" do
-        let(:user_for_invalid_password) { found_user.authenticate("invalid") }
+      it 'with invalid password' do
+        expect.not_to eq user_for_invalid_password
+      end
 
-        it { should_not eq user_for_invalid_password }
-
-        it "fgfg" do
-          # puts " user_for_invalid_password = #{user_for_invalid_password}"
-          expect(user_for_invalid_password).to eq(false)
-        end
+      it 'fgfg' do
+        expect(user_for_invalid_password).to eq(false)
       end
     end
 
-    describe "when password doesn't match confirmation" do
-      before { @user.password_confirmation = "mismatch" }
+    describe 'when password doesn\'t match confirmation' do
+      before { user.password_confirmation = 'mismatch' }
 
-      it { should_not be_valid }
+      it { is_expected.not_to be_valid }
     end
   end
 
-  describe "when email is not present" do
-    # before { @user.email = " " }
-    before { @user = User.new(name: "Example User", email: " ") }
+  describe 'when email is not present' do
+    let(:user) { User.new(name: 'Example User', email: ' ') }
 
-    it { should_not be_valid }
+    it { is_expected.not_to be_valid }
   end
 
-  describe "when name is not present" do
-    # before { @user.name = " " }
-    before { @user = User.new(name: " ", email: "user@example.com") }
+  describe 'when name is not present' do
+    let(:user) { User.new(name: ' ', email: 'user@example.com') }
 
-    it { should_not be_valid }
+    it { is_expected.not_to be_valid }
   end
 
-  describe "when name is too long" do
-    before { @user = User.new(name: "a" * 51, email: "user@example.com") }
+  describe 'when name is too long' do
+    let(:user) { User.new(name: 'a' * 51, email: 'user@example.com') }
 
-    it { should_not be_valid }
+    it { is_expected.not_to be_valid }
   end
 
-  describe "when email have more than one dot" do
-    before { @user = User.new(name: "Example User", email: "user@ex.ample.com") }
+  describe 'when email have more than one dot' do
+    let(:user) { User.new(name: 'Example User', email: 'user@ex.ample.com') }
 
-    it { should_not be_valid }
+    it { is_expected.not_to be_valid }
   end
 
-  describe "when email have more than one dot" do
-    before { @user = User.new(name: "Example User", email: "u.ser@example.com") }
-    it { should_not be_valid }
+  describe 'when email have more than one dot' do
+    let(:user) { User.new(name: 'Example User', email: 'u.ser@example.com') }
+
+    it { is_expected.not_to be_valid }
   end
 
-  describe "check emails format" do
+  describe 'check emails format' do
+    subject { user }
 
-    before do
-      @user = User.new(name: "Example User2", email: "user@example.com",
-                              password: "foobar", password_confirmation: "foobar" )
+    let(:user) do
+      User.new(
+        name: 'Example User2',
+        email: 'user@example.com',
+        password: 'foobar',
+        password_confirmation: 'foobar',
+      )
     end
 
-    subject { @user }
+    context 'when email format is invalid' do
+      let(:addresses) do
+        %w(user@foo,com user_at_foo.org example.user@foo.foo@bar_baz.com foo@bar+baz.com)
+      end
 
-    context "when email format is invalid" do
-      it "should be invalid" do
-        addresses = %w[user@foo,com user_at_foo.org example.user@foo.
-                       foo@bar_baz.com foo@bar+baz.com]
+      it 'be invalid' do
         addresses.each do |invalid_address|
-          @user.email = invalid_address
-          expect(@user).not_to be_valid
+          user.email = invalid_address
+          expect(user).not_to be_valid
         end
       end
     end
 
-    context "when email format is valid" do
-      it "should be valid" do
-        addresses = %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
+    context 'when email format is valid' do
+      it 'be valid' do
+        addresses = %w(user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn)
         addresses.each do |valid_address|
-          @user.email = valid_address
-          expect(@user).to be_valid
+          user.email = valid_address
+          expect(user).to be_valid
         end
       end
     end
 
-    context "when email address is already taken" do
+    context 'when email address is already taken' do
       before do
-        user_with_same_email = @user.dup
-        user_with_same_email.email = @user.email.upcase
+        user_with_same_email = user.dup
+        user_with_same_email.email = user.email.upcase
         user_with_same_email.save
       end
 
-      it { should_not be_valid }
+      it { is_expected.not_to be_valid }
     end
 
-    context "email address with mixed case" do
-      let(:mixed_case_email) { "Foo@ExAMPle.CoM" }
+    context 'when email address with mixed case' do
+      let(:mixed_case_email) { 'Foo@ExAMPle.CoM' }
 
-      it "should be saved as all lower-case" do
-        @user.email = mixed_case_email
-        @user.save
-        expect(@user.reload.email).to eq mixed_case_email.downcase
+      it 'when saved in all lower-case' do
+        user.email = mixed_case_email
+        user.save
+        expect(user.reload.email).to eq mixed_case_email.downcase
       end
     end
   end
