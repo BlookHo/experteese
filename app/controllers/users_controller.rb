@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-
   # caches_action :index
-  
+
   # GET /users
   # GET /users.json
   def index
