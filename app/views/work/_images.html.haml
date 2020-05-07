@@ -1,28 +1,15 @@
 -#/**
 -# * Created by aleks_ivanishchev on 25.03.16.
 -#*/
-
--#for Modal window
--##overlay_m
--#  %div
--#    %span.close{:title => "Close table"} x
--#    %h2 Your selected images diagnosys results
--#    .results_list
--#@current_locale = #{@current_locale.inspect}
-
 .image
   .row
     .col-md-3
       .left_controls
-        -#.load_image
-        -#  = render 'work/button_load'
-        -#  %br
         .select_theme
           = render 'work/button_theme_select', locale: @current_locale
+          -# = render 'work/choose_theme_from_arr', locale: @current_locale
+
           %br
-        -#.select_image
-        -#  = render 'work/button_select'
-        -#  %br
         .modal_list_results
           = render 'work/button_list_results'
           %br
@@ -57,17 +44,10 @@
               %h3{:title => "list to previous image"}
                 %i.fa.fa-chevron-circle-left.strong
 
-              -#%button.button__results.yes{:title => "Save image diag results"}
-              -#  %a{"data-remote" => "true", :format => "js", :href => "#", :title => "Save image diag results"} save
-              -#%button.button__results.no{:title => "Clear image diag results"}
-              -#  %a{"data-remote" => "true", :format => "js", :href => "#", :title => "Clear image diag results"} clear
-
           .col-md-10
             .img-center{:title => "Default image"}
-              %img{:alt => "Default Image", :src => 'assets/pictures/raduga5обрез.jpg', :title => "Default image",:style => "width:100%; height:100%;" }
+              %img{:alt => "Default Image", :src => 'assets/pictures/raduga5обрез.jpg', :title => "Default image",:style => 'width:100%; height:100%;' }
               .image_user_value{:title => "Expert value"}
-
-              -#.img-title
 
           .col-md-1
             .img-right-side
@@ -77,11 +57,7 @@
         .row.diag
           .col-md-12
             .image_diag
-              -#.scale
-              -#  .small_img_box
-              -#    %img{:alt => "Default Image", :src => 'assets/pictures/Серый - середина - стандарт.jpg', :title => "Default image",:style => "width:100%; height:100%;" }
 
-              -#main var
               #chosen_value 50
               %h2.down{:title => "Value scale"}
                 = t(".make_decision")
@@ -96,10 +72,3 @@
                              :step => "5", :type => "range"}
               %p.right 100%
               %br
-
-              -##picHolder
-              -#  %img#pic{:alt => "cat eye", :src => "assets/pictures/cateye.jpg"}
-              -#
-              -#%input#range{:min => "1", :max => "190", :oninput => "onchangeWidth()", :type => "range", :value => "0"}/
-
-

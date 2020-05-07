@@ -14,20 +14,20 @@ RSpec.describe Image, type: :model do
       FactoryGirl.create(:user)
       FactoryGirl.create(:user, :user_2)
       FactoryGirl.create(:user, :user_3)
-      puts "before All: User.first.id = #{User.first.id}\n"
+      # puts "before All: User.first.id = #{User.first.id}\n"
 
       # Image
       FactoryGirl.create(:image)
       FactoryGirl.create(:image, :image_2)
       FactoryGirl.create(:image, :image_3)
       FactoryGirl.create(:image, :image_4) #  ave_value = 80
-      puts "before All: Image.first.id = #{Image.first.id}\n"
+      # puts "before All: Image.first.id = #{Image.first.id}\n"
 
       # Value
       FactoryGirl.create(:value)
     end
 
-    describe 'Method Image.update_ave_value test' do
+    describe 'Method Image.update_ave_value test' do # ,  focus: true
       context 'when before actions - check tables values' do
         context 'when User have rows count - Ok' do
           let(:rows_qty) { 3 }
@@ -71,21 +71,21 @@ RSpec.describe Image, type: :model do
           end
 
           it '- after create value - Ok' do
-            puts "in It: value_second = #{value_second} \n"
-            puts "in It create value: new_value_data = #{new_value_data.inspect} \n"
+            # puts "in It: value_second = #{value_second} \n"
+            # puts "in It create value: new_value_data = #{new_value_data.inspect} \n"
             expect(value_second).to eq('user_id' => current_user_id,
                                        'image_id' => current_image_id,
                                        'value' => 40)
           end
 
           it '- after create value and calculate average value - Ok' do
-            puts "in It: ave_value = #{ave_value} \n"
+            # puts "in It: ave_value = #{ave_value} \n"
             expect(ave_value).to eq(40)
           end
 
           it '- after create value, calculate average value and update ave_value - Ok' do
-            puts "in It: current_image.id = #{current_image.id} \n"
-            puts "in It: updated_value in Image = #{updated_value} \n"
+            # puts "in It: current_image.id = #{current_image.id} \n"
+            # puts "in It: updated_value in Image = #{updated_value} \n"
             expect(updated_value).to eq(40)
           end
         end
@@ -99,8 +99,8 @@ RSpec.describe Image, type: :model do
           before { Image.value_and_update(new_value_data) }
 
           it '- after create value - Ok' do
-            puts "in last It create value: new_value_data = #{new_value_data.inspect} \n"
-            puts "in last It: current_image.id = #{current_image.id} \n"
+            # puts "in last It create value: new_value_data = #{new_value_data.inspect} \n"
+            # puts "in last It: current_image.id = #{current_image.id} \n"
             expect(updated_value).to eq(40)
           end
         end
@@ -113,8 +113,8 @@ RSpec.describe Image, type: :model do
           let(:updated_value) { Image.find(current_image_id).ave_value }
 
           it '- after create value and return valued_image_data - Ok' do
-            puts "in last It create value: new_value_data = #{new_value_data.inspect} \n"
-            puts "in last It create value: updated_value = #{updated_value.inspect} \n"
+            # puts "in last It create value: new_value_data = #{new_value_data.inspect} \n"
+            # puts "in last It create value: updated_value = #{updated_value.inspect} \n"
             expect(valued_image_data).to eq(values_qty: 2, current_user_id: 25, theme_id: nil,
                                             image_id: 33, user_valued: 1, value: 40,
                                             common_ave_value: 40)

@@ -47,7 +47,7 @@ class Image < ApplicationRecord
     image_id = new_value_data[:image_id]
     Value.create(new_value_data)
     ave_value = Value.calc_average_value(image_id).round
-    puts "in value_and_update: image_id = #{image_id}, ave_value = #{ave_value} \n"
+    # puts "in value_and_update: image_id = #{image_id}, ave_value = #{ave_value} \n"
     update_ave_value(image_id, ave_value)
     
     show_valued_image(new_value_data)

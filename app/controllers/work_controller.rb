@@ -10,13 +10,13 @@ class WorkController < ApplicationController
     @selected_image_name = 'радуга'
     @values_qty = Value.all.count
     @current_locale = I18n.locale
-    
+    @themes = Theme.all.pluck(:name)
+
     session[:selected_theme_id] = @selected_theme # to display nothing
   end
 
   # @note: use in views
   def choose_theme
-  
     # @current_locale = params[:locale]
     # logger.info "In WorkController#choose_theme @@current_locale = #{@current_locale}"
     # session[:current_locale] = @current_locale
@@ -48,8 +48,8 @@ class WorkController < ApplicationController
       data = show_image(theme_id, 0)
     end
     session[:selected_theme_id] = theme_id
+
     image_data(theme, data)
-    
   end
 
   

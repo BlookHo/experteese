@@ -12,10 +12,10 @@
 -#= icon('flag', class: 'strong')
 .center.jumbotron
   %h1 Добро пожаловать в Experteese
-  %h2
-    -#This is the home page for the
-    -#%a{:href => "http://www.railstutorial.org/"} Ruby on Rails
-    Пример приложения на Ruby on Rails.
+  -#%h2
+  -#  This is the home page for the
+  -#  %a{:href => "http://www.railstutorial.org/"} Ruby on Rails
+  -#  Руководство по разработке.
 
   - if signed_in?
     = link_to "Экспертиза", work_path, class: "btn btn-lg btn-primary"

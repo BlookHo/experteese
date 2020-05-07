@@ -43,6 +43,4 @@ class User < ApplicationRecord
   def create_remember_token
     self.remember_token = User.encrypt(User.new_remember_token)
   end
-  
-
 end
