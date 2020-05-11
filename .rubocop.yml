@@ -614,7 +614,7 @@ Style/RequestReferer:
   - referer
   - referrer
 
-Rails/SafeNavigation:
+Style/SafeNavigation:
   ConvertTry: false
 
 Rails/ScopeArgs:
