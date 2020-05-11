@@ -11,8 +11,5 @@ Rails.application.config.assets.paths << Rails.root.join("assets", "images", "pi
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w(
-  /assets/images/pictures/*.jpg
-  app/assets/images/pictures/raduga5обрез.jpg
-  /assets/images/pictures/raduga5обрез.jpg
-  /assetspictures/raduga5обрез.jpg
+  /assetspictures/*.jpg
 )
