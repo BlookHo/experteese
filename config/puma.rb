@@ -13,7 +13,7 @@ port        ENV.fetch("PORT") { 3000 }
 
 # Specifies the `environment` that Puma will run in.
 #
-environment ENV.fetch("RAILS_ENV") { "development"; "production" }
+environment ENV.fetch("RAILS_ENV") { "development" }
 
 # Specifies the number of `workers` to boot in clustered mode.
 # Workers are forked webserver processes. If using threads and workers together
@@ -21,7 +21,7 @@ environment ENV.fetch("RAILS_ENV") { "development"; "production" }
 # Workers do not work on JRuby or Windows (both of which do not support
 # processes).
 #
-workers ENV.fetch("WEB_CONCURRENCY") { 2 }
+# workers ENV.fetch("WEB_CONCURRENCY") { 2 }
 
 # Use the `preload_app!` method when specifying a `workers` number.
 # This directive tells Puma to first boot the application and load code
@@ -30,7 +30,7 @@ workers ENV.fetch("WEB_CONCURRENCY") { 2 }
 # you need to make sure to reconnect any threads in the `on_worker_boot`
 # block.
 #
-preload_app!
+# preload_app!
 
 # The code in the `on_worker_boot` will be called if you are using
 # clustered mode by specifying a number of `workers`. After each worker
