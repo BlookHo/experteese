@@ -75,6 +75,7 @@ group :development do
 
   # Automatic Ruby code checking tool
   gem 'rubocop', require: false
+  gem "rubocop-rails", require: false
   gem 'rubocop-rspec', '~> 1.32.0', require: false
 
   gem 'pronto', '~> 0.9.5'
