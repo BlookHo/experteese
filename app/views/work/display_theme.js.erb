@@ -30,8 +30,7 @@ if(userValuedImage == 1){
   $('.left_controls span.common_value h2.common').append().html(imageCommonValue);
 
   var imageValue = '<%= @image_data[:value] %>';
-  $('.image .image_display .image_user_value').append().html(imageValue);
-  $('.image .image_display .image_user_value').css({"display": "block"});
+  $('.image .image_display .image_user_value').append().html(imageValue).css({"display": "block"});
 }else{
   $('.left_controls span.common_value').css({"display": "none"});
   $('.image .image_display .image_user_value').css({"display": "none"});
@@ -44,10 +43,10 @@ $('.image_display h2.up-theme').append().html(selectedTheme);
 
 //restore button
 $('.select_theme').empty().html("<%= j render 'work/button_theme_select' -%>");
+// $('.select_theme').empty().html("< %= j render 'work/choose_theme_from_arr', locale: @current_locale -%>");
 
 // get data from controller
 var imageCurrentIndex = '<%= @image_data[:index] %>';
-//var firstThemeImagesName = JSON.parse(firstThemeImages)["name"];
 var oneImageName = '<%= @image_data[:name] %>';
 var oneImageFile = '<%= @image_data[:file] %>';
 console.log("3e IN display_theme: oneImageFile = " + oneImageFile);
@@ -55,7 +54,6 @@ var oneImageId = '<%= @image_data[:image_id] %>';
 console.log("3f IN display_theme: oneImageId = " + oneImageId);
 var themeImagesSize = '<%= @image_data[:images_arr_size] %>';
 var selectedThemeId = '<%= @image_data[:theme_id] %>';
-
 
 // show name of image
 //var nameImage = selectedImage.slice(0,-4) ;  // put away . file .jpr
@@ -66,7 +64,6 @@ var pathImage = "assets/pictures/" + oneImageFile;
 // $('.img-center').html('<img alt="Selected Image" src="'+ pathImage + '"/>');
 $(".img-center").attr({title: "Selected image" });
 $(".img-center img").attr({alt: "Selected Image", src: pathImage, title: "Selected image" });
-
 
 // AJAX call to next image list
 $('.img-right-side').click(function(event) {
@@ -99,8 +96,6 @@ $('.img-right-side').click(function(event) {
 
           var imageCommonValue = data_return.common_ave_value;
           $('.left_controls span.common_value h2.common').append().html(imageCommonValue);
-
-          // $('.image .image_display .image_user_value').css({"display": "block"});
         }else{
           $('.left_controls span.common_value').css({"display": "none"});
           $('.image .image_display .image_user_value').css({"display": "none"});
@@ -112,8 +107,6 @@ $('.img-right-side').click(function(event) {
         console.log("error: data_return = " + data_return);
       });
 });
-
-
 
 // AJAX call to previous image list
 $('.img-left-side').click(function(event) {
@@ -158,19 +151,14 @@ $('.img-left-side').click(function(event) {
       .fail(function (data_return) {
         console.log("error: data_return = " + data_return);
       });
-
 });
-
-
-
-
-
 
 // AJAX call to next image list
 $('button.button__results.save').unbind( "click" ).click(function(event) {
   console.log("clicked: button__results.save: ");
   event.stopImmediatePropagation(); // would stop the event from bubbling to parent elements,
-  var displayValue = $('#chosen_value')[0].innerHTML;
+  // var displayValue = $('#chosen_value')[0].innerHTML;
+  var displayValue = document.getElementById('chosen_value').innerHTML;
   console.log("displayValue = " + displayValue );
 
   $.ajax({
@@ -187,7 +175,7 @@ $('button.button__results.save').unbind( "click" ).click(function(event) {
         $('.image .image_display .image_user_value').append().html(userImageValue);
 
         var userValuedFlag = data_return.user_valued;
-        if(userValuedFlag  == 1){
+        if(userValuedFlag === 1){
           console.log("5 IN IF: userValuedFlag == true? == " + userValuedFlag);
           $('.left_controls span.common_value').css({"display": "block"});
           $('.image .image_display .image_diag').css({"display": "none"});
@@ -210,5 +198,3 @@ $('button.button__results.save').unbind( "click" ).click(function(event) {
         console.log("error: data_return = " + data_return);
       });
 });
-
-

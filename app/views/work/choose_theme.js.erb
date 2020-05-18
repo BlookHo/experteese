@@ -5,8 +5,6 @@ $('.image .image_display .image_diag').css({"display": "none"});
 $('.img-left-side').css({"display": "none"});
 $('.img-right-side').css({"display": "none"});
 
-
-
 // to check whether the target is the content-area itself or a child of the content-area.
 $(document).click(function(e){
   if($(e.target).is(".select_theme") || $(e.target).closest(".select_theme").length) {
@@ -19,47 +17,4 @@ $(document).click(function(e){
   }
 });
 
-
 $('.select_theme').empty().html("<%= j render 'choose_theme_from_arr' -%>");
-
-
-//
-////When the user clicks anywhere outside of the modal, close it
-//window.onclick = function(event) {
-//  if (event.target == selectTheme) {
-////      resultsList.style.visibility = "hidden";
-//    $('.select_theme').css({"display": "none"});
-//
-//    console.log("IN window.onclick: selectTheme display: none  /   .style.visibility = hidden");
-//  }
-//
-//};
-//
-//$(document).ready(function(){
-//  $('.select_theme').click(function(event){
-//    console.log('click - form');
-//    event.stopPropagation();
-//  });
-//  $('html').click(function(event){
-//    console.log('click - body');
-//    //hide the form if the body is clicked
-//    $('.select_theme').css('display','none');
-//  });
-////  $('button').click(function(event){
-////    $('.form-container').toggle();
-////    event.stopPropagation();
-////  });
-//
-//});
-//
-//
-//$(function() {
-//  $('.select_theme').on('click', function() {
-//    $('.select_theme').css({"display": "none"});
-//  });
-//})();
-//
-//
-//
-
-

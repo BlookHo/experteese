@@ -1,18 +1,11 @@
 -#/**
 -# * Created by aleks_ivanishchev on 25.03.16.
 -# */
--#@current_locale = #{@current_locale.inspect}
 
 %button.button__left.theme
-  = link_to t('.select_theme_bt'), choose_theme_path, :title => "Select theme from your device folder", locale: @current_locale, :format => "js", remote: true
-
-  -#%a.button__left{:href => choose_from_folder_path, :format => "js", remote: true}
-  -#  -#%span.btn__price $9.99
-  -#  %span Select image
-
-
-  -#.select_image
-  -#  -#%button{:OnClick => " location.href='images/choose_from_folder' "} Visit Page Now
-  -#  %button{:OnClick => html("<%= j render 'choose_from_folder' -%>") } Visit Page Now
-  -#%button.link
-  -#   = link_to 'Select image', choose_image_path,  :format => "js", remote: true
+  = link_to t('.select_theme_bt'),
+    choose_theme_path,
+    title: "Select theme from your device folder",
+    locale: @current_locale,
+    format: "js",
+    remote: true

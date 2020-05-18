@@ -1,17 +1,9 @@
 -#//-# * Created by aleks_ivanishchev on 19.09.16
--#@params_locale = #{@params_locale.inspect}
 
 .form_select
-  = form_tag("/display_theme", remote: true,  :format => "js") do
+  = form_tag("/display_theme", remote: true,  format: "js") do
     = select_tag :theme,
       options_for_select(@themes, selected: @selected_theme),
       prompt: t('.select_theme'),
       onchange:  "$(this).parent('form').submit();",
       formats: [ :js ]
-
-
-    -#include_blank: true,
-
-    -#%button.button__choose
-    -#  = submit_tag 'select'
-
