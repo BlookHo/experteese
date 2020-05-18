@@ -1,0 +1,54 @@
+name: Branches Push Check
+on:
+  push:
+    branches:
+#      - master
+      - '*'
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  staticAnalysis:
+    name: Static Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Fetch Git branches
+        run: git fetch
+
+      - name: Lint
+        uses: HeRoMo/pronto-action@v0.4.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          runner: rubocop
+
+      - name: Brakeman
+        uses: HeRoMo/pronto-action@v0.4.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          runner: brakeman
+#  test-ruby:
+#    name: Test (Ruby)
+#    runs-on: ubuntu-latest
+#    container: ruby:2.6.5
+#
+#    services:
+#      pg:
+#        image: mysql:5.6
+#        env:
+#          MYSQL_ROOT_PASSWORD: password
+#      postgres:
+#        image: postgres:11
+#        env:
+#          POSTGRES_USER: experteese_admin
+#          POSTGRES_DB: experteese_test
+#          POSTGRES_PASSWORD: "password"
+#        ports: ["5432:5432"]
+#
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v2
+#
+#      - name: Setup Ruby
+#        uses: ruby/setup-ruby@v1
