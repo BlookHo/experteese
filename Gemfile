@@ -15,7 +15,7 @@ gem 'activerecord-reset-pk-sequence'
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 
 # Use Puma as the app server
-gem 'puma', '~> 3.0'
+gem 'puma', '>= 4.3.1'
 
 gem 'haml-rails'
 gem 'bootstrap-sass', '>= 3.4.1'
