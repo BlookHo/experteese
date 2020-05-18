@@ -22,7 +22,7 @@ jobs:
         uses: HeRoMo/pronto-action@v0.5.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-#          runner: rubocop
+          runner: rubocop
 
 #      - name: Brakeman
 #        uses: HeRoMo/pronto-action@v0.4.0
